@@ -5,6 +5,9 @@
  */
 package hotelfederal;
 
+import accesoadatos.Conexion;
+import java.sql.Connection;
+
 /**
  *
  * @author Carlos
@@ -16,6 +19,7 @@ public class HotelFederal {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Connection con = Conexion.getConexion();
     }
     
 }
