@@ -10,6 +10,7 @@ public class Huesped {
     private String domicilio;
     private String correo;
     private String celular;
+    private boolean estado;
     
     
     // Const
@@ -17,16 +18,17 @@ public class Huesped {
     public Huesped() {
     }
 
-    public Huesped(String apellido, String nombre, String dni, String domicilio, String correo, String celular) {
+    public Huesped(String apellido, String nombre, String dni, String domicilio, String correo, String celular, Boolean estado) {
         this.apellido = apellido;
         this.nombre = nombre;
         this.dni = dni;
         this.domicilio = domicilio;
         this.correo = correo;
         this.celular = celular;
+        this.estado = estado;
     }
 
-    public Huesped(int idHuesped, String apellido, String nombre, String dni, String domicilio, String correo, String celular) {
+    public Huesped(int idHuesped, String apellido, String nombre, String dni, String domicilio, String correo, String celular, Boolean estado) {
         this.idHuesped = idHuesped;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -34,6 +36,8 @@ public class Huesped {
         this.domicilio = domicilio;
         this.correo = correo;
         this.celular = celular;
+        this.estado = estado;
+        
     }
 
    
@@ -95,10 +99,20 @@ public class Huesped {
         this.celular = celular;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
-        return "Huesped{" + "idHuesped=" + idHuesped + ", apellido=" + apellido + ", nombre=" + nombre + ", dni=" + dni + ", domicilio=" + domicilio + ", correo=" + correo + ", celular=" + celular + '}';
+        return "Huesped{" + "idHuesped=" + idHuesped + ", apellido=" + apellido + ", nombre=" + nombre + ", dni=" + dni + ", domicilio=" + domicilio + ", correo=" + correo + ", celular=" + celular + ", estado=" + estado + '}';
     }
+
+
     
     
 }
