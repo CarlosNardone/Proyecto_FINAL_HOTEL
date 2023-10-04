@@ -34,7 +34,7 @@ public class HuespedData {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "");
+                JOptionPane.showMessageDialog(null, "Huesped Agregado");
             } else {
                 JOptionPane.showMessageDialog(null, "Este huesped ya existe");
             }

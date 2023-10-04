@@ -6,6 +6,8 @@
 package hotelfederal;
 
 import accesoadatos.Conexion;
+import accesoadatos.HuespedData;
+import entidades.Huesped;
 import java.sql.Connection;
 
 /**
@@ -20,6 +22,10 @@ public class HotelFederal {
     public static void main(String[] args) {
         // TODO code application logic here
         Connection con = Conexion.getConexion();
+        Huesped carlos = new Huesped("Carlos","Nardone","37577100","En la esquina de mi casa","carlos.nardone143@gmail.com","155234434");
+        HuespedData hue = new HuespedData();
+        hue.agregarHuesped(carlos);
+        
     }
     
 }
