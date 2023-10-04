@@ -20,6 +20,7 @@ public class HuespedData {
 
     public void agregarHuesped(Huesped huesped) {
 
+       
         try {
 
             PreparedStatement ps = con.prepareStatement("INSERT INTO huesped"
@@ -56,18 +57,17 @@ public class HuespedData {
 //                + "WHERE DNI = ?";
         String sql = "UPDATE huesped SET  nombre = ?, apellido = ?,DNI = ?, domicilio = ?, correo = ? , celular = ?, estado = ? "
                 + "WHERE idHuesped = ?";
-        Connection con = null;
         PreparedStatement ps = null;
          
         try {
-            con = Conexion.getConexion();
+            ps = con.prepareStatement(sql);
             ps.setString(1, huesped.getNombre());
             ps.setString(2, huesped.getApellido());
             ps.setString(3, huesped.getDni());
             ps.setString(4, huesped.getDomicilio());
             ps.setString(5, huesped.getCorreo());
             ps.setString(6, huesped.getCelular());
-                        ps.setBoolean(7, huesped.isEstado());
+            ps.setBoolean(7, huesped.isEstado());
             ps.setInt(8, huesped.getIdHuesped());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
