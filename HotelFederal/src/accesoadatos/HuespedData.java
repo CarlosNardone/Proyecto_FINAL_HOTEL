@@ -1,4 +1,3 @@
-
 package accesoadatos;
 
 import entidades.Huesped;
@@ -10,19 +9,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-
 public class HuespedData {
+
     private Connection con = null;
-    
-     public HuespedData() {
+
+    public HuespedData() {
         con = Conexion.getConexion();
-    
-    
-        public void agregarHuesped(Huesped huesped) {
+
+    }
+
+    public void agregarHuesped(Huesped huesped) {
 
         try {
 
-            PreparedStatement ps = con.prepareStatement ("INSERT INTO huesped"
+            PreparedStatement ps = con.prepareStatement("INSERT INTO huesped"
                     + "(nombre, apellido, DNI, domicilio, correo, celular) "
                     + "VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, huesped.getNombre());
@@ -30,12 +30,12 @@ public class HuespedData {
             ps.setString(3, huesped.getDni());
             ps.setString(4, huesped.getDomicilio());
             ps.setString(5, huesped.getCorreo());
-            ps.setString(6, huesped.getCelular());  
+            ps.setString(6, huesped.getCelular());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Este huesped ya existe");
             }
             rs.close();
@@ -47,9 +47,8 @@ public class HuespedData {
             System.err.println(ex);
         }
 
-   }
-    
-    
-    
-  }  
+    }
 
+    
+    
+}
