@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 04-10-2023 a las 01:44:57
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Oct 05, 2023 at 01:50 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `hotelfederal`
+-- Database: `hotelfederal`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `habitacion`
+-- Table structure for table `habitacion`
 --
 
 CREATE TABLE `habitacion` (
@@ -38,7 +38,7 @@ CREATE TABLE `habitacion` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `huesped`
+-- Table structure for table `huesped`
 --
 
 CREATE TABLE `huesped` (
@@ -48,13 +48,23 @@ CREATE TABLE `huesped` (
   `DNI` varchar(15) DEFAULT NULL,
   `domicilio` varchar(50) DEFAULT NULL,
   `correo` varchar(50) DEFAULT NULL,
-  `celular` varchar(15) DEFAULT NULL
+  `celular` varchar(15) DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `huesped`
+--
+
+INSERT INTO `huesped` (`idHuesped`, `nombre`, `apellido`, `DNI`, `domicilio`, `correo`, `celular`, `estado`) VALUES
+(1, 'Nardone', 'Carlos', '37577100', 'En la esquina de mi casa', 'carlos.nardone143@gmail.com', '155234434', 1),
+(3, 'Lopez', 'Ezequiel', '35635353', 'Chacabuco 3850', 'ezequiel.lopes@live.com', '12131326', 0),
+(4, 'Hernandez', 'Ezequiel', '34243424', 'Necochea 3850', 'ezequiel.14322@live.com', '155155155', 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `reserva`
+-- Table structure for table `reserva`
 --
 
 CREATE TABLE `reserva` (
@@ -71,7 +81,7 @@ CREATE TABLE `reserva` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipohabitacion`
+-- Table structure for table `tipohabitacion`
 --
 
 CREATE TABLE `tipohabitacion` (
@@ -84,24 +94,25 @@ CREATE TABLE `tipohabitacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `habitacion`
+-- Indexes for table `habitacion`
 --
 ALTER TABLE `habitacion`
   ADD PRIMARY KEY (`idHabitacion`),
   ADD KEY `idTipoHabitacion` (`idTipoHabitacion`);
 
 --
--- Indices de la tabla `huesped`
+-- Indexes for table `huesped`
 --
 ALTER TABLE `huesped`
-  ADD PRIMARY KEY (`idHuesped`);
+  ADD PRIMARY KEY (`idHuesped`),
+  ADD UNIQUE KEY `DNI` (`DNI`);
 
 --
--- Indices de la tabla `reserva`
+-- Indexes for table `reserva`
 --
 ALTER TABLE `reserva`
   ADD PRIMARY KEY (`idReserva`),
@@ -109,51 +120,51 @@ ALTER TABLE `reserva`
   ADD KEY `idHabitacion` (`idHabitacion`);
 
 --
--- Indices de la tabla `tipohabitacion`
+-- Indexes for table `tipohabitacion`
 --
 ALTER TABLE `tipohabitacion`
   ADD PRIMARY KEY (`idTipoHabitacion`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `habitacion`
+-- AUTO_INCREMENT for table `habitacion`
 --
 ALTER TABLE `habitacion`
   MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `huesped`
+-- AUTO_INCREMENT for table `huesped`
 --
 ALTER TABLE `huesped`
-  MODIFY `idHuesped` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idHuesped` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `reserva`
+-- AUTO_INCREMENT for table `reserva`
 --
 ALTER TABLE `reserva`
   MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tipohabitacion`
+-- AUTO_INCREMENT for table `tipohabitacion`
 --
 ALTER TABLE `tipohabitacion`
   MODIFY `idTipoHabitacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `habitacion`
+-- Constraints for table `habitacion`
 --
 ALTER TABLE `habitacion`
   ADD CONSTRAINT `habitacion_ibfk_1` FOREIGN KEY (`idTipoHabitacion`) REFERENCES `tipohabitacion` (`idTipoHabitacion`);
 
 --
--- Filtros para la tabla `reserva`
+-- Constraints for table `reserva`
 --
 ALTER TABLE `reserva`
   ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`idHuesped`) REFERENCES `huesped` (`idHuesped`),
