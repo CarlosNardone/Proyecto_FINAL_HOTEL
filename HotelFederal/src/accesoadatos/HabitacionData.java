@@ -38,18 +38,74 @@ public class HabitacionData {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Huesped Agregado");
+                JOptionPane.showMessageDialog(null, "Habitacion Agregado");
             } else {
-                JOptionPane.showMessageDialog(null, "Este huesped ya existe");
+                JOptionPane.showMessageDialog(null, "Esta Habitacion ya existe");
             }
             rs.close();
             ps.close();
             System.out.println(rs);
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Dni duplicado");
+            JOptionPane.showMessageDialog(null, "Habitacion duplicada");
             System.err.println(ex);
         }
 
     }
+  
+  public void eliminarHabitacion(int numero) {
+        String sql = "UPDATE habitacion SET estado = 0  WHERE numero  = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, numero);
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+
+                JOptionPane.showMessageDialog(null, "Habitacion dada de baja");
+            } else {
+                JOptionPane.showMessageDialog(null, "Esta habitacion ya esta dada de baja");
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitacion");
+        }
+    }
+  
+  public void modificarHabitacionPorNumero(Habitacion habitacion) {
+    String sql = "UPDATE habitacion SET numero = ?, estado = ?, piso = ? "
+            + "WHERE numero = ?";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, habitacion.getNumero());
+        ps.setBoolean(2, habitacion.isEstado());
+        ps.setInt(3, habitacion.getPiso());
+        ps.setInt(4, habitacion.getNumero());
+
+        int rowsUpdated = ps.executeUpdate();
+
+        if (rowsUpdated == 1) {
+            JOptionPane.showMessageDialog(null, "Habitación Modificada");
+        } else {
+            JOptionPane.showMessageDialog(null, "Habitación inexistente");
+        }
+
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitación");
+        System.err.println(ex);
+    } finally {
+        try {
+            if (con != null) {
+                con.close();
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
+}
+  
     }
