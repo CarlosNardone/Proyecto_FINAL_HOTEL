@@ -3,6 +3,7 @@ package hotelfederal;
 
 import accesoadatos.Conexion;
 import accesoadatos.HuespedData;
+import entidades.Habitacion;
 import entidades.Huesped;
 import java.sql.Connection;
 
@@ -19,6 +20,9 @@ public class HotelFederal {
         Huesped mauricio = new Huesped("Mauricio","Avila","30068183","Tucuman","mauricioavila@gmail.com","542323423", true); 
 //        Huesped ezequiel = new Huesped("Ezequiel","Hernandez","34243424","Necochea 3850","ezequiel.14322@live.com","155155155", true);
         HuespedData hue = new HuespedData();
+        
+        
+        Habitacion hab1 = new Habitacion(1,true,2,1);
 //        hue.agregarHuesped(mauricio);
 //        hue.eliminarHuesped("34243424");
 //        hue.modificarHuespedPorDNI(carlos);

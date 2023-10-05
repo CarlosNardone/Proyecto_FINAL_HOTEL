@@ -51,6 +51,7 @@ public class HuespedData {
     }
 
     
+    //Este metodo modificar te lo modifica por ID
     /*
     public void modificarHuesped(Huesped huesped) {
 
@@ -94,6 +95,7 @@ public class HuespedData {
     */
 
     
+    //Y este metodo modificar te lo modifica por DNI
     public void modificarHuespedPorDNI(Huesped huesped) {
     String sql = "UPDATE huesped SET nombre = ?, apellido = ?, DNI = ?, domicilio = ?, correo = ?, celular = ?, estado = ? "
             + "WHERE DNI = ?";
