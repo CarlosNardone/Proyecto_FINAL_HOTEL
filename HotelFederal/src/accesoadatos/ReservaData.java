@@ -41,16 +41,16 @@ public class ReservaData {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Habitacion Agregado");
+                JOptionPane.showMessageDialog(null, "Reserva Efecutada");
             } else {
-                JOptionPane.showMessageDialog(null, "Esta Habitacion ya existe");
+                JOptionPane.showMessageDialog(null, "Reserva existente");
             }
             rs.close();
             ps.close();
             System.out.println(rs);
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Habitacion duplicada");
+            JOptionPane.showMessageDialog(null, "Reserva duplicada"); //revisar
             System.err.println(ex);
         }
 
