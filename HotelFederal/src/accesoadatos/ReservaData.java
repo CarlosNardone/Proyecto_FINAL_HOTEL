@@ -6,6 +6,9 @@
 package accesoadatos;
 
 
+import entidades.Habitacion;
+import entidades.Huesped;
+import entidades.Reserva;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -17,9 +20,10 @@ public class ReservaData {
     private Connection con = null;
 
     public ReservaData() {
+        
     }
     
-      public void agregarReserva() {
+      public void agregarReserva(Reserva reserva, Habitacion habitacion,Huesped huesped ) {
 
         try {
 
@@ -27,10 +31,13 @@ public class ReservaData {
                     + "(fechaEntrada, fechaSalida, cantidadPersonas, precioTotal, estado, idHuesped, idHabitacion) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
     
-            ps.setLocalDate(1, reserva.getLocalDate());
-            ps.setBoolean(2, reserva.isEstado());
-            ps.setInt(3, reserva.getPiso());
-            ps.setInt(4, reserva.getTipoHabitacion().getIdTipoHabitacion());
+            ps.setDate(1, Date.valueOf(reserva.getFechaDeEntrada()));
+            ps.setDate(1, Date.valueOf(reserva.getFechaDeSalida()));
+            ps.setInt(3, reserva.getCantidadPersonas());
+            ps.setDouble(4, reserva.getPrecioTotal());
+            ps.setBoolean(5, reserva.isEstado());
+            ps.setInt(6, huesped.getIdHuesped());
+            ps.setInt(7, habitacion.getIdHabitacion());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
