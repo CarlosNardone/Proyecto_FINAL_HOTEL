@@ -134,12 +134,12 @@ public class HuespedData {
     }
 }
 
-    public void eliminarHuesped(String dni) {
-        String sql = "UPDATE huesped SET estado = 0  WHERE DNI  = ?";
+    public void eliminarHuesped(int dni) {
+        String sql = "UPDATE huesped SET estado = 0  WHERE DNI  = ? AND estado = 1";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, dni);
+            ps.setInt(1, dni);
             int exito = ps.executeUpdate();
 
             if (exito == 1) {

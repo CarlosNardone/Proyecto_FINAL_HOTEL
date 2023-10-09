@@ -7,6 +7,7 @@ package vistas;
 
 import accesoadatos.HuespedData;
 import entidades.Huesped;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import javax.swing.JOptionPane;
@@ -57,6 +58,7 @@ public class HuespedView extends javax.swing.JInternalFrame {
         jbNuevo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jtfDomicilio = new javax.swing.JTextField();
+        jbBuscar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Apellido:");
@@ -123,6 +125,11 @@ public class HuespedView extends javax.swing.JInternalFrame {
         });
 
         jbEliminarH.setText("Eliminar Huesped");
+        jbEliminarH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarHActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -138,91 +145,107 @@ public class HuespedView extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel2.setText("Domicilio");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Domicilio:");
+
+        jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(374, 374, 374)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(183, 183, 183)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jbEliminarH)
-                                    .addComponent(jbGuardar)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(210, 210, 210)
-                                .addComponent(jbNuevo))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(309, 309, 309)
-                                .addComponent(jbSalir))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jrbEstado)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jtfDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jtfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(183, 183, 183)
+                                        .addComponent(jbGuardar))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jbBuscar)
+                                            .addComponent(jbNuevo))
+                                        .addGap(36, 36, 36))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 14, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(jrbEstado)
+                                .addGap(83, 83, 83)
+                                .addComponent(jbEliminarH))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbSalir)
+                        .addGap(35, 35, 35))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbNuevo))
-                        .addGap(23, 23, 23)
+                            .addComponent(jbBuscar))
+                        .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbGuardar))
-                        .addGap(23, 23, 23)
+                            .addComponent(jbNuevo))
+                        .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbGuardar))
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbEliminarH))
+                            .addComponent(jtfCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -231,14 +254,13 @@ public class HuespedView extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jbSalir)
-                        .addGap(1, 1, 1)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jrbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(115, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jrbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jbEliminarH)
+                                .addComponent(jbSalir)))))
+                .addGap(67, 67, 67))
         );
 
         pack();
@@ -283,15 +305,12 @@ public class HuespedView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         
                 try{
-                    
-
-    
     String apellido = jtfApellido.getText();
     String nombre = jtfNombre.getText();
     String dni = jtfDNI.getText();
     String domicilio = jtfDomicilio.getText();
     String correo = jtfCorreo.getText();
-    String celular = jtfCelular.getText(); // Agregado el campo celular
+    String celular = jtfCelular.getText(); 
     boolean estado = jrbEstado.isSelected();
         huespedActual = hue.buscarHuepedPorDni(Integer.parseInt(dni));
             if(huespedActual == null){
@@ -307,97 +326,43 @@ public class HuespedView extends javax.swing.JInternalFrame {
             hue.modificarHuespedPorDNI(huespedActual);
         }
         }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(null, "Mensaje de error");
+            JOptionPane.showMessageDialog(null, "Parametros incorrectos");
         }
         
-     /*   
-try {
-    // Obtener el valor del campo DNI como una cadena
-    String dniStr = jtfDNI.getText();
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
-    // Verificar si el campo DNI está vacío
-    if (dniStr.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "El campo DNI no puede estar vacío");
-        return;
-    }
-
-    // Convertir la cadena del DNI a un valor numérico
-    int dni = Integer.parseInt(dniStr);
-
-    // Obtener los valores de los campos Apellido, Nombre, Correo y Celular
-    String apellido = jtfApellido.getText();
-    String nombre = jtfNombre.getText();
-    String correo = jtfCorreo.getText();
-    String celular = jtfCelular.getText(); // Agregado el campo celular
-
-    // Verificar si los campos Nombre y Apellido están vacíos
-    if (nombre.isEmpty() || apellido.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Los campos Nombre y Apellido no pueden estar vacíos");
-        return;
-    }
-
-    // Obtener el estado del botón de selección
-    boolean estado = jrbEstado.isSelected();
-
-    // Comprobar si el huespedActual ya existe en la lista
-    Huesped huespedActual = hue.agregarHuesped(dni);
-    if (huespedActual == null) {
-        // Si no existe, crear un nuevo Huesped
-        huespedActual = new Huesped(dni, apellido, nombre, correo, estado, celular); // Agregado el campo celular
-        hue.agregarHuesped(huespedActual);
-    } else {
-        // Si existe, actualizar sus atributos
-        huespedActual.setDni(dni);
-        huespedActual.setApellido(apellido);
-        huespedActual.setNombre(nombre);
-        huespedActual.setCorreo(correo);
-        huespedActual.setEstado(estado);
-        huespedActual.setCelular(celular); // Agregado el campo celular
-
-        hue.modificarHuespedPorDNI(huespedActual);
-    }
-} catch (NumberFormatException ex) {
-    JOptionPane.showMessageDialog(this, "El campo DNI debe contener solo números");
-}
-*/
-
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        // TODO add your handling code here:
+                int documento;
         
-        /*
-                try{
-        int dni = Integer.parseInt(jtfDNI.getText());
-        String apellido = jtfApellido.getText();
-        String nombre =jtfNombre.getText();
-        if(nombre.isEmpty()||apellido.isEmpty()){
-            
-            JOptionPane.showMessageDialog(this, "Los campos nombre y apellido no pueden estar vacios");
-            return;
+        try{ 
+        documento = Integer.parseInt(jtfDNI.getText());
+        Huesped huesped = hue.buscarHuepedPorDni(documento);
+        if(huesped !=null){
+        jtfApellido.setText(huesped.getApellido());
+        jtfDNI.setText((huesped.getDni()));
+        jtfNombre.setText(huesped.getNombre());
+        jtfCorreo.setText(huesped.getCorreo());
+        jtfDomicilio.setText(huesped.getDomicilio());
+        jtfCelular.setText(huesped.getCelular());
+        jrbEstado.setSelected(huesped.isEstado());
         }
-        
-        boolean estado = jrbEstado.isSelected();
-       
-        
-        
-         huespedActual = hue.agregarHuesped(dni);      
-         if(huespedActual == null){
-                huespedActual = new Huesped(dni, apellido, correo, estado);
-                hue.agregarHuesped(huespedActual);
-        }else {
-                huespedActual.setDni(dni);
-                huespedActual.setApellido(apellido);
-                huesped.setNombre(nombre);
-                
-                
-                
-               hue.modificarHuespedPorDNI(huespedActual);
-                
-            
-        }   
+        }catch(NumberFormatException nu){
+        JOptionPane.showMessageDialog(this, "Solo se permiten numeros en el campo dni y celular");
+        }
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbEliminarHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarHActionPerformed
+        // TODO add your handling code here:
+                try{                                          
+       int dni;
+       dni = Integer.parseInt(jtfDNI.getText());
+       hue.eliminarHuesped(dni);
+        jbNuevoActionPerformed(evt);
         }catch(NumberFormatException ex){
-             
             JOptionPane.showMessageDialog(this, "Solo se permiten numeros en los campo dni y fecha");
         }
-*/
-    }//GEN-LAST:event_jbGuardarActionPerformed
+    }//GEN-LAST:event_jbEliminarHActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -409,6 +374,7 @@ try {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbEliminarH;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbNuevo;
@@ -425,6 +391,7 @@ try {
         jtfApellido.setText("");
         jtfDNI.setText("");
         jtfNombre.setText("");
+        jtfDomicilio.setText("");
         jrbEstado.setSelected(false);
         jtfCorreo.setText("");
         jtfCelular.setText("");
