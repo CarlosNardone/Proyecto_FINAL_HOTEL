@@ -5,6 +5,8 @@
  */
 package vistas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Carlos
@@ -56,10 +58,20 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
         jLabel5.setText("Precio por Noche");
 
         jcbTiposCamas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbTiposCamas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbTiposCamasActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Cantidad de personas");
 
         jbAgregarTH.setText("Agregar Tipo De Habitacion");
+        jbAgregarTH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAgregarTHActionPerformed(evt);
+            }
+        });
 
         jbModificar.setText("Modificar");
 
@@ -162,6 +174,31 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jcbTiposCamasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTiposCamasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbTiposCamasActionPerformed
+
+    private void jbAgregarTHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarTHActionPerformed
+        // TODO add your handling code here:
+                try{
+        int id = Integer.parseInt(jtfCodigo.getText());
+        String nombre = jtfNombre.getText();
+        int año = Integer.parseInt(jtfAnio.getText());
+        boolean estado = jrbEstado.isSelected();
+        materiaActual = mat.buscarMateria(id);
+            if(materiaActual == null){
+            materiaActual = new Materia(id, nombre, año, estado);
+            mat.guardarMateria(materiaActual);
+        }else{
+            materiaActual.setNombre(nombre);
+            materiaActual.setAnioMateria(año);
+            mat.modificarMateria(materiaActual);
+        }
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en los campos año y codigo");
+        }
+    }//GEN-LAST:event_jbAgregarTHActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
