@@ -5,6 +5,7 @@ import accesoadatos.Conexion;
 import accesoadatos.HabitacionData;
 import accesoadatos.HuespedData;
 import accesoadatos.ReservaData;
+import accesoadatos.TipoHabitacionData;
 import entidades.Habitacion;
 import entidades.Huesped;
 import entidades.Reserva;
@@ -25,8 +26,8 @@ public class HotelFederal {
 //        Huesped mauricio = new Huesped("Mauricio","Avila","30068183","Tucuman","mauricioavila@gmail.com","542323423", true); 
 //        Huesped ezequiel = new Huesped("Ezequiel","Hernandez","34243424","Necochea 3850","ezequiel.14322@live.com","155155155", true);
         
-        HuespedData hue = new HuespedData();
-//        TipoHabitacion hab = new TipoHabitacion(1,"1", 1, 1, "simple", 1000);
+//        HuespedData hue = new HuespedData();
+////        TipoHabitacion hab = new TipoHabitacion(1,"1", 1, 1, "simple", 1000);
 //        
        
        
@@ -44,6 +45,10 @@ public class HotelFederal {
 //        hue.modificarHuesped(carlos);
 //          habdata.modificarHabitacionPorNumero(hab1);
 //          Huesped huesped = hue.buscarHuepedPorDni(37577100);
+
+//TipoHabitacion tphab = new TipoHabitacion("5",4, 2, "doble",20000);
+//TipoHabitacionData tphadata = new TipoHabitacionData();
+//tphadata.agregarTipoHab(tphab);
           
           
           

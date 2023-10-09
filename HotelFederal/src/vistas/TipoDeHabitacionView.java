@@ -37,7 +37,7 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
         jtfCodigo = new javax.swing.JTextField();
         jtfCantidadPersonas = new javax.swing.JTextField();
         jtfCCamas = new javax.swing.JTextField();
-        jtfPrecioxNOCHE = new javax.swing.JTextField();
+        jtfPrecioxNoche = new javax.swing.JTextField();
         jcbTiposCamas = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jbAgregarTH = new javax.swing.JButton();
@@ -48,7 +48,6 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
         jLabel1.setText("Codigo");
 
         jLabel2.setFont(new java.awt.Font("Goudy Stout", 3, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("tipos de habitaciones");
 
         jLabel3.setText("Cantidad de camas");
@@ -116,7 +115,7 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
                                     .addComponent(jcbTiposCamas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(46, 46, 46)
-                                .addComponent(jtfPrecioxNOCHE, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jtfPrecioxNoche, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(jbAgregarTH)
@@ -157,7 +156,7 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jtfPrecioxNOCHE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfPrecioxNoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbAgregarTH)
@@ -183,18 +182,17 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
                 try{
         int id = Integer.parseInt(jtfCodigo.getText());
-        String nombre = jtfNombre.getText();
-        int año = Integer.parseInt(jtfAnio.getText());
-        boolean estado = jrbEstado.isSelected();
-        materiaActual = mat.buscarMateria(id);
-            if(materiaActual == null){
-            materiaActual = new Materia(id, nombre, año, estado);
-            mat.guardarMateria(materiaActual);
-        }else{
-            materiaActual.setNombre(nombre);
-            materiaActual.setAnioMateria(año);
-            mat.modificarMateria(materiaActual);
-        }
+        int CantidadPersonas = Integer.parseInt(jtfCantidadPersonas.getText());
+        int cantidadCamas = Integer.parseInt(jtfCCamas.getText());
+//        string tipoCamas = jcb< >TipoCamas.getText();
+        double PrecioxNoche = Integer.parseInt(jtfPrecioxNoche.getText());
+//            if(materiaActual == null){
+//           
+//        }else{
+//            materiaActual.setNombre(nombre);
+//            materiaActual.setAnioMateria(año);
+//            mat.modificarMateria(materiaActual);
+//        }
         }catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en los campos año y codigo");
         }
@@ -216,6 +214,6 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfCCamas;
     private javax.swing.JTextField jtfCantidadPersonas;
     private javax.swing.JTextField jtfCodigo;
-    private javax.swing.JTextField jtfPrecioxNOCHE;
+    private javax.swing.JTextField jtfPrecioxNoche;
     // End of variables declaration//GEN-END:variables
 }
