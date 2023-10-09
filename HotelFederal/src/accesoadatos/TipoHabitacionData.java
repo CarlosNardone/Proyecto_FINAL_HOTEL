@@ -42,7 +42,8 @@ public class TipoHabitacionData {
             JOptionPane.showMessageDialog(null, "Tipo habitacion duplicada");
             System.err.println(ex);
         }
-           
+      
+    }
 
     public void eliminarTipoHabitacion(int codigo){
         String sql = "DELETE FROM TipoHabitacion WHERE codigo = ? ";
