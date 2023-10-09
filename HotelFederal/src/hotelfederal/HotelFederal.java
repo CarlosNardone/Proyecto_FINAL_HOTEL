@@ -47,8 +47,9 @@ public class HotelFederal {
 //          Huesped huesped = hue.buscarHuepedPorDni(37577100);
 
 //TipoHabitacion tphab = new TipoHabitacion("5",4, 2, "doble",20000);
-//TipoHabitacionData tphadata = new TipoHabitacionData();
-//tphadata.agregarTipoHab(tphab);
+TipoHabitacionData tphadata = new TipoHabitacionData();
+//tphadata.eliminarTipoHabitacion("5")
+;
           
           
           

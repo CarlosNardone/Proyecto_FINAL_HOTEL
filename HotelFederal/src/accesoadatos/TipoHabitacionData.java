@@ -45,24 +45,24 @@ public class TipoHabitacionData {
       
     }
 
-    public void eliminarTipoHabitacion(int codigo){
+    public void eliminarTipoHabitacion(String codigo){
         String sql = "DELETE FROM TipoHabitacion WHERE codigo = ? ";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, codigo);
+            ps.setString(1, codigo);
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
 
-                JOptionPane.showMessageDialog(null, "Huesped dado de baja");
+                JOptionPane.showMessageDialog(null, "Tipo de Habitacion dada de baja");
             } else {
-                JOptionPane.showMessageDialog(null, "Este huesped ya esta dado de baja");
+                JOptionPane.showMessageDialog(null, "Tipo de Habitacion ya esta dado de baja");
             }
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla huesped");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla tipohabitacion ");
         }
     }
 
