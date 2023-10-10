@@ -310,7 +310,7 @@ public class HuespedView extends javax.swing.JInternalFrame {
     String dni = jtfDNI.getText();
     String domicilio = jtfDomicilio.getText();
     String correo = jtfCorreo.getText();
-    String celular = jtfCelular.getText(); 
+    int celular = Integer.parseInt(jtfCelular.getText()); 
     boolean estado = jrbEstado.isSelected();
         huespedActual = hue.buscarHuepedPorDni(Integer.parseInt(dni));
             if(huespedActual == null){
@@ -344,7 +344,7 @@ public class HuespedView extends javax.swing.JInternalFrame {
         jtfNombre.setText(huesped.getNombre());
         jtfCorreo.setText(huesped.getCorreo());
         jtfDomicilio.setText(huesped.getDomicilio());
-        jtfCelular.setText(huesped.getCelular());
+        jtfCelular.setText(Integer.toString(huesped.getCelular()));
         jrbEstado.setSelected(huesped.isEstado());
         }
         }catch(NumberFormatException nu){

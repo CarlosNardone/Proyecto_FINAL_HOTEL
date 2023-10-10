@@ -34,7 +34,7 @@ public class ReservaData {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Reserva Efecutada");
+                JOptionPane.showMessageDialog(null, "Reserva Ejecutada");
             } else {
                 JOptionPane.showMessageDialog(null, "Reserva existente");
             }

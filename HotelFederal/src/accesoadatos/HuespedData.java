@@ -30,7 +30,7 @@ public class HuespedData {
             ps.setString(3, huesped.getDni());
             ps.setString(4, huesped.getDomicilio());
             ps.setString(5, huesped.getCorreo());
-            ps.setString(6, huesped.getCelular());
+            ps.setInt(6, huesped.getCelular());
             ps.setBoolean(7, huesped.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -107,7 +107,7 @@ public class HuespedData {
         ps.setString(3, huesped.getDni());
         ps.setString(4, huesped.getDomicilio());
         ps.setString(5, huesped.getCorreo());
-        ps.setString(6, huesped.getCelular());
+        ps.setInt(6, huesped.getCelular());
         ps.setBoolean(7, huesped.isEstado());
         ps.setString(8, huesped.getDni()); // Modifica por DNI
 
@@ -123,14 +123,6 @@ public class HuespedData {
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "Error al acceder a la tabla huesped");
         System.err.println(ex);
-    } finally {
-        try {
-            if (con != null) {
-                con.close();
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
     }
 }
 
@@ -171,7 +163,7 @@ public class HuespedData {
                 huesped.setDni(rs.getString("DNI"));
                 huesped.setDomicilio(rs.getString("domicilio"));
                 huesped.setCorreo(rs.getString("correo"));
-                huesped.setCelular(rs.getString("celular"));
+                huesped.setCelular(rs.getInt("celular"));
                 huesped.setEstado(rs.getBoolean("estado"));
                            
             }else{
