@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2023 at 12:36 AM
+-- Generation Time: Oct 11, 2023 at 12:38 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -56,7 +56,7 @@ CREATE TABLE `huesped` (
   `DNI` varchar(15) DEFAULT NULL,
   `domicilio` varchar(50) DEFAULT NULL,
   `correo` varchar(50) DEFAULT NULL,
-  `celular` varchar(15) DEFAULT NULL,
+  `celular` int(15) DEFAULT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -65,11 +65,15 @@ CREATE TABLE `huesped` (
 --
 
 INSERT INTO `huesped` (`idHuesped`, `nombre`, `apellido`, `DNI`, `domicilio`, `correo`, `celular`, `estado`) VALUES
-(1, 'Nardone', 'Carlos', '37577100', 'Berrutti', 'carlos.nardone143@gmail.com', '155234434', 1),
-(2, 'Avila', 'Mauricio', '30068183', 'Tucuman', 'mauricioavila@gmail.com', '542323423', 1),
-(3, 'Bazzoni', 'Diego', '24652571', 'San Luis', 'diegobazzoni@gmail.com', '3445354545', 1),
-(4, 'Perez', 'Andres', '1243243', 'Mendoza', 'andres.perez242@gmail.com', '112313223', 1),
-(5, 'Hernandez', 'Ezequiel', '34243424', 'Necochea 3850', 'ezequiel.14322@live.com', '155155155', 1);
+(1, 'Carlos Salvador', 'Nardone', '37577100', 'Berrutti 1840', 'carlin1994@live.com.ar', 155155655, 1),
+(2, 'Avila', 'Mauricio', '30068183', 'Tucuman', 'mauricioavila@gmail.com', 542323423, 1),
+(3, 'Bazzoni', 'Diego', '24652571', 'San Luis', 'diegobazzoni@gmail.com', 2147483647, 1),
+(4, 'Perez', 'Andres', '1243243', 'Mendoza', 'andres.perez242@gmail.com', 112313223, 1),
+(5, 'Hernandez', 'Ezequiel', '34243424', 'Necochea 3850', 'ezequiel.14322@live.com', 155155155, 1),
+(6, 'Pepe', 'Lopez', '574645664', 'Santa Cruz', 'jorgelopez57@gmail.com', 14141656, 1),
+(7, 'Alberto', 'Gonzales', '5734242', 'Cordoba 1040', 'albertogonzales@gmail.com', 313123121, 0),
+(8, 'Laura', 'Fernandez', '64646466', 'San Juan 340', 'lauraperez@gmail.com', 15514341, 0),
+(9, 'Martin', 'Perez', '1231231312', 'En la esquina de mi casa', 'martinmartinez@gmai.com.ru', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -155,7 +159,7 @@ ALTER TABLE `habitacion`
 -- AUTO_INCREMENT for table `huesped`
 --
 ALTER TABLE `huesped`
-  MODIFY `idHuesped` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idHuesped` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `reserva`
