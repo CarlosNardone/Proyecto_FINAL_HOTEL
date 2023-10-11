@@ -181,7 +181,7 @@ public class HuespedData {
         return huesped;
     }
 
-        public List <Huesped> listarHuespedes(){
+    public List <Huesped> listarHuespedes(){
         String sql = "SELECT idHuesped,nombre, apellido, DNI, domicilio, correo, celular FROM huesped WHERE estado = 1";
        ArrayList <Huesped> huespedes = new ArrayList<>();
         

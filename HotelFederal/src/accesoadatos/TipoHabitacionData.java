@@ -1,5 +1,6 @@
 package accesoadatos;
 
+import entidades.Habitacion;
 import entidades.Huesped;
 import entidades.TipoHabitacion;
 import java.sql.*;
@@ -98,4 +99,34 @@ public class TipoHabitacionData {
 //        
 //        return huesped;
 //    }
+public TipoHabitacion buscarTipoHabitacionXCodigo(String codigo) {
+        String sql = "SELECT idTipoHabitacion , codigo, capacidadMaxima, cantidadCamas, tipoCamas, precioNoche FROM tipohabitacion WHERE codigo = ? ";
+        TipoHabitacion tipoHabitacion = null;
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, codigo);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tipoHabitacion = new TipoHabitacion();
+                tipoHabitacion.setIdTipoHabitacion(rs.getInt("idHabitacion"));
+                tipoHabitacion.setCodigo(rs.getString("codigo"));
+                tipoHabitacion.setCapacidadMaxima(rs.getInt("capacidadMaxima"));
+                tipoHabitacion.setCantidadCamas(rs.getInt("cantidadCamas"));
+                tipoHabitacion.setTipoCamas(rs.getString("tipoCamas"));
+                tipoHabitacion.setPrecioNoche(rs.getDouble("precioNoche"));
+               
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe ese tipo de habitación");
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla tipohabitacion");
+        }
+
+        return tipoHabitacion;
+    }
+
 }
