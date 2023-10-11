@@ -109,7 +109,7 @@ public class HabitacionData {
 }
   
   public  Habitacion buscarHabitacionXNro (int numero, TipoHabitacion tipohab){
-        String sql = "SELECT idHabitacion, numero, estado, piso, idTipohabitacion FROM habitacion WHERE numero = ? AND estado = 1";
+        String sql = "SELECT idHabitacion, numero, estado, idTipohabitacion FROM habitacion WHERE numero = ? AND estado = 1";
         Habitacion habitacion = null;
         
         try {
@@ -121,7 +121,7 @@ public class HabitacionData {
                 habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
                 habitacion.setNumero(rs.getInt("numero"));
                 habitacion.setEstado(rs.getBoolean("estado"));
-                habitacion.setPiso(rs.getInt("piso"));
+                //habitacion.setPiso(rs.getInt("piso"));
                 habitacion.setTipoHabitacion(tipohab);
                                           
             }else{

@@ -54,19 +54,21 @@ public class HotelFederal {
          
          HabitacionData habdata = new HabitacionData();
          
+        
+         
 //                 habdata.altaHabitacion(hab1);
 //        habdata.eliminarHabitacion(1);
 //          habdata.modificarHabitacionPorNumero(hab1);
 
      
 
-     Habitacion habitacionEncontrada = habitacionEncontrada.buscarHabitacionXNro(1 , hab);
+     Habitacion habitacion = habdata.buscarHabitacionXNro(1, hab);
           
-             if (habitacionEncontrada != null){
-         System.out.println("ID: " + habitacionEncontrada.getIdHabitacion());
-         System.out.println("Numero: " + habitacionEncontrada.getNumero());
-         System.out.println("Piso: " + habitacionEncontrada.getPiso());
-         System.out.println("Tipo de habitacion: " + habitacionEncontrada.getTipoHabitacion());
+             if (habitacion != null){
+         System.out.println("ID: " + habitacion.getIdHabitacion());
+         System.out.println("Numero: " + habitacion.getNumero());
+         System.out.println("Piso: " + habitacion.getPiso());
+         System.out.println("Tipo de habitacion: " + habitacion.getTipoHabitacion().getIdTipoHabitacion());
          
     }
 
