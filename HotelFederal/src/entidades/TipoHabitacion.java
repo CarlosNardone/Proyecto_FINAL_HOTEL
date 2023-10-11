@@ -4,7 +4,7 @@ package entidades;
 
 public class TipoHabitacion {
    private int idTipoHabitacion;
-   private String codigo;
+   private int codigo;
    private int capacidadMaxima;
    private int cantidadCamas;
    private String tipoCamas;
@@ -16,7 +16,7 @@ public class TipoHabitacion {
     public TipoHabitacion() {
     }
 
-    public TipoHabitacion(String codigo, int capacidadMaxima, int cantidadCamas, String tipoCamas, double precioNoche) {
+    public TipoHabitacion(int codigo, int capacidadMaxima, int cantidadCamas, String tipoCamas, double precioNoche) {
         this.codigo = codigo;
         this.capacidadMaxima = capacidadMaxima;
         this.cantidadCamas = cantidadCamas;
@@ -24,7 +24,7 @@ public class TipoHabitacion {
         this.precioNoche = precioNoche;
     }
 
-    public TipoHabitacion(int idTipoHabitacion, String codigo, int capacidadMaxima, int cantidadCamas, String tipoCamas, double precioNoche) {
+    public TipoHabitacion(int idTipoHabitacion, int codigo, int capacidadMaxima, int cantidadCamas, String tipoCamas, double precioNoche) {
         this.idTipoHabitacion = idTipoHabitacion;
         this.codigo = codigo;
         this.capacidadMaxima = capacidadMaxima;
@@ -44,11 +44,11 @@ public class TipoHabitacion {
         this.idTipoHabitacion = idTipoHabitacion;
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 

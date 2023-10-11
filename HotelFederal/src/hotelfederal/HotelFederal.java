@@ -63,7 +63,7 @@ public class HotelFederal {
 //     
 //
 //     Habitacion habitacion = habdata.buscarHabitacionXNro(1, hab);
-          TipoHabitacion habitacion = tipodata.buscarTipoHabitacionXCodigo("1");
+          TipoHabitacion habitacion = tipodata.buscarTipoHabitacionXCodigo(1);
              if (habitacion != null){
          System.out.println("ID: " + habitacion.getIdTipoHabitacion());
          System.out.println("Codigo: " + habitacion.getCodigo());

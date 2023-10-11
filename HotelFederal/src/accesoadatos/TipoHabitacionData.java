@@ -22,7 +22,7 @@ public class TipoHabitacionData {
             PreparedStatement ps = con.prepareStatement("INSERT INTO tipohabitacion"
                     + "(codigo, capacidadMaxima, cantidadCamas, tipoCamas,precioNoche) "
                     + "VALUES (?, ?, ?, ?, ? )", Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, tipoHab.getCodigo());
+            ps.setInt(1, tipoHab.getCodigo());
             ps.setInt(2, tipoHab.getCapacidadMaxima());
             ps.setInt(3, tipoHab.getCantidadCamas());
             ps.setString(4, tipoHab.getTipoCamas());
@@ -46,12 +46,12 @@ public class TipoHabitacionData {
       
     }
 
-    public void eliminarTipoHabitacion(String codigo){
+    public void eliminarTipoHabitacion(int codigo){
         String sql = "DELETE FROM TipoHabitacion WHERE codigo = ? ";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, codigo);
+            ps.setInt(1, codigo);
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
@@ -99,18 +99,18 @@ public class TipoHabitacionData {
 //        
 //        return huesped;
 //    }
-public TipoHabitacion buscarTipoHabitacionXCodigo(String codigo) {
+public TipoHabitacion buscarTipoHabitacionXCodigo(int codigo) {
         String sql = "SELECT idTipoHabitacion , codigo, capacidadMaxima, cantidadCamas, tipoCamas, precioNoche FROM tipohabitacion WHERE codigo = ? ";
         TipoHabitacion tipoHabitacion = null;
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, codigo);
+            ps.setInt(1, codigo);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 tipoHabitacion = new TipoHabitacion();
                 tipoHabitacion.setIdTipoHabitacion(rs.getInt("idHabitacion"));
-                tipoHabitacion.setCodigo(rs.getString("codigo"));
+                tipoHabitacion.setCodigo(rs.getInt("codigo"));
                 tipoHabitacion.setCapacidadMaxima(rs.getInt("capacidadMaxima"));
                 tipoHabitacion.setCantidadCamas(rs.getInt("cantidadCamas"));
                 tipoHabitacion.setTipoCamas(rs.getString("tipoCamas"));
