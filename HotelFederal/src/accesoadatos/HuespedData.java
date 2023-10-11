@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class HuespedData {
@@ -179,4 +181,36 @@ public class HuespedData {
         return huesped;
     }
 
+        public List <Huesped> listarHuespedes(){
+        String sql = "SELECT idHuesped,nombre, apellido, DNI, domicilio, correo, celular FROM huesped WHERE estado = 1";
+       ArrayList <Huesped> huespedes = new ArrayList<>();
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+             Huesped huesped = new Huesped();
+                huesped.setIdHuesped(rs.getInt("idHuesped"));
+                huesped.setNombre(rs.getString("nombre"));
+                huesped.setApellido(rs.getString("apellido"));
+                huesped.setDni(rs.getString("DNI"));
+                huesped.setDomicilio(rs.getString("domicilio"));
+                huesped.setCorreo(rs.getString("correo"));                
+                huesped.setCelular(rs.getInt("celular"));                
+                
+                
+                huespedes.add(huesped);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+        
+        return huespedes;
+    }
+    
+    
 }
