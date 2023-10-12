@@ -109,7 +109,7 @@ public TipoHabitacion buscarTipoHabitacionXCodigo(int codigo) {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 tipoHabitacion = new TipoHabitacion();
-                tipoHabitacion.setIdTipoHabitacion(rs.getInt("idHabitacion"));
+                tipoHabitacion.setIdTipoHabitacion(rs.getInt("idTipoHabitacion"));
                 tipoHabitacion.setCodigo(rs.getInt("codigo"));
                 tipoHabitacion.setCapacidadMaxima(rs.getInt("capacidadMaxima"));
                 tipoHabitacion.setCantidadCamas(rs.getInt("cantidadCamas"));
