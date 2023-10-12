@@ -70,37 +70,6 @@ public class TipoHabitacionData {
     }
 
 
-//    public  Huesped buscarHuepedPorDni(int dni){
-//        String sql = "SELECT idHuesped, nombre, apellido, DNI, domicilio, correo, celular, estado FROM huesped WHERE dni = ? AND estado = 1";
-//        Huesped huesped = null;
-//        
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setInt(1, dni);
-//            ResultSet rs = ps.executeQuery();
-//            if(rs.next()){
-//                huesped = new Huesped();
-//                huesped.setIdHuesped(rs.getInt("idHuesped"));
-//                huesped.setNombre(rs.getString("nombre"));
-//                huesped.setApellido(rs.getString("apellido"));
-//                huesped.setDni(rs.getString("DNI"));
-//                huesped.setDomicilio(rs.getString("domicilio"));
-//                huesped.setCorreo(rs.getString("correo"));
-//                huesped.setCelular(rs.getString("celular"));
-//                huesped.setEstado(rs.getBoolean("estado"));
-//                           
-//            }else{
-//                JOptionPane.showMessageDialog(null, "No existe ese huesped");
-//            }
-//            
-//            ps.close();
-//            
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla huesped");
-//        }
-//        
-//        return huesped;
-//    }
 public TipoHabitacion buscarTipoHabitacionXCodigo(int codigo) {
         String sql = "SELECT idTipoHabitacion , codigo, capacidadMaxima, cantidadCamas, tipoCamas, precioNoche FROM tipohabitacion WHERE codigo = ? ";
         TipoHabitacion tipoHabitacion = null;
@@ -132,8 +101,8 @@ public TipoHabitacion buscarTipoHabitacionXCodigo(int codigo) {
     }
 
 public void modificartipoHabitacion(TipoHabitacion tipoHabitacion) {
-        String sql = "UPDATE tipoHabitacion SET numero = ?, estado = ?, piso = ? "
-                + "WHERE numero = ?";
+        String sql = "UPDATE tipoHabitacion SET codigo = ?, capacidadMaxima = ?, cantidadCamas = ?, tipoCamas = ?, precioNoche = ? "
+                + "WHERE codigo = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -145,7 +114,7 @@ public void modificartipoHabitacion(TipoHabitacion tipoHabitacion) {
             ps.setDouble(6, tipoHabitacion.getPrecioNoche());
             int rowsUpdated = ps.executeUpdate();
 
-            if (rowsUpdated == 1) {
+            if (rowsUpdated != 1) {
                 JOptionPane.showMessageDialog(null, "Tipo de Habitación Modificada");
             } else {
                 JOptionPane.showMessageDialog(null, "Tipo de Habitación inexistente");
@@ -159,38 +128,38 @@ public void modificartipoHabitacion(TipoHabitacion tipoHabitacion) {
         }
     }
 
-    public Habitacion buscarHabitacionXNro(int numero, TipoHabitacion tipohab) {
-        String sql = "SELECT idHabitacion, numero, estado, idTipohabitacion FROM habitacion WHERE numero = ? AND estado = 1";
-        Habitacion habitacion = null;
+//    public Habitacion buscarHabitacionXNro(int numero, TipoHabitacion tipohab) {
+//        String sql = "SELECT idHabitacion, numero, estado, idTipohabitacion FROM habitacion WHERE numero = ? AND estado = 1";
+//        Habitacion habitacion = null;
+//
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setInt(1, numero);
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) {
+//                habitacion = new Habitacion();
+//                habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
+//                habitacion.setNumero(rs.getInt("numero"));
+//                habitacion.setEstado(rs.getBoolean("estado"));
+//                //habitacion.setPiso(rs.getInt("piso"));
+//                habitacion.setTipoHabitacion(tipohab);
+//
+//            } else {
+//                JOptionPane.showMessageDialog(null, "No existe esa habitacion");
+//            }
+//
+//            ps.close();
+//
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitacion");
+//        }
+//
+//        return habitacion;
+//    }
 
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, numero);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                habitacion = new Habitacion();
-                habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
-                habitacion.setNumero(rs.getInt("numero"));
-                habitacion.setEstado(rs.getBoolean("estado"));
-                //habitacion.setPiso(rs.getInt("piso"));
-                habitacion.setTipoHabitacion(tipohab);
-
-            } else {
-                JOptionPane.showMessageDialog(null, "No existe esa habitacion");
-            }
-
-            ps.close();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitacion");
-        }
-
-        return habitacion;
-    }
-
-        public List <Habitacion> listarHabitaciones(){
-        String sql = "SELECT idHabitacion ,numero, estado, piso, idTipoHabitacion FROM habitacion WHERE estado = 1";
-        ArrayList <Habitacion> habitaciones = new ArrayList<>();
+        public List <TipoHabitacion> listarTipoHabitaciones(){
+        String sql = "SELECT idTipoHabitacion ,codigo, capacidadMaxima, cantidadCamas, tipoCamas, precioNoche FROM tipohabitacion";
+        ArrayList <TipoHabitacion> tipoHabitaciones = new ArrayList<>();
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -199,22 +168,25 @@ public void modificartipoHabitacion(TipoHabitacion tipoHabitacion) {
              Habitacion habitacion = new Habitacion();
              TipoHabitacion tiphab = new TipoHabitacion();
                 
-                habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
-                habitacion.setEstado(rs.getBoolean("estado"));
-                habitacion.setPiso(rs.getInt("piso"));
-                habitacion.getTipoHabitacion().getIdTipoHabitacion();
+                tiphab.setIdTipoHabitacion(rs.getInt("idTipoHabitacion"));
+                tiphab.setCodigo(rs.getInt("codigo"));
+                tiphab.setCapacidadMaxima(rs.getInt("capacidadMaxima"));
+                tiphab.setCantidadCamas(rs.getInt("cantidadCamas"));
+                tiphab.setTipoCamas(rs.getString("tipoCamas"));
+                tiphab.setPrecioNoche(rs.getDouble("precioNoche"));
                 
                 
-                habitaciones.add(habitacion);
+                
+                tipoHabitaciones.add(tiphab);
             }
             
             ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Tipo Habitacion");
         }
         
-        return habitaciones;
+        return tipoHabitaciones;
     }
     
 }

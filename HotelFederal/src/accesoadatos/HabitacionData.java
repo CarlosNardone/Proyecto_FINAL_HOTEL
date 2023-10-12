@@ -102,7 +102,7 @@ public class HabitacionData {
                     con.close();
                 }
             } catch (SQLException ex) {
-                System.err.println(ex);
+                System.err.println(ex); 
             }
         }
     }

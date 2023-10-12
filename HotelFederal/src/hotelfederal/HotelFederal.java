@@ -48,18 +48,22 @@ public class HotelFederal {
 //            System.out.println(huesped.getCelular());
 //            System.out.println(huesped.getDomicilio());
 
-        TipoHabitacion hab = new TipoHabitacion(1,2, 3, 1, "doble", 3000.5);
+
+
+
+
+                TipoHabitacion hab = new TipoHabitacion(3, 6, 4, "Simple", 12000.5);
         TipoHabitacionData tipodata = new TipoHabitacionData();
-        
-//         Habbitacion hab1 = new Habitacion(10, 1, true, 2, hab);
+         Habitacion hab1 = new Habitacion( 5,4, true, 1, hab);
          
-//         HabitacionData habdata = new HabitacionData();
+         HabitacionData habdata = new HabitacionData();
+         
 //         
 //        
 //         
-////                 habdata.altaHabitacion(hab1);
+                 habdata.altaHabitacion(hab1);
 ////        habdata.eliminarHabitacion(1);
-////          habdata.modificarHabitacionPorNumero(hab1);
+//          habdata.modificarHabitacionPorNumero(hab1);
 //
 //     
 //
@@ -83,9 +87,20 @@ public class HotelFederal {
 //         reserdata.agregarReserva(reserva, hab1, carlos);
         
 
-//TipoHabitacion tphab = new TipoHabitacion("5",4, 2, "doble",20000);
+//TipoHabitacion tphab = new TipoHabitacion(5,4, 2, "doble",20000);
 //        TipoHabitacionData tphadata = new TipoHabitacionData();
 //tphadata.eliminarTipoHabitacion("5");
+//        tipodata.modificartipoHabitacion(hab);
+
+        
+//        for (TipoHabitacion tipoHabitacion : tipodata.listarTipoHabitaciones()) {
+//            System.out.println("ID: " + tipoHabitacion.getIdTipoHabitacion());
+//            System.out.println("Codigo: " + tipoHabitacion.getCodigo());
+//            System.out.println("Capacidad Maxima: " + tipoHabitacion.getCapacidadMaxima());
+//            System.out.println("Cantidad de camas: " + tipoHabitacion.getCantidadCamas());
+//            System.out.println("Tipo de camas: " + tipoHabitacion.getTipoCamas());
+//            System.out.println("Precio de la noche: " + tipoHabitacion.getPrecioNoche());    
+//        }
 
         
 
