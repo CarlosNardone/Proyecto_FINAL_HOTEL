@@ -4,6 +4,8 @@ import entidades.Habitacion;
 import entidades.Huesped;
 import entidades.TipoHabitacion;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class TipoHabitacionData {
@@ -129,4 +131,90 @@ public TipoHabitacion buscarTipoHabitacionXCodigo(int codigo) {
         return tipoHabitacion;
     }
 
+public void modificartipoHabitacion(TipoHabitacion tipoHabitacion) {
+        String sql = "UPDATE tipoHabitacion SET numero = ?, estado = ?, piso = ? "
+                + "WHERE numero = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, tipoHabitacion.getIdTipoHabitacion());
+            ps.setInt(2, tipoHabitacion.getCodigo());
+            ps.setInt(3, tipoHabitacion.getCapacidadMaxima());
+            ps.setInt(4, tipoHabitacion.getCantidadCamas());
+            ps.setString(5, tipoHabitacion.getTipoCamas());
+            ps.setDouble(6, tipoHabitacion.getPrecioNoche());
+            int rowsUpdated = ps.executeUpdate();
+
+            if (rowsUpdated == 1) {
+                JOptionPane.showMessageDialog(null, "Tipo de Habitación Modificada");
+            } else {
+                JOptionPane.showMessageDialog(null, "Tipo de Habitación inexistente");
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla TipoHabitación");
+            System.err.println(ex);
+         
+        }
+    }
+
+    public Habitacion buscarHabitacionXNro(int numero, TipoHabitacion tipohab) {
+        String sql = "SELECT idHabitacion, numero, estado, idTipohabitacion FROM habitacion WHERE numero = ? AND estado = 1";
+        Habitacion habitacion = null;
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, numero);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                habitacion = new Habitacion();
+                habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
+                habitacion.setNumero(rs.getInt("numero"));
+                habitacion.setEstado(rs.getBoolean("estado"));
+                //habitacion.setPiso(rs.getInt("piso"));
+                habitacion.setTipoHabitacion(tipohab);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe esa habitacion");
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitacion");
+        }
+
+        return habitacion;
+    }
+
+        public List <Habitacion> listarHabitaciones(){
+        String sql = "SELECT idHabitacion ,numero, estado, piso, idTipoHabitacion FROM habitacion WHERE estado = 1";
+        ArrayList <Habitacion> habitaciones = new ArrayList<>();
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+             Habitacion habitacion = new Habitacion();
+             TipoHabitacion tiphab = new TipoHabitacion();
+                
+                habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
+                habitacion.setEstado(rs.getBoolean("estado"));
+                habitacion.setPiso(rs.getInt("piso"));
+                habitacion.getTipoHabitacion().getIdTipoHabitacion();
+                
+                
+                habitaciones.add(habitacion);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+        
+        return habitaciones;
+    }
+    
 }
