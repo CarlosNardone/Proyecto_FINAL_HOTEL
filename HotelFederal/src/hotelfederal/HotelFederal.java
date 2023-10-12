@@ -52,16 +52,16 @@ public class HotelFederal {
 
 
 
-                TipoHabitacion hab = new TipoHabitacion(3, 6, 4, "Simple", 12000.5);
+        TipoHabitacion hab = new TipoHabitacion(1,3, 6, 4, "Simple", 12000.5);
         TipoHabitacionData tipodata = new TipoHabitacionData();
-         Habitacion hab1 = new Habitacion( 5,4, true, 1, hab);
+        Habitacion hab1 = new Habitacion(4, true, 1, hab);
          
-         HabitacionData habdata = new HabitacionData();
+        HabitacionData habdata = new HabitacionData();
          
 //         
 //        
 //         
-                 habdata.altaHabitacion(hab1);
+        habdata.altaHabitacion(hab1);
 ////        habdata.eliminarHabitacion(1);
 //          habdata.modificarHabitacionPorNumero(hab1);
 //
