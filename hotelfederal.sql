@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2023 at 01:58 AM
+-- Generation Time: Oct 13, 2023 at 01:27 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -40,7 +40,6 @@ CREATE TABLE `habitacion` (
 --
 
 INSERT INTO `habitacion` (`idHabitacion`, `numero`, `estado`, `piso`, `idTipoHabitacion`) VALUES
-(2, 101, 0, 1, NULL),
 (10, 1, 1, 2, 1);
 
 -- --------------------------------------------------------
@@ -112,7 +111,9 @@ CREATE TABLE `tipohabitacion` (
 --
 
 INSERT INTO `tipohabitacion` (`idTipoHabitacion`, `codigo`, `capacidadMaxima`, `cantidadCamas`, `tipoCamas`, `precioNoche`) VALUES
-(1, 1, 1, 1, 'Simple', 10000);
+(1, 1, 1, 1, 'Simple', 10000),
+(4, 2, 2, 2, 'doble', 3000),
+(5, 3, 3, 4, 'Simple', 12000);
 
 --
 -- Indexes for dumped tables
@@ -143,7 +144,8 @@ ALTER TABLE `reserva`
 -- Indexes for table `tipohabitacion`
 --
 ALTER TABLE `tipohabitacion`
-  ADD PRIMARY KEY (`idTipoHabitacion`);
+  ADD PRIMARY KEY (`idTipoHabitacion`),
+  ADD UNIQUE KEY `codigo` (`codigo`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -153,7 +155,7 @@ ALTER TABLE `tipohabitacion`
 -- AUTO_INCREMENT for table `habitacion`
 --
 ALTER TABLE `habitacion`
-  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `huesped`
@@ -171,7 +173,7 @@ ALTER TABLE `reserva`
 -- AUTO_INCREMENT for table `tipohabitacion`
 --
 ALTER TABLE `tipohabitacion`
-  MODIFY `idTipoHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idTipoHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
