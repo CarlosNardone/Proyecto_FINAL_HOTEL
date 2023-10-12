@@ -5,14 +5,10 @@
         <group>
             <file>file:/C:/Users/Carlos/Documents/Argentina%20Programar%204.0/Desarrollo%20Aplicaciones%20en%20Java/Encuestros%2040%20al%2062/Proyecto_Final/Proyecto_FINAL_HOTEL/HotelFederal/src/vistas/MenuPrincipalView.java</file>
             <file>file:/C:/Users/Carlos/Documents/Argentina%20Programar%204.0/Desarrollo%20Aplicaciones%20en%20Java/Encuestros%2040%20al%2062/Proyecto_Final/Proyecto_FINAL_HOTEL/HotelFederal/src/accesoadatos/ReservaData.java</file>
-            <file>file:/C:/Users/Carlos/Documents/Argentina%20Programar%204.0/Desarrollo%20Aplicaciones%20en%20Java/Encuestros%2040%20al%2062/Proyecto_Final/Proyecto_FINAL_HOTEL/HotelFederal/src/vistas/HuespedView.java</file>
-            <file>file:/C:/Users/Carlos/Documents/Argentina%20Programar%204.0/Desarrollo%20Aplicaciones%20en%20Java/Encuestros%2040%20al%2062/Proyecto_Final/Proyecto_FINAL_HOTEL/HotelFederal/src/entidades/Huesped.java</file>
             <file>file:/C:/Users/Carlos/Documents/Argentina%20Programar%204.0/Desarrollo%20Aplicaciones%20en%20Java/Encuestros%2040%20al%2062/Proyecto_Final/Proyecto_FINAL_HOTEL/HotelFederal/src/hotelfederal/HotelFederal.java</file>
-            <file>file:/C:/Users/Carlos/Documents/Argentina%20Programar%204.0/Desarrollo%20Aplicaciones%20en%20Java/Encuestros%2040%20al%2062/Proyecto_Final/Proyecto_FINAL_HOTEL/HotelFederal/src/vistas/TipoDeHabitacionView.java</file>
-            <file>file:/C:/Users/Carlos/Documents/Argentina%20Programar%204.0/Desarrollo%20Aplicaciones%20en%20Java/Encuestros%2040%20al%2062/Proyecto_Final/Proyecto_FINAL_HOTEL/HotelFederal/src/vistas/GestionDeReservas.java</file>
-            <file>file:/C:/Users/Carlos/Documents/Argentina%20Programar%204.0/Desarrollo%20Aplicaciones%20en%20Java/Encuestros%2040%20al%2062/Proyecto_Final/Proyecto_FINAL_HOTEL/HotelFederal/src/vistas/GestionDeHabitacionesView.java</file>
             <file>file:/C:/Users/Carlos/Documents/Argentina%20Programar%204.0/Desarrollo%20Aplicaciones%20en%20Java/Encuestros%2040%20al%2062/Proyecto_Final/Proyecto_FINAL_HOTEL/HotelFederal/src/accesoadatos/HabitacionData.java</file>
             <file>file:/C:/Users/Carlos/Documents/Argentina%20Programar%204.0/Desarrollo%20Aplicaciones%20en%20Java/Encuestros%2040%20al%2062/Proyecto_Final/Proyecto_FINAL_HOTEL/HotelFederal/src/accesoadatos/HuespedData.java</file>
+            <file>file:/C:/Users/Carlos/Documents/Argentina%20Programar%204.0/Desarrollo%20Aplicaciones%20en%20Java/Encuestros%2040%20al%2062/Proyecto_Final/Proyecto_FINAL_HOTEL/HotelFederal/src/accesoadatos/TipoHabitacionData.java</file>
         </group>
     </open-files>
 </project-private>

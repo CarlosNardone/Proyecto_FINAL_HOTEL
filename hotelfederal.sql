@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2023 at 12:38 AM
+-- Generation Time: Oct 12, 2023 at 01:58 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -100,7 +100,7 @@ CREATE TABLE `reserva` (
 
 CREATE TABLE `tipohabitacion` (
   `idTipoHabitacion` int(11) NOT NULL,
-  `codigo` varchar(20) DEFAULT NULL,
+  `codigo` int(11) DEFAULT NULL,
   `capacidadMaxima` int(11) DEFAULT NULL,
   `cantidadCamas` int(11) DEFAULT NULL,
   `tipoCamas` varchar(50) DEFAULT NULL,
@@ -112,7 +112,7 @@ CREATE TABLE `tipohabitacion` (
 --
 
 INSERT INTO `tipohabitacion` (`idTipoHabitacion`, `codigo`, `capacidadMaxima`, `cantidadCamas`, `tipoCamas`, `precioNoche`) VALUES
-(1, '1', 1, 1, 'Simple', 10000);
+(1, 1, 1, 1, 'Simple', 10000);
 
 --
 -- Indexes for dumped tables
