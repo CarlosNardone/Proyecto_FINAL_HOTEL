@@ -52,16 +52,17 @@ public class HotelFederal {
 
 
 
-        TipoHabitacion hab = new TipoHabitacion(1,3, 6, 4, "Simple", 12000.5);
-        TipoHabitacionData tipodata = new TipoHabitacionData();
-        Habitacion hab1 = new Habitacion(4, true, 1, hab);
-         
+//        TipoHabitacion hab = new TipoHabitacion(1,3, 6, 4, "Simple", 12000.5);
+//        TipoHabitacionData tipodata = new TipoHabitacionData();
+//        Habitacion hab1 = new Habitacion(4, true, 1, hab);
+//      
+        
         HabitacionData habdata = new HabitacionData();
-         
 //         
-//        
-//         
-        habdata.altaHabitacion(hab1);
+////         
+////        
+////         
+//        habdata.altaHabitacion(hab1);
 ////        habdata.eliminarHabitacion(1);
 //          habdata.modificarHabitacionPorNumero(hab1);
 //
@@ -93,8 +94,15 @@ public class HotelFederal {
 //        tipodata.modificartipoHabitacion(hab);
 
         
-//        for (TipoHabitacion tipoHabitacion : tipodata.listarTipoHabitaciones()) {
-//            System.out.println("ID: " + tipoHabitacion.getIdTipoHabitacion());
+        for (Habitacion habitacion : habdata.listarHabitaciones()) {
+            System.out.println("ID: " + habitacion.getIdHabitacion());
+            System.out.println("numero: " + habitacion.getNumero());
+            System.out.println("piso: " + habitacion.getPiso());
+            System.out.println("TIPO: " + habitacion.getTipoHabitacion());
+            
+            
+        }     
+//            
 //            System.out.println("Codigo: " + tipoHabitacion.getCodigo());
 //            System.out.println("Capacidad Maxima: " + tipoHabitacion.getCapacidadMaxima());
 //            System.out.println("Cantidad de camas: " + tipoHabitacion.getCantidadCamas());

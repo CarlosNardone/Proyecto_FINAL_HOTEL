@@ -136,21 +136,25 @@ public class HabitacionData {
         return habitacion;
     }
 
-        public List <Habitacion> listarHabitaciones(){
+    public List <Habitacion> listarHabitaciones(){
         String sql = "SELECT idHabitacion ,numero, estado, piso, idTipoHabitacion FROM habitacion WHERE estado = 1";
         ArrayList <Habitacion> habitaciones = new ArrayList<>();
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
+            
             while(rs.next()){
              Habitacion habitacion = new Habitacion();
              TipoHabitacion tiphab = new TipoHabitacion();
-                
                 habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
                 habitacion.setEstado(rs.getBoolean("estado"));
                 habitacion.setPiso(rs.getInt("piso"));
-                habitacion.getTipoHabitacion().getIdTipoHabitacion();
+                int idTipoHabitacion = rs.getInt("idTipoHabitacion");
+                tiphab.setIdTipoHabitacion(idTipoHabitacion);
+                habitacion.setTipoHabitacion(tiphab);
+                
+//                habitacion.getTipoHabitacion().getIdTipoHabitacion();
                 
                 
                 habitaciones.add(habitacion);
