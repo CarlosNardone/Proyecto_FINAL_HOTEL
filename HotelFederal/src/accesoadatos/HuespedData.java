@@ -180,7 +180,39 @@ public class HuespedData {
         
         return huesped;
     }
-
+    
+    public  Huesped buscarHuepedPorApellido(String apellido){
+        String sql = "SELECT idHuesped, nombre, apellido, DNI, domicilio, correo, celular, estado FROM huesped WHERE apellido = ? AND estado = 1";
+        Huesped huesped = null;
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, apellido);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                huesped = new Huesped();
+                huesped.setIdHuesped(rs.getInt("idHuesped"));
+                huesped.setNombre(rs.getString("nombre"));
+                huesped.setApellido(rs.getString("apellido"));
+                huesped.setDni(rs.getString("DNI"));
+                huesped.setDomicilio(rs.getString("domicilio"));
+                huesped.setCorreo(rs.getString("correo"));
+                huesped.setCelular(rs.getInt("celular"));
+                huesped.setEstado(rs.getBoolean("estado"));
+                           
+            }else{
+                JOptionPane.showMessageDialog(null, "No existe ese huesped");
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla huesped");
+        }
+        
+        return huesped;
+    }
+ 
     public List <Huesped> listarHuespedes(){
         String sql = "SELECT idHuesped,nombre, apellido, DNI, domicilio, correo, celular FROM huesped WHERE estado = 1";
        ArrayList <Huesped> huespedes = new ArrayList<>();
@@ -212,5 +244,34 @@ public class HuespedData {
         return huespedes;
     }
     
-    
+    public List <Huesped> listarHuespedesXApellido(String apellido){
+        String sql = "SELECT idHuesped,nombre, apellido, DNI, domicilio, correo, celular FROM huesped WHERE apellido = ?";
+       ArrayList <Huesped> huespedes = new ArrayList<>();
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, apellido);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+             Huesped huesped = new Huesped();
+                huesped.setIdHuesped(rs.getInt("idHuesped"));
+                huesped.setNombre(rs.getString("nombre"));
+                huesped.setApellido(rs.getString("apellido"));
+                huesped.setDni(rs.getString("DNI"));
+                huesped.setDomicilio(rs.getString("domicilio"));
+                huesped.setCorreo(rs.getString("correo"));                
+                huesped.setCelular(rs.getInt("celular"));                
+                
+                
+                huespedes.add(huesped);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+        
+        return huespedes;
+    }
 }

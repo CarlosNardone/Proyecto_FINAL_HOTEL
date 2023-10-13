@@ -18,13 +18,13 @@ public class HotelFederal {
         // TODO code application logic here
 //        Connection con = Conexion.getConexion();
 //Huesped huesped = hue.buscarHuepedPorDni(37577100);
-//      Huesped carlos = new Huesped(1,"Carlos","Nardone","37577100","Berrutti","carlos.nardone143@gmail.com","155234434", true); 
+      Huesped carlos = new Huesped(1,"Carlos","Nardone","3812323","Berrutti","carlos.nardone143@gmail.com",155234434, true); 
 //        Huesped andres = new Huesped("Andres","Perez","1243243","Mendoza","andres.perez242@gmail.com","112313223", true); 
 //        Huesped diego = new Huesped("Diego","Bazzoni","24652571","San Luis","diegobazzoni@gmail.com","3445354545", true); 
 //        Huesped mauricio = new Huesped("Mauricio","Avila","30068183","Tucuman","mauricioavila@gmail.com","542323423", true); 
 //        Huesped ezequiel = new Huesped("Ezequiel","Hernandez","34243424","Necochea 3850","ezequiel.14322@live.com","155155155", true);
-//        HuespedData hue = new HuespedData();
-//        hue.agregarHuesped(ezequiel);
+        HuespedData hue = new HuespedData();
+        hue.agregarHuesped(carlos);
 //        hue.eliminarHuesped("34243424");
 //        hue.modificarHuespedPorDNI(carlos);
 //        hue.modificarHuesped(carlos);
@@ -57,7 +57,9 @@ public class HotelFederal {
 //        Habitacion hab1 = new Habitacion(4, true, 1, hab);
 //      
         
-        HabitacionData habdata = new HabitacionData();
+//        HabitacionData habdata = new HabitacionData();
+//        String apellido = "Carlos";  
+//        HuespedData huespedata = new HuespedData();
 //         
 ////         
 ////        
@@ -94,11 +96,16 @@ public class HotelFederal {
 //        tipodata.modificartipoHabitacion(hab);
 
         
-        for (Habitacion habitacion : habdata.listarHabitaciones()) {
-            System.out.println("ID: " + habitacion.getIdHabitacion());
-            System.out.println("numero: " + habitacion.getNumero());
-            System.out.println("piso: " + habitacion.getPiso());
-            System.out.println("TIPO: " + habitacion.getTipoHabitacion());
+//        for (Huesped huesped : huespedata.listarHuespedesXApellido(apellido)) {
+//            System.out.println("DNI: " + huesped.getDni());
+//            System.out.println("Apellido: " + huesped.getApellido());
+//            System.out.println("Nombre: " + huesped.getNombre());
+//            System.out.println("Domicilio: " + huesped.getDomicilio());
+//            System.out.println("Correo: " + huesped.getCorreo());
+//            System.out.println("Correo: " + huesped.getCelular());
+            
+//            System.out.println("piso: " + habitacion.getPiso());
+//            System.out.println("TIPO: " + habitacion.getTipoHabitacion());
             
             
         }     
@@ -114,4 +121,3 @@ public class HotelFederal {
 
     }
 
-}

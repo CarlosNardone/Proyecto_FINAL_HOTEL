@@ -63,7 +63,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         );
         jdEscritorioLayout.setVerticalGroup(
             jdEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 724, Short.MAX_VALUE)
+            .addGap(0, 721, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Huesped");
