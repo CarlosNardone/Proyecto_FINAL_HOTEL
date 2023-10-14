@@ -44,7 +44,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -75,14 +74,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem1);
-
-        jMenuItem6.setText("Busqueda de Huespedes");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem6);
 
         jMenuBar1.add(jMenu1);
 
@@ -196,16 +187,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jdEscritorio.moveToFront(gr);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
-        jdEscritorio.removeAll();
-        jdEscritorio.repaint();
-        BusquedasXHuespedes bxh = new BusquedasXHuespedes();
-        bxh.setVisible(true);
-        jdEscritorio.add(bxh);
-        jdEscritorio.moveToFront(bxh);
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
                 jdEscritorio.removeAll();
@@ -262,7 +243,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JDesktopPane jdEscritorio;
     // End of variables declaration//GEN-END:variables
 }

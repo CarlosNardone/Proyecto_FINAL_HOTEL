@@ -174,6 +174,8 @@ public class HuespedView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtHuespedes.setColumnSelectionAllowed(false);
+        jtHuespedes.setRowSelectionAllowed(false);
         jScrollPane1.setViewportView(jtHuespedes);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
