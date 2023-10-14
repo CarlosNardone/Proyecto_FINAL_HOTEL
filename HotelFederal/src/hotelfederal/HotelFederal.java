@@ -19,12 +19,12 @@ public class HotelFederal {
 //        Connection con = Conexion.getConexion();
 //Huesped huesped = hue.buscarHuepedPorDni(37577100);
       Huesped carlos = new Huesped(1,"Carlos","Nardone","3812323","Berrutti","carlos.nardone143@gmail.com",155234434, true); 
-//        Huesped andres = new Huesped("Andres","Perez","1243243","Mendoza","andres.perez242@gmail.com","112313223", true); 
+        Huesped angel = new Huesped("Perez","Angel","1243243","Mendoza","andres.perez242@gmail.com",11231322, true); 
 //        Huesped diego = new Huesped("Diego","Bazzoni","24652571","San Luis","diegobazzoni@gmail.com","3445354545", true); 
 //        Huesped mauricio = new Huesped("Mauricio","Avila","30068183","Tucuman","mauricioavila@gmail.com","542323423", true); 
 //        Huesped ezequiel = new Huesped("Ezequiel","Hernandez","34243424","Necochea 3850","ezequiel.14322@live.com","155155155", true);
         HuespedData hue = new HuespedData();
-        hue.agregarHuesped(carlos);
+        hue.agregarHuesped(angel);
 //        hue.eliminarHuesped("34243424");
 //        hue.modificarHuespedPorDNI(carlos);
 //        hue.modificarHuesped(carlos);

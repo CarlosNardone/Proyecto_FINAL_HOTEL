@@ -410,6 +410,7 @@ public class HuespedView extends javax.swing.JInternalFrame {
     private void jBApellidoBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBApellidoBusquedaActionPerformed
         String apellido;
         apellido = jTApellidoBusqueda.getText();
+        borrarFilaTabla();
         cargarHuespedXApellido(apellido);
         
 //        try{ 
@@ -470,6 +471,14 @@ public class HuespedView extends javax.swing.JInternalFrame {
         jtfCelular.setText("");
         
     }
+    
+    private void borrarFilaTabla(){
+        int indice = modelo.getRowCount() -1;
+        for(int i = indice;i>= 0; i--){
+            modelo.removeRow(i);
+        }
+    }
+    
     
     private void armarCabeceraTabla(){
         ArrayList<Object> filaCabecera = new ArrayList<>();
