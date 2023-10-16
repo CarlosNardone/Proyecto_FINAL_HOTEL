@@ -1,18 +1,15 @@
-
 package entidades;
 
-
 public class TipoHabitacion {
-   private int idTipoHabitacion;
-   private int codigo;
-   private int capacidadMaxima;
-   private int cantidadCamas;
-   private String tipoCamas;
-   private double precioNoche;
-   
-   
-   //const
 
+    private int idTipoHabitacion;
+    private int codigo;
+    private int capacidadMaxima;
+    private int cantidadCamas;
+    private String tipoCamas;
+    private double precioNoche;
+
+    //const
     public TipoHabitacion() {
     }
 
@@ -32,10 +29,8 @@ public class TipoHabitacion {
         this.tipoCamas = tipoCamas;
         this.precioNoche = precioNoche;
     }
-   
-    
-    // get and set
 
+    // get and set
     public int getIdTipoHabitacion() {
         return idTipoHabitacion;
     }
@@ -86,13 +81,8 @@ public class TipoHabitacion {
 
     @Override
     public String toString() {
-        return "TipoHabitacion{" + "idTipoHabitacion=" + idTipoHabitacion + ", codigo=" + codigo + ", capacidadMaxima=" + capacidadMaxima + ", cantidadCamas=" + cantidadCamas + ", tipoCamas=" + tipoCamas + ", precioNoche=" + precioNoche + '}';
+//        return  " Codigo = " + codigo + "- Max =" + capacidadMaxima + "- cantidad = " + cantidadCamas + "- tipo = " + tipoCamas + "- precio = " + precioNoche ;
+        return tipoCamas;
     }
-    
-    
-    
-   
-           
-    
-    
+
 }
