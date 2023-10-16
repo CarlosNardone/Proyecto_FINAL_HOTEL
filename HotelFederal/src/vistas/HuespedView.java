@@ -3,6 +3,7 @@ package vistas;
 
 import accesoadatos.HuespedData;
 import entidades.Huesped;
+import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -89,33 +90,15 @@ public class HuespedView extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("Estado:");
 
-        jtfCorreo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfCorreoActionPerformed(evt);
+        jtfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyTyped(evt);
             }
         });
 
-        jtfDNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfDNIActionPerformed(evt);
-            }
-        });
-
-        jtfNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfNombreActionPerformed(evt);
-            }
-        });
-
-        jtfApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfApellidoActionPerformed(evt);
-            }
-        });
-
-        jtfCelular.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfCelularActionPerformed(evt);
+        jtfApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfApellidoKeyTyped(evt);
             }
         });
 
@@ -174,12 +157,17 @@ public class HuespedView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jtHuespedes.setColumnSelectionAllowed(false);
         jtHuespedes.setRowSelectionAllowed(false);
         jScrollPane1.setViewportView(jtHuespedes);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Apellido:");
+
+        jTApellidoBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTApellidoBusquedaKeyTyped(evt);
+            }
+        });
 
         jBApellidoBusqueda.setText("Buscar");
         jBApellidoBusqueda.addActionListener(new java.awt.event.ActionListener() {
@@ -311,26 +299,6 @@ public class HuespedView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCorreoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfCorreoActionPerformed
-
-    private void jtfDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDNIActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfDNIActionPerformed
-
-    private void jtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfNombreActionPerformed
-
-    private void jtfApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfApellidoActionPerformed
-
-    private void jtfCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCelularActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfCelularActionPerformed
-
     private void jrbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jrbEstadoActionPerformed
@@ -433,6 +401,27 @@ public class HuespedView extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_jBApellidoBusquedaActionPerformed
+
+    private void jtfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyTyped
+        // TODO add your handling code here:
+        if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar() == KeyEvent.VK_SPACE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfNombreKeyTyped
+
+    private void jtfApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfApellidoKeyTyped
+        // TODO add your handling code here:
+                if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar() == KeyEvent.VK_SPACE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfApellidoKeyTyped
+
+    private void jTApellidoBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTApellidoBusquedaKeyTyped
+        // TODO add your handling code here:
+                if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar() == KeyEvent.VK_SPACE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTApellidoBusquedaKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
