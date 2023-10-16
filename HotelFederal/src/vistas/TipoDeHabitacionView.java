@@ -52,9 +52,7 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
         jtfPrecioxNoche = new javax.swing.JTextField();
         jcbTiposCamas = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jbAgregarTH = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
-        jbEliminar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
         jbBuscar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -71,6 +69,12 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Precio por Noche");
 
+        jtfCodigo.setEditable(false);
+
+        jtfCantidadPersonas.setEditable(false);
+
+        jtfCCamas.setEditable(false);
+
         jcbTiposCamas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbTiposCamasActionPerformed(evt);
@@ -79,16 +83,12 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Cantidad de personas");
 
-        jbAgregarTH.setText("Agregar Tipo De Habitacion");
-        jbAgregarTH.addActionListener(new java.awt.event.ActionListener() {
+        jbModificar.setText("Modificar");
+        jbModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAgregarTHActionPerformed(evt);
+                jbModificarActionPerformed(evt);
             }
         });
-
-        jbModificar.setText("Modificar");
-
-        jbEliminar.setText("Eliminar");
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +112,7 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(98, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -122,41 +122,38 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4)
                             .addGap(157, 157, 157)
                             .addComponent(jbBuscar)))
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(247, 247, 247)
+                        .addComponent(jbModificar)))
                 .addGap(69, 69, 69))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbAgregarTH)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbModificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbEliminar)
-                        .addGap(27, 27, 27)
-                        .addComponent(jbSalir))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jtfCantidadPersonas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                                    .addComponent(jtfCCamas, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfCodigo)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtfPrecioxNoche, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(96, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jSeparator1)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jtfCantidadPersonas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(jtfCCamas, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfCodigo)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfPrecioxNoche, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jbSalir)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +171,7 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(18, 26, Short.MAX_VALUE)
+                .addGap(18, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfCantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
@@ -186,14 +183,11 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jtfPrecioxNoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbAgregarTH)
-                    .addComponent(jbModificar)
-                    .addComponent(jbEliminar)
-                    .addComponent(jbSalir))
-                .addContainerGap(72, Short.MAX_VALUE))
+                    .addComponent(jLabel7)
+                    .addComponent(jbModificar))
+                .addGap(62, 62, 62)
+                .addComponent(jbSalir)
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
@@ -207,26 +201,6 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
     private void jcbTiposCamasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTiposCamasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbTiposCamasActionPerformed
-
-    private void jbAgregarTHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarTHActionPerformed
-        // TODO add your handling code here:
-        try {
-            int id = Integer.parseInt(jtfCodigo.getText());
-            int CantidadPersonas = Integer.parseInt(jtfCantidadPersonas.getText());
-            int cantidadCamas = Integer.parseInt(jtfCCamas.getText());
-//        string tipoCamas = jcb< >TipoCamas.getText();
-            double PrecioxNoche = Integer.parseInt(jtfPrecioxNoche.getText());
-//            if(materiaActual == null){
-//           
-//        }else{
-//            materiaActual.setNombre(nombre);
-//            materiaActual.setAnioMateria(año);
-//            mat.modificarMateria(materiaActual);
-//        }
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en los campos año y codigo");
-        }
-    }//GEN-LAST:event_jbAgregarTHActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
 
@@ -242,6 +216,26 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
          
     }//GEN-LAST:event_jbBuscarActionPerformed
 
+    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+        // TODO add your handling code here:
+        //        try {
+//            int id = Integer.parseInt(jtfCodigo.getText());
+//            int CantidadPersonas = Integer.parseInt(jtfCantidadPersonas.getText());
+//            int cantidadCamas = Integer.parseInt(jtfCCamas.getText());
+////        string tipoCamas = jcb< >TipoCamas.getText();
+//            double PrecioxNoche = Integer.parseInt(jtfPrecioxNoche.getText());
+////            if(materiaActual == null){
+////           
+////        }else{
+////            materiaActual.setNombre(nombre);
+////            materiaActual.setAnioMateria(año);
+////            mat.modificarMateria(materiaActual);
+////        }
+//        } catch (NumberFormatException ex) {
+//            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en los campos año y codigo");
+//        }
+    }//GEN-LAST:event_jbModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -252,9 +246,7 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton jbAgregarTH;
     private javax.swing.JButton jbBuscar;
-    private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<TipoHabitacion> jcbTiposCamas;
