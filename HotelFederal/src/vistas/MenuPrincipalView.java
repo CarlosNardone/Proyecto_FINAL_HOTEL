@@ -144,7 +144,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-                jdEscritorio.removeAll();
+        jdEscritorio.removeAll();
         jdEscritorio.repaint();
         HuespedView hd = new HuespedView();
         hd.setVisible(true);
@@ -179,7 +179,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-                jdEscritorio.removeAll();
+        jdEscritorio.removeAll();
         jdEscritorio.repaint();
         GestionDeReservas gr = new GestionDeReservas();
         gr.setVisible(true);
@@ -189,7 +189,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-                jdEscritorio.removeAll();
+         jdEscritorio.removeAll();
         jdEscritorio.repaint();
         BusquedaXReservasView bxr = new BusquedaXReservasView();
         bxr.setVisible(true);

@@ -245,7 +245,7 @@ public class HuespedData {
     }
     
     public List <Huesped> listarHuespedesXApellido(String apellido){
-        String sql = "SELECT idHuesped,nombre, apellido, DNI, domicilio, correo, celular FROM huesped WHERE apellido = ?";
+        String sql = "SELECT idHuesped,nombre, apellido, DNI, domicilio, correo, celular, estado FROM huesped WHERE apellido = ?";
        ArrayList <Huesped> huespedes = new ArrayList<>();
         
         try {
@@ -261,6 +261,7 @@ public class HuespedData {
                 huesped.setDomicilio(rs.getString("domicilio"));
                 huesped.setCorreo(rs.getString("correo"));                
                 huesped.setCelular(rs.getInt("celular"));                
+                huesped.setEstado(rs.getBoolean("estado"));                
                 
                 
                 huespedes.add(huesped);

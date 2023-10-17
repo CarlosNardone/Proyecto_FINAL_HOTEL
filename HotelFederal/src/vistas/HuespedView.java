@@ -28,8 +28,24 @@ public class HuespedView extends javax.swing.JInternalFrame {
         this.huesped = huesped;
         modelo = new DefaultTableModel();
         armarCabeceraTabla();
-        jtHuespedes.addMouseListener(new MouseAdapter() {});
-
+        jtHuespedes.addMouseListener(new MouseAdapter() {
+        public void mousePressed(MouseEvent Mouse_evt){
+            JTable modelo = (JTable)Mouse_evt.getSource();
+            Point point = Mouse_evt.getPoint();
+            int fila = modelo.rowAtPoint(point);
+            if(Mouse_evt.getClickCount() == 1){
+                jtfDNI.setText(modelo.getValueAt(fila, 0).toString());
+                jtfNombre.setText(modelo.getValueAt(fila, 1).toString());
+                jtfApellido.setText(modelo.getValueAt(fila, 2).toString());
+                jtfCorreo.setText(modelo.getValueAt(fila, 3).toString());
+                jtfDomicilio.setText(modelo.getValueAt(fila, 4).toString());
+                jtfCelular.setText(modelo.getValueAt(fila, 5).toString());
+                boolean estado = (boolean) modelo.getValueAt(fila, 6);
+                jrbEstado.setSelected(estado);    
+            }
+        }
+        });
+        
     }
 
     /**
@@ -247,7 +263,7 @@ public class HuespedView extends javax.swing.JInternalFrame {
                                 .addComponent(jbEliminarH)
                                 .addGap(43, 43, 43)
                                 .addComponent(jbSalir)))))
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,11 +295,11 @@ public class HuespedView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jrbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo)
                     .addComponent(jbGuardar)
@@ -296,7 +312,7 @@ public class HuespedView extends javax.swing.JInternalFrame {
                     .addComponent(jBApellidoBusqueda))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
@@ -498,18 +514,5 @@ public class HuespedView extends javax.swing.JInternalFrame {
         }
     }
     
-            public void mousePressed(MouseEvent Mouse_evt){
-            JTable modelo = (JTable)Mouse_evt.getSource();
-            Point point = Mouse_evt.getPoint();
-            int fila = modelo.rowAtPoint(point);
-            if(Mouse_evt.getClickCount() == 1){
-                jtfNombre.setText((String) jtHuespedes.getValueAt(jtHuespedes.getSelectedRow(), 1).toString());
-                jtfApellido.setText((String) jtHuespedes.getValueAt(jtHuespedes.getSelectedRow(), 2).toString());
-                jtfDNI.setText(jtHuespedes.getValueAt(jtHuespedes.getSelectedRow(), 3).toString());
-                jtfDomicilio.setText((String) jtHuespedes.getValueAt(jtHuespedes.getSelectedRow(), 4).toString());
-                jtfCorreo.setText((String) jtHuespedes.getValueAt(jtHuespedes.getSelectedRow(), 5).toString());
-                jtfCelular.setText( jtHuespedes.getValueAt(jtHuespedes.getSelectedRow(), 6).toString());
-            }
-        }
     
 }
