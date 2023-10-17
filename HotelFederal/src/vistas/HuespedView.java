@@ -3,13 +3,14 @@ package vistas;
 
 import accesoadatos.HuespedData;
 import entidades.Huesped;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -27,6 +28,8 @@ public class HuespedView extends javax.swing.JInternalFrame {
         this.huesped = huesped;
         modelo = new DefaultTableModel();
         armarCabeceraTabla();
+        jtHuespedes.addMouseListener(new MouseAdapter() {});
+
     }
 
     /**
@@ -401,7 +404,9 @@ public class HuespedView extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_jBApellidoBusquedaActionPerformed
+  
 
+    
     private void jtfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyTyped
         // TODO add your handling code here:
         if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar() == KeyEvent.VK_SPACE)){
@@ -492,4 +497,19 @@ public class HuespedView extends javax.swing.JInternalFrame {
             modelo.addRow(new Object[]{h.getDni(),h.getApellido(), h.getNombre(), h.getCorreo(), h.getDomicilio(), h.getCelular(), h.isEstado()});
         }
     }
+    
+            public void mousePressed(MouseEvent Mouse_evt){
+            JTable modelo = (JTable)Mouse_evt.getSource();
+            Point point = Mouse_evt.getPoint();
+            int fila = modelo.rowAtPoint(point);
+            if(Mouse_evt.getClickCount() == 1){
+                jtfNombre.setText((String) jtHuespedes.getValueAt(jtHuespedes.getSelectedRow(), 1).toString());
+                jtfApellido.setText((String) jtHuespedes.getValueAt(jtHuespedes.getSelectedRow(), 2).toString());
+                jtfDNI.setText(jtHuespedes.getValueAt(jtHuespedes.getSelectedRow(), 3).toString());
+                jtfDomicilio.setText((String) jtHuespedes.getValueAt(jtHuespedes.getSelectedRow(), 4).toString());
+                jtfCorreo.setText((String) jtHuespedes.getValueAt(jtHuespedes.getSelectedRow(), 5).toString());
+                jtfCelular.setText( jtHuespedes.getValueAt(jtHuespedes.getSelectedRow(), 6).toString());
+            }
+        }
+    
 }
