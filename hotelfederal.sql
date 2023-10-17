@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2023 a las 01:16:07
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Oct 17, 2023 at 11:15 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `hotelfederal`
+-- Database: `hotelfederal`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `habitacion`
+-- Table structure for table `habitacion`
 --
 
 CREATE TABLE `habitacion` (
@@ -36,7 +36,7 @@ CREATE TABLE `habitacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `habitacion`
+-- Dumping data for table `habitacion`
 --
 
 INSERT INTO `habitacion` (`idHabitacion`, `numero`, `estado`, `piso`, `idTipoHabitacion`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `habitacion` (`idHabitacion`, `numero`, `estado`, `piso`, `idTipoHab
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `huesped`
+-- Table structure for table `huesped`
 --
 
 CREATE TABLE `huesped` (
@@ -60,21 +60,23 @@ CREATE TABLE `huesped` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `huesped`
+-- Dumping data for table `huesped`
 --
 
 INSERT INTO `huesped` (`idHuesped`, `nombre`, `apellido`, `DNI`, `domicilio`, `correo`, `celular`, `estado`) VALUES
-(1, 'Carlos Salvador', 'Nardone', '37577100', 'Berrutti 1840', 'carlin1994@live.com.ar', 155155655, 1),
+(1, 'Carlos', 'Nardone', '37577100', 'Berrutti 1840', 'carlin1994@live.com.ar', 155155655, 1),
 (6, 'Pepe', 'Lopez', '574645664', 'Santa Cruz', 'jorgelopez57@gmail.com', 14141656, 1),
 (7, 'Alberto', 'Gonzales', '5734242', 'Cordoba 1040', 'albertogonzales@gmail.com', 313123121, 0),
 (8, 'Laura', 'Fernandez', '64646466', 'San Juan 340', 'lauraperez@gmail.com', 15514341, 0),
 (11, 'Roberto', 'Sanchez', '2565248', 'Un lugar del mundo', 'roberto@gmail', 1452535, 1),
-(12, 'Diego', 'Bazzoni', '24652571', 'San Luis', 'diegobazzoni@gmail.com', 34453545, 1);
+(12, 'Diego', 'Bazzoni', '24652571', 'San Luis', 'diegobazzoni@gmail.com', 34453545, 1),
+(13, 'Fernando', 'Fernandez', '54656466', 'Mendoza 2000', 'fernando@gmail.com', 1231123131, 1),
+(14, 'Alberto', 'Fernandes', '76566576', 'Santa Fe 505', 'Albertito@outlook.com', 155113221, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `reserva`
+-- Table structure for table `reserva`
 --
 
 CREATE TABLE `reserva` (
@@ -91,7 +93,7 @@ CREATE TABLE `reserva` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipohabitacion`
+-- Table structure for table `tipohabitacion`
 --
 
 CREATE TABLE `tipohabitacion` (
@@ -104,34 +106,33 @@ CREATE TABLE `tipohabitacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `tipohabitacion`
+-- Dumping data for table `tipohabitacion`
 --
 
 INSERT INTO `tipohabitacion` (`idTipoHabitacion`, `codigo`, `capacidadMaxima`, `cantidadCamas`, `tipoCamas`, `precioNoche`) VALUES
 (1, 1, 1, 1, 'Simple', 10000),
-(4, 2, 2, 2, 'doble', 3000),
-(5, 3, 3, 4, 'Simple', 12000);
+(4, 3, 2, 2, 'Doble', 15000);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `habitacion`
+-- Indexes for table `habitacion`
 --
 ALTER TABLE `habitacion`
   ADD PRIMARY KEY (`idHabitacion`),
   ADD KEY `idTipoHabitacion` (`idTipoHabitacion`);
 
 --
--- Indices de la tabla `huesped`
+-- Indexes for table `huesped`
 --
 ALTER TABLE `huesped`
   ADD PRIMARY KEY (`idHuesped`),
   ADD UNIQUE KEY `DNI` (`DNI`);
 
 --
--- Indices de la tabla `reserva`
+-- Indexes for table `reserva`
 --
 ALTER TABLE `reserva`
   ADD PRIMARY KEY (`idReserva`),
@@ -139,52 +140,52 @@ ALTER TABLE `reserva`
   ADD KEY `idHabitacion` (`idHabitacion`);
 
 --
--- Indices de la tabla `tipohabitacion`
+-- Indexes for table `tipohabitacion`
 --
 ALTER TABLE `tipohabitacion`
   ADD PRIMARY KEY (`idTipoHabitacion`),
   ADD UNIQUE KEY `codigo` (`codigo`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `habitacion`
+-- AUTO_INCREMENT for table `habitacion`
 --
 ALTER TABLE `habitacion`
   MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT de la tabla `huesped`
+-- AUTO_INCREMENT for table `huesped`
 --
 ALTER TABLE `huesped`
-  MODIFY `idHuesped` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idHuesped` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT de la tabla `reserva`
+-- AUTO_INCREMENT for table `reserva`
 --
 ALTER TABLE `reserva`
   MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tipohabitacion`
+-- AUTO_INCREMENT for table `tipohabitacion`
 --
 ALTER TABLE `tipohabitacion`
   MODIFY `idTipoHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `habitacion`
+-- Constraints for table `habitacion`
 --
 ALTER TABLE `habitacion`
   ADD CONSTRAINT `habitacion_ibfk_1` FOREIGN KEY (`idTipoHabitacion`) REFERENCES `tipohabitacion` (`idTipoHabitacion`);
 
 --
--- Filtros para la tabla `reserva`
+-- Constraints for table `reserva`
 --
 ALTER TABLE `reserva`
   ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`idHuesped`) REFERENCES `huesped` (`idHuesped`),
