@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vistas;
 
 import accesoadatos.TipoHabitacionData;
@@ -12,19 +8,14 @@ import java.awt.Toolkit;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Carlos
- */
+
 public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
 
     private List<TipoHabitacion> listath;
     private TipoHabitacionData thData;
+    private TipoHabitacion tipohab = null;
     
 
-    /**
-     * Creates new form TipoDeHabitacionView
-     */
     public TipoDeHabitacionView() {
         
         
@@ -252,23 +243,26 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        // TODO add your handling code here:
-        //        try {
-//            int id = Integer.parseInt(jtfCodigo.getText());
-//            int CantidadPersonas = Integer.parseInt(jtfCantidadPersonas.getText());
-//            int cantidadCamas = Integer.parseInt(jtfCCamas.getText());
-////        string tipoCamas = jcb< >TipoCamas.getText();
-//            double PrecioxNoche = Integer.parseInt(jtfPrecioxNoche.getText());
-////            if(materiaActual == null){
-////           
-////        }else{
-////            materiaActual.setNombre(nombre);
-////            materiaActual.setAnioMateria(año);
-////            mat.modificarMateria(materiaActual);
-////        }
-//        } catch (NumberFormatException ex) {
-//            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en los campos año y codigo");
+           try {
+            int codigo = Integer.parseInt(jtfCodigo.getText());
+            int CantidadPersonas = Integer.parseInt(jtfCantidadPersonas.getText());
+            int cantidadCamas = Integer.parseInt(jtfCCamas.getText());
+//        string tipoCamas = jcb< >TipoCamas.getText();
+            double PrecioxNoche = Double.parseDouble(jtfPrecioxNoche.getText());
+            tipohab = thData.buscarTipoHabitacionXCodigo(codigo);
+            tipohab.setCodigo(codigo);
+            tipohab.setCapacidadMaxima(CantidadPersonas);
+            tipohab.setCantidadCamas(cantidadCamas);
+            tipohab.setPrecioNoche(PrecioxNoche);
+            
+            thData.modificartipoHabitacion(tipohab);
+//            materiaActual.setNombre(nombre);
+//            materiaActual.setAnioMateria(año);
+//            mat.modificarMateria(materiaActual);
 //        }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en los campos año y codigo");
+        }
     }//GEN-LAST:event_jbModificarActionPerformed
 
 

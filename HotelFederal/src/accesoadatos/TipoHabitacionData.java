@@ -11,7 +11,9 @@ import javax.swing.JOptionPane;
 public class TipoHabitacionData {
 
     private Connection con = null;
-
+    
+    
+    
     public TipoHabitacionData() {
         con = Conexion.getConexion();
 
@@ -100,17 +102,18 @@ public class TipoHabitacionData {
     }
 
     public void modificartipoHabitacion(TipoHabitacion tipoHabitacion) {
-        String sql = "UPDATE tipoHabitacion SET codigo = ?, capacidadMaxima = ?, cantidadCamas = ?, tipoCamas = ?, precioNoche = ? "
+        String sql = "UPDATE tipohabitacion SET codigo = ?, capacidadMaxima = ?, cantidadCamas = ?, tipoCamas = ?, precioNoche = ? "
                 + "WHERE codigo = ?";
-
+            
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, tipoHabitacion.getIdTipoHabitacion());
-            ps.setInt(2, tipoHabitacion.getCodigo());
-            ps.setInt(3, tipoHabitacion.getCapacidadMaxima());
-            ps.setInt(4, tipoHabitacion.getCantidadCamas());
-            ps.setString(5, tipoHabitacion.getTipoCamas());
-            ps.setDouble(6, tipoHabitacion.getPrecioNoche());
+//            ps.setInt(1, tipoHabitacion.getIdTipoHabitacion());
+            ps.setInt(1, tipoHabitacion.getCodigo());
+            ps.setInt(2, tipoHabitacion.getCapacidadMaxima());
+            ps.setInt(3, tipoHabitacion.getCantidadCamas());
+            ps.setString(4, tipoHabitacion.getTipoCamas());
+            ps.setDouble(5, tipoHabitacion.getPrecioNoche());
+            ps.setInt(6, tipoHabitacion.getCodigo());
             int rowsUpdated = ps.executeUpdate();
 
             if (rowsUpdated != 1) {
@@ -127,7 +130,7 @@ public class TipoHabitacionData {
         }
     }
 
-   public List <TipoHabitacion> listarTipoHabitaciones(){
+    public List <TipoHabitacion> listarTipoHabitaciones(){
         String sql = "SELECT idTipoHabitacion ,codigo, capacidadMaxima, cantidadCamas, tipoCamas, precioNoche FROM tipohabitacion";
         ArrayList <TipoHabitacion> tipoHabitaciones = new ArrayList<>();
         
@@ -159,7 +162,7 @@ public class TipoHabitacionData {
         return tipoHabitaciones;
     }
    
-       public TipoHabitacion buscarTipoHabitacionXCamas(String tipoCama) {
+    public TipoHabitacion buscarTipoHabitacionXCamas(String tipoCama) {
         String sql = "SELECT idTipoHabitacion , codigo, capacidadMaxima, cantidadCamas, tipoCamas, precioNoche FROM tipohabitacion WHERE tipoCamas = ? ";
         TipoHabitacion tipoHabitacion = null;
 
