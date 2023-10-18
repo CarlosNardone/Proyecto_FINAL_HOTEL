@@ -57,7 +57,8 @@ public class HotelFederal {
 //        Habitacion hab1 = new Habitacion(4, true, 1, hab);
 //      
         
-//        HabitacionData habdata = new HabitacionData();
+        HabitacionData habdata = new HabitacionData();
+        
 //        String apellido = "Carlos";  
 //        HuespedData huespedata = new HuespedData();
 //         
