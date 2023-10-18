@@ -9,6 +9,8 @@ import accesoadatos.HabitacionData;
 import accesoadatos.HuespedData;
 import entidades.Habitacion;
 import entidades.Huesped;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -25,10 +27,31 @@ public class MenuPrincipalView extends javax.swing.JFrame {
      */
     public MenuPrincipalView() {
         initComponents();
+        centrarVentana();
         hue = new HuespedData();
         hab = new HabitacionData();
         habitacion = new Habitacion();
         
+    }
+    
+    public void centrarVentana(){
+        //El tamaño de nuestra pantalla
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //El tamaño de la aplicacion
+        Dimension frameSize = getSize();
+        //Hacer que la pantalla de la aplicacion no exeda mi pantalla
+        if (frameSize.height> screenSize.height){
+            frameSize.height = screenSize.height;
+            
+        }
+                if (frameSize.width> screenSize.width){
+            frameSize.width = screenSize.width;
+            
+        }
+                //Centrar ventana
+                setLocation ((screenSize.width - frameSize.width) / 2,
+                         (screenSize.height - frameSize.height) / 2);
+                
     }
 
     /**
@@ -53,6 +76,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Hotel Federal");
 
         javax.swing.GroupLayout jdEscritorioLayout = new javax.swing.GroupLayout(jdEscritorio);
         jdEscritorio.setLayout(jdEscritorioLayout);

@@ -5,6 +5,9 @@
  */
 package vistas;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author Carlos
@@ -16,8 +19,28 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
      */
     public BusquedaXReservasView() {
         initComponents();
+        centrarVentana();
     }
 
+        public void centrarVentana(){
+        //El tamaño de nuestra pantalla
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //El tamaño de la aplicacion
+        Dimension frameSize = getSize();
+        //Hacer que la pantalla de la aplicacion no exeda mi pantalla
+        if (frameSize.height> screenSize.height){
+            frameSize.height = screenSize.height;
+            
+        }
+                if (frameSize.width> screenSize.width){
+            frameSize.width = screenSize.width;
+            
+        }
+                //Centrar ventana
+                setLocation ((screenSize.width - frameSize.width) / 2,
+                         (screenSize.height - frameSize.height) / 2);
+                
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
