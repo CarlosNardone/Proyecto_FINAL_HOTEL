@@ -457,7 +457,7 @@ public class HuespedView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
                 if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar() == KeyEvent.VK_SPACE)){
             evt.consume();
-        }
+        }             
     }//GEN-LAST:event_jTApellidoBusquedaKeyTyped
 
 

@@ -214,6 +214,7 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
 
+        try{
          TipoHabitacion th = (TipoHabitacion)jcbTiposCamas.getSelectedItem();
          TipoHabitacion tipoHab = thData.buscarTipoHabitacionXCamas(th.getTipoCamas());
          
@@ -223,7 +224,9 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
         jtfCCamas.setText(Integer.toString(tipoHab.getCantidadCamas()));
         jtfPrecioxNoche.setText(Double.toString(tipoHab.getPrecioNoche()));
         }
-         
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Debes introducir numeros, no letras");
+        }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
