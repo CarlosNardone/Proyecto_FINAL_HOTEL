@@ -116,7 +116,7 @@ public class TipoHabitacionData {
             ps.setInt(6, tipoHabitacion.getCodigo());
             int rowsUpdated = ps.executeUpdate();
 
-            if (rowsUpdated != 1) {
+            if (rowsUpdated == 1) {
                 JOptionPane.showMessageDialog(null, "Tipo de Habitación Modificada");
             } else {
                 JOptionPane.showMessageDialog(null, "Tipo de Habitación inexistente");

@@ -107,7 +107,7 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("Codigo:");
+        jLabel5.setText("Numero:");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Piso:");

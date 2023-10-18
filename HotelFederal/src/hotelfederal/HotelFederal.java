@@ -90,10 +90,10 @@ public class HotelFederal {
 //         reserdata.agregarReserva(reserva, hab1, carlos);
         
 
-//TipoHabitacion tphab = new TipoHabitacion(5,4, 2, "doble",20000);
-//        TipoHabitacionData tphadata = new TipoHabitacionData();
+//            TipoHabitacion tphab = new TipoHabitacion(3, 3, 2, "KING", 3000);
+//            TipoHabitacionData tphadata = new TipoHabitacionData();
 //tphadata.eliminarTipoHabitacion("5");
-//        tipodata.modificartipoHabitacion(hab);
+//        tphadata.modificartipoHabitacion(tphab);
 
         
 //        for (Huesped huesped : huespedata.listarHuespedesXApellido(apellido)) {

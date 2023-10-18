@@ -135,9 +135,42 @@ public class HabitacionData {
 
         return habitacion;
     }
-
+    
     public List <Habitacion> listarHabitaciones(){
         String sql = "SELECT idHabitacion ,numero, estado, piso, idTipoHabitacion FROM habitacion WHERE estado = 1";
+        ArrayList <Habitacion> habitaciones = new ArrayList<>();
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+             Habitacion habitacion = new Habitacion();
+             TipoHabitacion tiphab = new TipoHabitacion();
+                habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
+                habitacion.setEstado(rs.getBoolean("estado"));
+                habitacion.setPiso(rs.getInt("piso"));
+                int idTipoHabitacion = rs.getInt("idTipoHabitacion");
+                tiphab.setIdTipoHabitacion(idTipoHabitacion);
+                habitacion.setTipoHabitacion(tiphab);
+                
+//                habitacion.getTipoHabitacion().getIdTipoHabitacion();
+                
+                
+                habitaciones.add(habitacion);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+        
+        return habitaciones;
+    }
+    
+    public List <Habitacion> listarHabitacionesxPiso(){
+        String sql = "SELECT idHabitacion ,numero, estado, piso, idTipoHabitacion FROM habitacion WHERE piso = ?";
         ArrayList <Habitacion> habitaciones = new ArrayList<>();
         
         try {
