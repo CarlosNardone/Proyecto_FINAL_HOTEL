@@ -148,6 +148,7 @@ public class HabitacionData {
              Habitacion habitacion = new Habitacion();
              TipoHabitacion tiphab = new TipoHabitacion();
                 habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
+                habitacion.setNumero(rs.getInt("numero"));
                 habitacion.setEstado(rs.getBoolean("estado"));
                 habitacion.setPiso(rs.getInt("piso"));
                 int idTipoHabitacion = rs.getInt("idTipoHabitacion");
@@ -155,8 +156,6 @@ public class HabitacionData {
                 habitacion.setTipoHabitacion(tiphab);
                 
 //                habitacion.getTipoHabitacion().getIdTipoHabitacion();
-                
-                
                 habitaciones.add(habitacion);
             }
             
@@ -181,6 +180,7 @@ public class HabitacionData {
              Habitacion habitacion = new Habitacion();
              TipoHabitacion tiphab = new TipoHabitacion();
                 habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
+                habitacion.setNumero(rs.getInt("numero"));
                 habitacion.setEstado(rs.getBoolean("estado"));
                 habitacion.setPiso(rs.getInt("piso"));
                 int idTipoHabitacion = rs.getInt("idTipoHabitacion");
