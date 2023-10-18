@@ -58,14 +58,15 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jdEscritorio.setLayout(jdEscritorioLayout);
         jdEscritorioLayout.setHorizontalGroup(
             jdEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1210, Short.MAX_VALUE)
+            .addGap(0, 1445, Short.MAX_VALUE)
         );
         jdEscritorioLayout.setVerticalGroup(
             jdEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 721, Short.MAX_VALUE)
+            .addGap(0, 784, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Huesped");
+        jMenu1.setBorder(null);
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/GestionHuesped.png"))); // NOI18N
 
         jMenuItem1.setText("Gestion De Huespedes");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +78,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Habitaciones");
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/GestionHabitacion.png"))); // NOI18N
 
         jMenuItem2.setText("Tipos de Habitaciones");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +98,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu4.setText("Reservas");
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/GestionReserva.png"))); // NOI18N
 
         jMenuItem4.setText("Gestion De Reservas");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +118,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setText("Salir");
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/SalirMenuPrincipal.png"))); // NOI18N
         jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu5MouseClicked(evt);
@@ -132,11 +133,15 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jdEscritorio)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jdEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jdEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jdEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
