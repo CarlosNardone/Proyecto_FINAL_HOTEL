@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2023 at 11:15 PM
+-- Generation Time: Oct 19, 2023 at 02:09 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -111,7 +111,8 @@ CREATE TABLE `tipohabitacion` (
 
 INSERT INTO `tipohabitacion` (`idTipoHabitacion`, `codigo`, `capacidadMaxima`, `cantidadCamas`, `tipoCamas`, `precioNoche`) VALUES
 (1, 1, 1, 1, 'Simple', 10000),
-(4, 3, 2, 2, 'Doble', 15000);
+(4, 3, 2, 2, 'Doble', 15000),
+(6, 2, 4, 5, 'King Size', 350000);
 
 --
 -- Indexes for dumped tables
@@ -172,7 +173,7 @@ ALTER TABLE `reserva`
 -- AUTO_INCREMENT for table `tipohabitacion`
 --
 ALTER TABLE `tipohabitacion`
-  MODIFY `idTipoHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idTipoHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
