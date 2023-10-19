@@ -38,8 +38,9 @@ public class HuespedView extends javax.swing.JInternalFrame {
             int fila = modelo.rowAtPoint(point);
             if(Mouse_evt.getClickCount() == 1){
                 jtfDNI.setText(modelo.getValueAt(fila, 0).toString());
-                jtfNombre.setText(modelo.getValueAt(fila, 1).toString());
-                jtfApellido.setText(modelo.getValueAt(fila, 2).toString());
+                
+                jtfApellido.setText(modelo.getValueAt(fila, 1).toString());
+                jtfNombre.setText(modelo.getValueAt(fila, 2).toString());
                 jtfCorreo.setText(modelo.getValueAt(fila, 3).toString());
                 jtfDomicilio.setText(modelo.getValueAt(fila, 4).toString());
                 jtfCelular.setText(modelo.getValueAt(fila, 5).toString());

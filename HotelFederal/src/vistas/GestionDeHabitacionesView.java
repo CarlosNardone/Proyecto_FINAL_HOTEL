@@ -5,8 +5,15 @@
  */
 package vistas;
 
+import accesoadatos.HabitacionData;
+import accesoadatos.TipoHabitacionData;
+import entidades.Habitacion;
+import entidades.TipoHabitacion;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,14 +21,34 @@ import java.awt.Toolkit;
  */
 public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
 
+    private List<TipoHabitacion> listath;
+    private TipoHabitacionData thData;
+    private TipoHabitacion tipoHab = null;
+    private List<Habitacion> listah;
+    private HabitacionData hdata;
+    private Habitacion habitacion = null;
+    private DefaultTableModel modelo;
+    
     /**
      * Creates new form GestionDeHabitacionesView
      */
     public GestionDeHabitacionesView() {
         initComponents();
+        thData = new TipoHabitacionData(); // Inicializa la lista
+        listath = thData.listarTipoHabitaciones();
+        cargarTipoHabitacion();
+        modelo = new DefaultTableModel();
+        armarCabeceraTabla();
         centrarVentana();
+        
     }
 
+        private void cargarTipoHabitacion() {
+        for (TipoHabitacion item : listath) {
+            jcbTipoHabitacion.addItem(item);
+        }
+    }
+    
         public void centrarVentana(){
         //El tamaño de nuestra pantalla
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -65,14 +92,24 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jbBuscarNumero = new javax.swing.JButton();
+        jbBuscarTipo = new javax.swing.JButton();
+        jbBuscarPiso = new javax.swing.JButton();
 
         jbAgregarHabitacion.setText("Nuevo");
+        jbAgregarHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAgregarHabitacionActionPerformed(evt);
+            }
+        });
 
         jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Guardar.png"))); // NOI18N
         jbModificar.setText("Guardar");
+        jbModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbModificarActionPerformed(evt);
+            }
+        });
 
         jtListaHabitaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,8 +130,6 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Tipo:");
 
-        jcbTipoHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Estado");
 
@@ -112,11 +147,26 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Piso:");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
+        jbBuscarNumero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
+        jbBuscarNumero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarNumeroActionPerformed(evt);
+            }
+        });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
+        jbBuscarTipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
+        jbBuscarTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarTipoActionPerformed(evt);
+            }
+        });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
+        jbBuscarPiso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
+        jbBuscarPiso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarPisoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,9 +197,9 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
                                         .addComponent(jcbTipoHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(65, 65, 65)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1)
-                                    .addComponent(jButton4)
-                                    .addComponent(jButton5))))
+                                    .addComponent(jbBuscarNumero)
+                                    .addComponent(jbBuscarTipo)
+                                    .addComponent(jbBuscarPiso))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -180,19 +230,19 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
+                            .addComponent(jbBuscarNumero))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel6))
-                            .addComponent(jButton5))
+                            .addComponent(jbBuscarPiso))
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel3)
                                 .addComponent(jcbTipoHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton4))
+                            .addComponent(jbBuscarTipo))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(46, 46, 46)
@@ -221,11 +271,28 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
+    private void jbBuscarNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarNumeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbBuscarNumeroActionPerformed
+
+    private void jbBuscarPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarPisoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbBuscarPisoActionPerformed
+
+    private void jbBuscarTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbBuscarTipoActionPerformed
+
+    private void jbAgregarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarHabitacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbAgregarHabitacionActionPerformed
+
+    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -236,10 +303,42 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JButton jbAgregarHabitacion;
+    private javax.swing.JButton jbBuscarNumero;
+    private javax.swing.JButton jbBuscarPiso;
+    private javax.swing.JButton jbBuscarTipo;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JComboBox<String> jcbTipoHabitacion;
+    private javax.swing.JComboBox<TipoHabitacion> jcbTipoHabitacion;
     private javax.swing.JRadioButton jrbEstado;
     private javax.swing.JTable jtListaHabitaciones;
     // End of variables declaration//GEN-END:variables
+
+    
+        private void borrarFilaTabla(){
+        int indice = modelo.getRowCount() -1;
+        for(int i = indice;i>= 0; i--){
+            modelo.removeRow(i);
+        }
+    }
+    
+        private void armarCabeceraTabla(){
+        ArrayList<Object> filaCabecera = new ArrayList<>();
+        filaCabecera.add("IdHabitacion");
+        filaCabecera.add("Numero");
+        filaCabecera.add("Estado");
+        filaCabecera.add("Piso");
+        filaCabecera.add("idTipoHabitacion");
+        for(Object it: filaCabecera){
+            modelo.addColumn(it);
+        }
+        jtListaHabitaciones.setModel(modelo);
+    }
+
+            private void cargarHabitacion(){
+        List <Habitacion> listah  = (ArrayList) hdata.listarHabitaciones();
+        for (Habitacion h: listah){
+            modelo.addRow(new Object[]{h.getIdHabitacion(),h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
+        }
+    }
+
 }

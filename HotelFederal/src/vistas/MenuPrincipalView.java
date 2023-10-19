@@ -7,10 +7,13 @@ package vistas;
 
 import accesoadatos.HabitacionData;
 import accesoadatos.HuespedData;
+import accesoadatos.TipoHabitacionData;
 import entidades.Habitacion;
 import entidades.Huesped;
+import entidades.TipoHabitacion;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.List;
 import javax.swing.ImageIcon;
 
 /**
@@ -23,6 +26,9 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private HuespedData hue;
     private HabitacionData hab;
     private Habitacion habitacion;
+    private TipoHabitacionData tipohab;
+    private TipoHabitacion tipoHabitacion;
+    
     /**
      * Creates new form MenuPrincipalView
      */
@@ -33,7 +39,8 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         hue = new HuespedData();
         hab = new HabitacionData();
         habitacion = new Habitacion();
-        
+        tipohab = new TipoHabitacionData();
+        tipoHabitacion = new TipoHabitacion();
     }
     
     public void centrarVentana(){
