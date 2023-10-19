@@ -45,7 +45,7 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
 
         private void cargarTipoHabitacion() {
         for (TipoHabitacion item : listath) {
-            jcbTipoHabitacion.addItem(item);
+            jcbTipo.addItem(item);
         }
     }
     
@@ -83,14 +83,14 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         jtListaHabitaciones = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jcbTipoHabitacion = new javax.swing.JComboBox<>();
+        jcbTipo = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jrbEstado = new javax.swing.JRadioButton();
         jbSalir = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jtfNumero = new javax.swing.JTextField();
+        jtfPiso = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jbBuscarNumero = new javax.swing.JButton();
         jbBuscarTipo = new javax.swing.JButton();
@@ -190,11 +190,11 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(55, 55, 55)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(jtfPiso, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jtfNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(43, 43, 43)
-                                        .addComponent(jcbTipoHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jcbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(65, 65, 65)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jbBuscarNumero)
@@ -229,19 +229,19 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
                         .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jbBuscarNumero))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfPiso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel6))
                             .addComponent(jbBuscarPiso))
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel3)
-                                .addComponent(jcbTipoHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jcbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jbBuscarTipo))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -285,6 +285,8 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
 
     private void jbAgregarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarHabitacionActionPerformed
         // TODO add your handling code here:
+                limpiarCampos();
+                habitacion = null;
     }//GEN-LAST:event_jbAgregarHabitacionActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
@@ -300,17 +302,17 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JButton jbAgregarHabitacion;
     private javax.swing.JButton jbBuscarNumero;
     private javax.swing.JButton jbBuscarPiso;
     private javax.swing.JButton jbBuscarTipo;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JComboBox<TipoHabitacion> jcbTipoHabitacion;
+    private javax.swing.JComboBox<TipoHabitacion> jcbTipo;
     private javax.swing.JRadioButton jrbEstado;
     private javax.swing.JTable jtListaHabitaciones;
+    private javax.swing.JTextField jtfNumero;
+    private javax.swing.JTextField jtfPiso;
     // End of variables declaration//GEN-END:variables
 
     
@@ -341,4 +343,10 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         }
     }
 
+                private void limpiarCampos(){
+        jtfNumero.setText("");
+        jtfPiso.setText("");
+        jrbEstado.setSelected(false);
+        
+    }
 }
