@@ -47,17 +47,25 @@ public class HotelFederal {
 //            System.out.println(huesped.getNombre());
 //            System.out.println(huesped.getCelular());
 //            System.out.println(huesped.getDomicilio());
+        
+        HabitacionData habdata = new HabitacionData();
+        
+        for (Habitacion hab : habdata.listarHabitacionesxPiso(2)) {
+            System.out.println(hab.getIdHabitacion());
+            System.out.println(hab.getNumero());
+            System.out.println(hab.getPiso());
+            System.out.println(hab.isEstado());
+            System.out.println(hab.getTipoHabitacion());
+            
+        }
 
-
-
-
-
+    
 //        TipoHabitacion hab = new TipoHabitacion(1,3, 6, 4, "Simple", 12000.5);
 //        TipoHabitacionData tipodata = new TipoHabitacionData();
 //        Habitacion hab1 = new Habitacion(4, true, 1, hab);
 //      
         
-        HabitacionData habdata = new HabitacionData();
+//        HabitacionData habdata = new HabitacionData();
         
 //        String apellido = "Carlos";  
 //        HuespedData huespedata = new HuespedData();

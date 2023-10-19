@@ -147,12 +147,13 @@ public class HabitacionData {
             while(rs.next()){
              Habitacion habitacion = new Habitacion();
              TipoHabitacion tiphab = new TipoHabitacion();
+//             TipoHabitacionData dat = new TipoHabitacionData();
                 habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
                 habitacion.setNumero(rs.getInt("numero"));
                 habitacion.setEstado(rs.getBoolean("estado"));
                 habitacion.setPiso(rs.getInt("piso"));
                 int idTipoHabitacion = rs.getInt("idTipoHabitacion");
-                tiphab.setIdTipoHabitacion(idTipoHabitacion);
+                tipoHab.setIdTipoHabitacion(idTipoHabitacion);
                 habitacion.setTipoHabitacion(tiphab);
                 
 //                habitacion.getTipoHabitacion().getIdTipoHabitacion();
@@ -168,8 +169,43 @@ public class HabitacionData {
         return habitaciones;
     }
     
-    public List <Habitacion> listarHabitacionesxPiso(){
+    public List <Habitacion> listarHabitacionesxPiso(int piso){
         String sql = "SELECT idHabitacion ,numero, estado, piso, idTipoHabitacion FROM habitacion WHERE piso = ?";
+        ArrayList <Habitacion> habitaciones = new ArrayList<>();
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, piso);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+             Habitacion habitacion = new Habitacion();
+             TipoHabitacion tiphab = new TipoHabitacion();
+                habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
+                habitacion.setNumero(rs.getInt("numero"));
+                habitacion.setEstado(rs.getBoolean("estado"));
+                habitacion.setPiso(rs.getInt("piso"));
+                int idTipoHabitacion = rs.getInt("idTipoHabitacion");
+                tiphab.setIdTipoHabitacion(idTipoHabitacion);
+                habitacion.setTipoHabitacion(tiphab);
+                
+//                habitacion.getTipoHabitacion().getIdTipoHabitacion();
+                
+                
+                habitaciones.add(habitacion);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+        
+        return habitaciones;
+    }
+    
+ public List <Habitacion> listarHabitacionesxTipo(){
+        String sql = "SELECT idHabitacion ,numero, estado, piso, idTipoHabitacion FROM habitacion WHERE tipo = ?";
         ArrayList <Habitacion> habitaciones = new ArrayList<>();
         
         try {
@@ -201,5 +237,4 @@ public class HabitacionData {
         
         return habitaciones;
     }
-    
 }

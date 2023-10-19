@@ -52,7 +52,7 @@ public class HuespedView extends javax.swing.JInternalFrame {
         
     }
 
-        public void centrarVentana(){
+    public void centrarVentana(){
         //El tamaño de nuestra pantalla
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         //El tamaño de la aplicacion

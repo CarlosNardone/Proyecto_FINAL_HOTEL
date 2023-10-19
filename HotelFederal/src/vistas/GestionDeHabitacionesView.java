@@ -35,7 +35,9 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     public GestionDeHabitacionesView() {
         initComponents();
         thData = new TipoHabitacionData(); // Inicializa la lista
+        hdata = new HabitacionData();
         listath = thData.listarTipoHabitaciones();
+//        listah = hdata.listarHabitaciones();
         cargarTipoHabitacion();
         modelo = new DefaultTableModel();
         armarCabeceraTabla();
@@ -276,7 +278,10 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbBuscarNumeroActionPerformed
 
     private void jbBuscarPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarPisoActionPerformed
-        // TODO add your handling code here:
+        int piso = Integer.parseInt(jtfPiso.getText());
+        borrarFilaTabla();
+        cargarHabitacionXPiso(piso);
+        
     }//GEN-LAST:event_jbBuscarPisoActionPerformed
 
     private void jbBuscarTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarTipoActionPerformed
@@ -336,17 +341,21 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         jtListaHabitaciones.setModel(modelo);
     }
 
-            private void cargarHabitacion(){
-        List <Habitacion> listah  = (ArrayList) hdata.listarHabitaciones();
+        private void cargarHabitacionXPiso(int piso){
+        List <Habitacion> listah  = (ArrayList) hdata.listarHabitacionesxPiso(piso);
         for (Habitacion h: listah){
             modelo.addRow(new Object[]{h.getIdHabitacion(),h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
         }
     }
 
-                private void limpiarCampos(){
+        private void limpiarCampos(){
         jtfNumero.setText("");
         jtfPiso.setText("");
         jrbEstado.setSelected(false);
         
     }
+                
+                
+        
+             
 }
