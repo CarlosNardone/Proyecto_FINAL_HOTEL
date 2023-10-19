@@ -11,6 +11,7 @@ import entidades.Habitacion;
 import entidades.Huesped;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -27,6 +28,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
      */
     public MenuPrincipalView() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/recursos/GestionHuesped.png")).getImage());
         centrarVentana();
         hue = new HuespedData();
         hab = new HabitacionData();
