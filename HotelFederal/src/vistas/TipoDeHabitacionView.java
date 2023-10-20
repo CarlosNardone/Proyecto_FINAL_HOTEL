@@ -261,7 +261,7 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
 //            mat.modificarMateria(materiaActual);
 //        }
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en los campos año y codigo");
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en estos campos");
         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
