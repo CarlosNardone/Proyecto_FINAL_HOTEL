@@ -11,6 +11,7 @@ import accesoadatos.TipoHabitacionData;
 import entidades.Habitacion;
 import entidades.Huesped;
 import entidades.TipoHabitacion;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.List;
@@ -186,6 +187,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jdEscritorio.repaint();
         HuespedView hd = new HuespedView();
         hd.setVisible(true);
+        hd.getContentPane().setBackground(new Color(68,167,132));
         jdEscritorio.add(hd);
         jdEscritorio.moveToFront(hd);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -196,6 +198,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jdEscritorio.repaint();
         TipoDeHabitacionView thv = new TipoDeHabitacionView();
         thv.setVisible(true);
+        thv.getContentPane().setBackground(new Color(68,167,132));
         jdEscritorio.add(thv);
         jdEscritorio.moveToFront(thv);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -211,6 +214,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jdEscritorio.repaint();
         GestionDeHabitacionesView ghv = new GestionDeHabitacionesView();
         ghv.setVisible(true);
+        ghv.getContentPane().setBackground(new Color(68,167,132));
         jdEscritorio.add(ghv);
         jdEscritorio.moveToFront(ghv);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
@@ -221,6 +225,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jdEscritorio.repaint();
         GestionDeReservas gr = new GestionDeReservas();
         gr.setVisible(true);
+        gr.getContentPane().setBackground(new Color(68,167,132));
         jdEscritorio.add(gr);
         jdEscritorio.moveToFront(gr);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -231,6 +236,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jdEscritorio.repaint();
         BusquedaXReservasView bxr = new BusquedaXReservasView();
         bxr.setVisible(true);
+        bxr.getContentPane().setBackground(new Color(68,167,132));
         jdEscritorio.add(bxr);
         jdEscritorio.moveToFront(bxr);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
