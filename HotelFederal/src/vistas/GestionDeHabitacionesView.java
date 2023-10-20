@@ -38,7 +38,7 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         thData = new TipoHabitacionData(); // Inicializa la lista
         hdata = new HabitacionData();
         listath = thData.listarTipoHabitaciones();
-//        listah = hdata.listarHabitaciones();
+        listah = hdata.listarHabitaciones();
         cargarTipoHabitacion();
         modelo = new DefaultTableModel();
         armarCabeceraTabla();
@@ -80,7 +80,7 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jbAgregarHabitacion = new javax.swing.JButton();
+        jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtListaHabitaciones = new javax.swing.JTable();
@@ -98,11 +98,12 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         jbBuscarNumero = new javax.swing.JButton();
         jbBuscarTipo = new javax.swing.JButton();
         jbBuscarPiso = new javax.swing.JButton();
+        JBAgregar = new javax.swing.JButton();
 
-        jbAgregarHabitacion.setText("Nuevo");
-        jbAgregarHabitacion.addActionListener(new java.awt.event.ActionListener() {
+        jbNuevo.setText("Nuevo");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAgregarHabitacionActionPerformed(evt);
+                jbNuevoActionPerformed(evt);
             }
         });
 
@@ -171,6 +172,13 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
             }
         });
 
+        JBAgregar.setText("Agregar");
+        JBAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBAgregarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -205,16 +213,22 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
                                     .addComponent(jbBuscarPiso))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbAgregarHabitacion)
-                        .addGap(41, 41, 41)
-                        .addComponent(jbModificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(204, 204, 204))))
+                        .addComponent(jbNuevo)
+                        .addGap(36, 36, 36)
+                        .addComponent(JBAgregar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(204, 204, 204))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(jbModificar)
+                                .addGap(30, 30, 30)
+                                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(101, 101, 101)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1219, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -246,24 +260,22 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel3)
                                 .addComponent(jcbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jbBuscarTipo))
+                        .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jrbEstado))
-                                .addGap(87, 87, 87)
-                                .addComponent(jbAgregarHabitacion))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jbModificar)
-                                    .addComponent(jbSalir))
-                                .addContainerGap(93, Short.MAX_VALUE))))
+                            .addComponent(jLabel4)
+                            .addComponent(jrbEstado))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JBAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jbModificar)
+                                .addComponent(jbSalir)
+                                .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(135, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -276,6 +288,13 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
 
     private void jbBuscarNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarNumeroActionPerformed
         // TODO add your handling code here:
+               try{
+        int numero = Integer.parseInt(jtfNumero.getText());
+        borrarFilaTabla();
+        cargarHabitacionXNumero(numero);
+       }catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(this, "Solo se permiten numeros en estos parametros");
+       }
     }//GEN-LAST:event_jbBuscarNumeroActionPerformed
 
     private void jbBuscarPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarPisoActionPerformed
@@ -290,20 +309,59 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
 
     private void jbBuscarTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarTipoActionPerformed
         // TODO add your handling code here:
+//              Habitacion h = (Habitacion)jcbTipo.getSelectedItem());
+//              Habitacion Hab = hdata.listarHabitacionesxTipo(h.getTipoHabitacion());
+//
+////     Obtén el tipo de habitación seleccionado del JComboBox
+//    TipoHabitacion tipoSeleccionado = (TipoHabitacion) jcbTipo.getSelectedItem();
+//
+//    // Llama al método para buscar habitaciones por tipo
+//    List<Habitacion> tipoSeleccionado = Habitacion.listarHabitacionesxTipo(tipoSeleccionado);
+
+    // Borra las filas existentes en la tabla y carga las nuevas habitaciones
+    borrarFilaTabla();
+//    cargarHabitacionXTipo(habitacionesPorTipo);
+    
+        cargarHabitacionXTipo();
     }//GEN-LAST:event_jbBuscarTipoActionPerformed
 
-    private void jbAgregarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarHabitacionActionPerformed
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         // TODO add your handling code here:
                 limpiarCampos();
                 habitacion = null;
-    }//GEN-LAST:event_jbAgregarHabitacionActionPerformed
+    }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         // TODO add your handling code here:
+//                   try {
+//            int numero = Integer.parseInt(jtfNumero.getText());
+//            int piso = Integer.parseInt(jtfPiso.getText());
+//            int tipohab = ((Habitacion) jcbTipo.getSelectedItem());
+////        string tipoCamas = jcb< >TipoCamas.getText();
+//            tipohab = hdata.modificarHabitacionPorNumero(numero);
+//            tipohab.setNumero(numero);
+//            tipohab.setPiso(piso);
+//            tipohab.setTipoHabitacion(tipohab);
+//            
+//            thData.modificartipoHabitacion(tipohab);
+////            materiaActual.setNombre(nombre);
+////            materiaActual.setAnioMateria(año);
+////            mat.modificarMateria(materiaActual);
+//        }
+//        } catch (NumberFormatException ex) {
+//            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en estos campos");
+//        }
+        
     }//GEN-LAST:event_jbModificarActionPerformed
+
+    private void JBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAgregarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_JBAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBAgregar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -311,11 +369,11 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton jbAgregarHabitacion;
     private javax.swing.JButton jbBuscarNumero;
     private javax.swing.JButton jbBuscarPiso;
     private javax.swing.JButton jbBuscarTipo;
     private javax.swing.JButton jbModificar;
+    private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<TipoHabitacion> jcbTipo;
     private javax.swing.JRadioButton jrbEstado;
@@ -351,6 +409,13 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
             modelo.addRow(new Object[]{h.getIdHabitacion(),h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
         }
     }
+        
+                private void cargarHabitacionXTipo(){
+        List <Habitacion> listah  = (ArrayList) hdata.listarHabitacionesxTipo();
+        for (Habitacion h: listah){
+            modelo.addRow(new Object[]{h.getIdHabitacion(),h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
+        }
+    }
 
         private void limpiarCampos(){
         jtfNumero.setText("");
@@ -359,7 +424,12 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         
     }
                 
-                
+                   private void cargarHabitacionXNumero(int numero){
+        List <Habitacion> listah  = (ArrayList) hdata.listarHabitacionesxNumero(numero);
+        for (Habitacion h: listah){
+            modelo.addRow(new Object[]{h.getIdHabitacion(),h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
+        }
+    }     
         
              
 }
