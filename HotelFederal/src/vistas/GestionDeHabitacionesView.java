@@ -409,6 +409,7 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         jtfNumero.setText("");
         jtfPiso.setText("");
         jrbEstado.setSelected(false);
+        borrarFilaTabla();
 
     }
 
