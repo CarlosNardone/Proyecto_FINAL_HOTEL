@@ -13,6 +13,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -278,10 +279,13 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbBuscarNumeroActionPerformed
 
     private void jbBuscarPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarPisoActionPerformed
+       try{
         int piso = Integer.parseInt(jtfPiso.getText());
         borrarFilaTabla();
         cargarHabitacionXPiso(piso);
-        
+       }catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(this, "Solo se permiten numeros en estos parametros");
+       }
     }//GEN-LAST:event_jbBuscarPisoActionPerformed
 
     private void jbBuscarTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarTipoActionPerformed
