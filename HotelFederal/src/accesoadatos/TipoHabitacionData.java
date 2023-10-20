@@ -192,6 +192,36 @@ public class TipoHabitacionData {
         return tipoHabitacion;
     }
    
+    public TipoHabitacion buscarTipoHabitacion(int id){
+        String sql = "SELECT idTipoHabitacion , codigo, capacidadMaxima, cantidadCamas, tipoCamas, precioNoche FROM tipohabitacion WHERE idTipoHabitacion = ? ";
+        TipoHabitacion Tipohab = null;
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                Tipohab = new TipoHabitacion();
+                Tipohab.setIdTipoHabitacion(id);
+                Tipohab.setCodigo(rs.getInt("codigo"));
+                Tipohab.setCapacidadMaxima(rs.getInt("capacidadMaxima"));
+                Tipohab.setCantidadCamas(rs.getInt("cantidadCamas"));
+                Tipohab.setTipoCamas(rs.getString("tipoCamas"));
+                Tipohab.setPrecioNoche(rs.getDouble("precioNoche"));
+                
+                }else{
+                JOptionPane.showMessageDialog(null, "No existe ese alumno");
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+        
+        return Tipohab;
+    }
+    
    //    public Habitacion buscarHabitacionXNro(int numero, TipoHabitacion tipohab) {
 //        String sql = "SELECT idHabitacion, numero, estado, idTipohabitacion FROM habitacion WHERE numero = ? AND estado = 1";
 //        Habitacion habitacion = null;

@@ -50,7 +50,7 @@ public class HotelFederal {
         
         HabitacionData habdata = new HabitacionData();
         
-        for (Habitacion hab : habdata.listarHabitacionesxPiso(2)) {
+        for (Habitacion hab : habdata.listarHabitaciones()) {
             System.out.println(hab.getIdHabitacion());
             System.out.println(hab.getNumero());
             System.out.println(hab.getPiso());

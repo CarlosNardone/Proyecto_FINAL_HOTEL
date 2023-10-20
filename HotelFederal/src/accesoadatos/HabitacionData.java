@@ -16,10 +16,11 @@ public class HabitacionData {
 
     private Connection con = null;
     private TipoHabitacion tipoHab = new TipoHabitacion();
+    private TipoHabitacionData dat = new TipoHabitacionData();
 
     public HabitacionData() {
         con = Conexion.getConexion();
-
+           
     }
 
     public void altaHabitacion(Habitacion habitacion) {
@@ -147,13 +148,13 @@ public class HabitacionData {
             while(rs.next()){
              Habitacion habitacion = new Habitacion();
              TipoHabitacion tiphab = new TipoHabitacion();
-//             TipoHabitacionData dat = new TipoHabitacionData();
                 habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
                 habitacion.setNumero(rs.getInt("numero"));
                 habitacion.setEstado(rs.getBoolean("estado"));
                 habitacion.setPiso(rs.getInt("piso"));
                 int idTipoHabitacion = rs.getInt("idTipoHabitacion");
-                tipoHab.setIdTipoHabitacion(idTipoHabitacion);
+                tiphab = dat.buscarTipoHabitacion(idTipoHabitacion);
+//                tipoHab.setIdTipoHabitacion(idTipoHabitacion);
                 habitacion.setTipoHabitacion(tiphab);
                 
 //                habitacion.getTipoHabitacion().getIdTipoHabitacion();
@@ -186,7 +187,8 @@ public class HabitacionData {
                 habitacion.setEstado(rs.getBoolean("estado"));
                 habitacion.setPiso(rs.getInt("piso"));
                 int idTipoHabitacion = rs.getInt("idTipoHabitacion");
-                tiphab.setIdTipoHabitacion(idTipoHabitacion);
+                tiphab = dat.buscarTipoHabitacion(idTipoHabitacion);
+//                tiphab.setIdTipoHabitacion(idTipoHabitacion);
                 habitacion.setTipoHabitacion(tiphab);
                 
 //                habitacion.getTipoHabitacion().getIdTipoHabitacion();
