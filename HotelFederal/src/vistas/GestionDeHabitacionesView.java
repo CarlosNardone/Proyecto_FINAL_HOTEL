@@ -29,7 +29,7 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     private HabitacionData hdata;
     private Habitacion habitacion = null;
     private DefaultTableModel modelo;
-    
+
     /**
      * Creates new form GestionDeHabitacionesView
      */
@@ -43,34 +43,35 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         modelo = new DefaultTableModel();
         armarCabeceraTabla();
         centrarVentana();
-        
+
     }
 
-        private void cargarTipoHabitacion() {
+    private void cargarTipoHabitacion() {
         for (TipoHabitacion item : listath) {
             jcbTipo.addItem(item);
         }
     }
-    
-        public void centrarVentana(){
+
+    public void centrarVentana() {
         //El tamaño de nuestra pantalla
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         //El tamaño de la aplicacion
         Dimension frameSize = getSize();
         //Hacer que la pantalla de la aplicacion no exeda mi pantalla
-        if (frameSize.height> screenSize.height){
+        if (frameSize.height > screenSize.height) {
             frameSize.height = screenSize.height;
-            
+
         }
-                if (frameSize.width> screenSize.width){
+        if (frameSize.width > screenSize.width) {
             frameSize.width = screenSize.width;
-            
+
         }
-                //Centrar ventana
-                setLocation ((screenSize.width - frameSize.width) / 2,
-                         (screenSize.height - frameSize.height) / 2);
-                
+        //Centrar ventana
+        setLocation((screenSize.width - frameSize.width) / 2,
+                (screenSize.height - frameSize.height) / 2);
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -288,75 +289,63 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
 
     private void jbBuscarNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarNumeroActionPerformed
         // TODO add your handling code here:
-               try{
-        int numero = Integer.parseInt(jtfNumero.getText());
-        borrarFilaTabla();
-        cargarHabitacionXNumero(numero);
-       }catch(NumberFormatException ex){
-           JOptionPane.showMessageDialog(this, "Solo se permiten numeros en estos parametros");
-       }
+        try {
+            int numero = Integer.parseInt(jtfNumero.getText());
+            borrarFilaTabla();
+            cargarHabitacionXNumero(numero);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Solo se permiten numeros en estos parametros");
+        }
     }//GEN-LAST:event_jbBuscarNumeroActionPerformed
 
     private void jbBuscarPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarPisoActionPerformed
-       try{
-        int piso = Integer.parseInt(jtfPiso.getText());
-        borrarFilaTabla();
-        cargarHabitacionXPiso(piso);
-       }catch(NumberFormatException ex){
-           JOptionPane.showMessageDialog(this, "Solo se permiten numeros en estos parametros");
-       }
+        try {
+            int piso = Integer.parseInt(jtfPiso.getText());
+            borrarFilaTabla();
+            cargarHabitacionXPiso(piso);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Solo se permiten numeros en estos parametros");
+        }
     }//GEN-LAST:event_jbBuscarPisoActionPerformed
 
     private void jbBuscarTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarTipoActionPerformed
-        // TODO add your handling code here:
-//              Habitacion h = (Habitacion)jcbTipo.getSelectedItem());
-//              Habitacion Hab = hdata.listarHabitacionesxTipo(h.getTipoHabitacion());
-//
-////     Obtén el tipo de habitación seleccionado del JComboBox
-//    TipoHabitacion tipoSeleccionado = (TipoHabitacion) jcbTipo.getSelectedItem();
-//
-//    // Llama al método para buscar habitaciones por tipo
-//    List<Habitacion> tipoSeleccionado = Habitacion.listarHabitacionesxTipo(tipoSeleccionado);
 
-    // Borra las filas existentes en la tabla y carga las nuevas habitaciones
-    borrarFilaTabla();
-//    cargarHabitacionXTipo(habitacionesPorTipo);
-    
-        cargarHabitacionXTipo();
+        TipoHabitacion tipoSeleccionado = (TipoHabitacion) jcbTipo.getSelectedItem();
+        borrarFilaTabla();
+        cargarHabitacionXTipo(tipoSeleccionado);
     }//GEN-LAST:event_jbBuscarTipoActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         // TODO add your handling code here:
-                limpiarCampos();
-                habitacion = null;
+        limpiarCampos();
+        habitacion = null;
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        // TODO add your handling code here:
-//                   try {
-//            int numero = Integer.parseInt(jtfNumero.getText());
-//            int piso = Integer.parseInt(jtfPiso.getText());
-//            int tipohab = ((Habitacion) jcbTipo.getSelectedItem());
-////        string tipoCamas = jcb< >TipoCamas.getText();
-//            tipohab = hdata.modificarHabitacionPorNumero(numero);
-//            tipohab.setNumero(numero);
-//            tipohab.setPiso(piso);
-//            tipohab.setTipoHabitacion(tipohab);
-//            
-//            thData.modificartipoHabitacion(tipohab);
-////            materiaActual.setNombre(nombre);
-////            materiaActual.setAnioMateria(año);
-////            mat.modificarMateria(materiaActual);
-//        }
-//        } catch (NumberFormatException ex) {
-//            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en estos campos");
-//        }
-        
+
+        try {
+            int numero = Integer.parseInt(jtfNumero.getText());
+            int piso = Integer.parseInt(jtfPiso.getText());
+            TipoHabitacion tipohab = (TipoHabitacion) jcbTipo.getSelectedItem();
+            Habitacion habitacion = new Habitacion();
+            habitacion.setNumero(numero);
+            habitacion.setPiso(piso);
+            habitacion.setTipoHabitacion(tipohab);
+
+            hdata.modificarHabitacionPorNumero(habitacion);
+//            materiaActual.setNombre(nombre);
+//            materiaActual.setAnioMateria(año);
+//            mat.modificarMateria(materiaActual);
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en estos campos");
+
     }//GEN-LAST:event_jbModificarActionPerformed
+    }
 
     private void JBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAgregarActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_JBAgregarActionPerformed
 
 
@@ -382,54 +371,52 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfPiso;
     // End of variables declaration//GEN-END:variables
 
-    
-        private void borrarFilaTabla(){
-        int indice = modelo.getRowCount() -1;
-        for(int i = indice;i>= 0; i--){
+    private void borrarFilaTabla() {
+        int indice = modelo.getRowCount() - 1;
+        for (int i = indice; i >= 0; i--) {
             modelo.removeRow(i);
         }
     }
-    
-        private void armarCabeceraTabla(){
+
+    private void armarCabeceraTabla() {
         ArrayList<Object> filaCabecera = new ArrayList<>();
         filaCabecera.add("IdHabitacion");
         filaCabecera.add("Numero");
         filaCabecera.add("Estado");
         filaCabecera.add("Piso");
         filaCabecera.add("idTipoHabitacion");
-        for(Object it: filaCabecera){
+        for (Object it : filaCabecera) {
             modelo.addColumn(it);
         }
         jtListaHabitaciones.setModel(modelo);
     }
 
-        private void cargarHabitacionXPiso(int piso){
-        List <Habitacion> listah  = (ArrayList) hdata.listarHabitacionesxPiso(piso);
-        for (Habitacion h: listah){
-            modelo.addRow(new Object[]{h.getIdHabitacion(),h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
-        }
-    }
-        
-                private void cargarHabitacionXTipo(){
-        List <Habitacion> listah  = (ArrayList) hdata.listarHabitacionesxTipo();
-        for (Habitacion h: listah){
-            modelo.addRow(new Object[]{h.getIdHabitacion(),h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
+    private void cargarHabitacionXPiso(int piso) {
+        List<Habitacion> listah = (ArrayList) hdata.listarHabitacionesxPiso(piso);
+        for (Habitacion h : listah) {
+            modelo.addRow(new Object[]{h.getIdHabitacion(), h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
         }
     }
 
-        private void limpiarCampos(){
+    private void cargarHabitacionXTipo(TipoHabitacion tipohab) {
+        List<Habitacion> listah = (ArrayList) hdata.listarHabitacionesxTipo(tipohab);
+        for (Habitacion h : listah) {
+            modelo.addRow(new Object[]{h.getIdHabitacion(), h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
+        }
+    }
+
+    private void limpiarCampos() {
         jtfNumero.setText("");
         jtfPiso.setText("");
         jrbEstado.setSelected(false);
-        
+
     }
-                
-                   private void cargarHabitacionXNumero(int numero){
-        List <Habitacion> listah  = (ArrayList) hdata.listarHabitacionesxNumero(numero);
-        for (Habitacion h: listah){
-            modelo.addRow(new Object[]{h.getIdHabitacion(),h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
+
+    private void cargarHabitacionXNumero(int numero) {
+        List<Habitacion> listah = (ArrayList) hdata.listarHabitacionesxNumero(numero);
+        for (Habitacion h : listah) {
+            modelo.addRow(new Object[]{h.getIdHabitacion(), h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
         }
-    }     
-        
-             
+    }
+
 }

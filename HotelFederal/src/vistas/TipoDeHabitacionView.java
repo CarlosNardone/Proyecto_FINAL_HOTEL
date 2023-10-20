@@ -245,14 +245,14 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
            try {
             int codigo = Integer.parseInt(jtfCodigo.getText());
-            int CantidadPersonas = Integer.parseInt(jtfCantidadPersonas.getText());
-            int cantidadCamas = Integer.parseInt(jtfCCamas.getText());
+//            int CantidadPersonas = Integer.parseInt(jtfCantidadPersonas.getText());
+//            int cantidadCamas = Integer.parseInt(jtfCCamas.getText());
 //        string tipoCamas = jcb< >TipoCamas.getText();
             double PrecioxNoche = Double.parseDouble(jtfPrecioxNoche.getText());
             tipohab = thData.buscarTipoHabitacionXCodigo(codigo);
-            tipohab.setCodigo(codigo);
-            tipohab.setCapacidadMaxima(CantidadPersonas);
-            tipohab.setCantidadCamas(cantidadCamas);
+//            tipohab.setCodigo(codigo);
+//            tipohab.setCapacidadMaxima(CantidadPersonas);
+//            tipohab.setCantidadCamas(cantidadCamas);
             tipohab.setPrecioNoche(PrecioxNoche);
             
             thData.modificartipoHabitacion(tipohab);
