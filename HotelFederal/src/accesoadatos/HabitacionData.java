@@ -108,8 +108,9 @@ public class HabitacionData {
         }
     }
 
-    public Habitacion buscarHabitacionXNro(int numero, TipoHabitacion tipohab) {
-        String sql = "SELECT idHabitacion, numero, estado, idTipohabitacion FROM habitacion WHERE numero = ? AND estado = 1";
+    public Habitacion buscarHabitacionXNro(int numero) {
+        String sql = "SELECT h.idHabitacion, h.numero, h.estado, h.piso, h.idTipohabitacion, t.tipoCamas FROM habitacion h\n" +
+                     "JOIN tipohabitacion t ON (h.idTipohabitacion = t.idTipoHabitacion) WHERE h.numero = ?;";
         Habitacion habitacion = null;
 
         try {
@@ -118,11 +119,17 @@ public class HabitacionData {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 habitacion = new Habitacion();
+                TipoHabitacion tipohabitacion = new TipoHabitacion();
                 habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
                 habitacion.setNumero(rs.getInt("numero"));
                 habitacion.setEstado(rs.getBoolean("estado"));
-                //habitacion.setPiso(rs.getInt("piso"));
-                habitacion.setTipoHabitacion(tipohab);
+                habitacion.setPiso(rs.getInt("piso"));
+                tipohabitacion.setIdTipoHabitacion(rs.getInt("idTipoHabitacion"));
+                tipohabitacion.setTipoCamas(rs.getString("tipoCamas"));
+            
+                // Establecer el objeto Tipohabitacion en la Habitacion
+                habitacion.setTipoHabitacion(tipohabitacion);
+//               habitacion.setTipoHabitacion(tipohab);
 
             } else {
                 JOptionPane.showMessageDialog(null, "No existe esa habitacion");
@@ -251,6 +258,7 @@ public class HabitacionData {
                 habitacion.setPiso(rs.getInt("piso"));
                 int idTipoHabitacion = rs.getInt("idTipoHabitacion");
                 tiphab.setIdTipoHabitacion(idTipoHabitacion);
+                tiphab = dat.buscarTipoHabitacion(idTipoHabitacion);
                 habitacion.setTipoHabitacion(tiphab);
 
 //                habitacion.getTipoHabitacion().getIdTipoHabitacion();
