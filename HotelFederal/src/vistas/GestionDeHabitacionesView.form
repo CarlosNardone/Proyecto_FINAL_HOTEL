@@ -74,18 +74,19 @@
                                                   </Group>
                                                   <Component id="jcbTipo" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jbBuscarTipo" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jbBuscarNumero" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jbBuscarPiso" min="-2" max="-2" attributes="0"/>
-                                              </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                                               <Component id="jrbEstado" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jbBuscarEstado" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jbBuscarTipo" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jbBuscarNumero" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jbBuscarPiso" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
                                   </Group>
@@ -180,10 +181,11 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <Component id="jrbEstado" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jbBuscarEstado" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="70" max="32767" attributes="0"/>
+                      <EmptySpace pref="59" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -385,6 +387,16 @@
     <Component class="javax.swing.JRadioButton" name="jrbEstadoNuevo">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbEstadoNuevoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jbBuscarEstado">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/recursos/buscar.png"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBuscarEstadoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
