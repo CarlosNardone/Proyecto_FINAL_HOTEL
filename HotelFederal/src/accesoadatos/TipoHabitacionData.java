@@ -99,35 +99,37 @@ public class TipoHabitacionData {
         return tipoHabitacion;
     }
 
-//     public TipoHabitacion buscarTipoHabitacionXTipo(TipoHabitacion tipoHabitacion) {
-//        String sql = "SELECT idTipoHabitacion , codigo, capacidadMaxima, cantidadCamas, tipoCamas, precioNoche FROM tipohabitacion WHERE tipoCamas = ? ";
-////        TipoHabitacion tipoHabitacion = null;
-//
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setString(1, tipoHabitacion.getTipoCamas());
-//            ResultSet rs = ps.executeQuery();
-//            if (rs.next()) {
-//                tipoHabitacion = new TipoHabitacion();
-//                tipoHabitacion.setIdTipoHabitacion(rs.getInt("idTipoHabitacion"));
-//                tipoHabitacion.setCodigo(rs.getInt("codigo"));
-//                tipoHabitacion.setCapacidadMaxima(rs.getInt("capacidadMaxima"));
-//                tipoHabitacion.setCantidadCamas(rs.getInt("cantidadCamas"));
-//                tipoHabitacion.setTipoCamas(rs.getString("tipoCamas"));
-//                tipoHabitacion.setPrecioNoche(rs.getDouble("precioNoche"));
-//               
-//            } else {
-//                JOptionPane.showMessageDialog(null, "No existe ese tipo de habitación");
-//            }
-//
-//            ps.close();
-//
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla tipohabitacion");
-//        }
-//
-//        return tipoHabitacion;
-//    }
+ public TipoHabitacion buscarTipoHabitacionXCantidaP(int capacidadMaxima) {
+        
+        String sql = "SELECT idTipoHabitacion , codigo, capacidadMaxima, cantidadCamas, tipoCamas, precioNoche FROM tipohabitacion WHERE capacidadMaxima = ? ";
+        TipoHabitacion tipoHabitacion = null;
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, capacidadMaxima);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tipoHabitacion = new TipoHabitacion();
+                tipoHabitacion.setIdTipoHabitacion(rs.getInt("idTipoHabitacion"));
+                tipoHabitacion.setCodigo(rs.getInt("codigo"));
+                tipoHabitacion.setCapacidadMaxima(rs.getInt("capacidadMaxima"));
+                tipoHabitacion.setCantidadCamas(rs.getInt("cantidadCamas"));
+                tipoHabitacion.setTipoCamas(rs.getString("tipoCamas"));
+                tipoHabitacion.setPrecioNoche(rs.getDouble("precioNoche"));
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe ese tipo de habitación");
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla tipohabitacion");
+        }
+
+        return tipoHabitacion;
+    }
+ 
     public int obtenerIdTipoHabitacionPorNombre(String nombreTipoCamas) {
         int idTipoHabitacion = -1;  // Valor predeterminado en caso de que no se encuentre un resultado
 
