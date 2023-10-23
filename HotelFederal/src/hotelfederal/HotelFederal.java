@@ -18,7 +18,7 @@ public class HotelFederal {
         // TODO code application logic here
 //        Connection con = Conexion.getConexion();
 //Huesped huesped = hue.buscarHuepedPorDni(37577100);
-//      Huesped carlos = new Huesped(1,"Carlos","Nardone","3812323","Berrutti","carlos.nardone143@gmail.com",155234434, true); 
+
 //        Huesped angel = new Huesped("Perez","Angel","1243243","Mendoza","andres.perez242@gmail.com",11231322, true); 
 //        Huesped diego = new Huesped("Diego","Bazzoni","24652571","San Luis","diegobazzoni@gmail.com","3445354545", true); 
 //        Huesped mauricio = new Huesped("Mauricio","Avila","30068183","Tucuman","mauricioavila@gmail.com","542323423", true); 
@@ -28,7 +28,6 @@ public class HotelFederal {
 //        hue.eliminarHuesped("34243424");
 //        hue.modificarHuespedPorDNI(carlos);
 //        hue.modificarHuesped(carlos);
-
 //       Huesped huespedEncontrado = hue.buscarHuepedPorDni(37577100);
 //       if(huespedEncontrado !=null){
 //       
@@ -38,35 +37,34 @@ public class HotelFederal {
 //            System.out.println(huespedEncontrado.getCelular());
 //            System.out.println(huespedEncontrado.getDomicilio());
 //    }
-
-
-
 //        for (Huesped huesped : hue.listarHuespedes()) {
 //            System.out.println(huesped.getDni());
 //            System.out.println(huesped.getApellido());
 //            System.out.println(huesped.getNombre());
 //            System.out.println(huesped.getCelular());
 //            System.out.println(huesped.getDomicilio());
-        
-        HabitacionData habdata = new HabitacionData();
-        
-        for (Habitacion hab : habdata.listarHabitaciones()) {
-            System.out.println(hab.getIdHabitacion());
-            System.out.println(hab.getNumero());
-            System.out.println(hab.getPiso());
-            System.out.println(hab.isEstado());
-            System.out.println(hab.getTipoHabitacion());
-            
-        }
-
-    
-//        TipoHabitacion hab = new TipoHabitacion(1,3, 6, 4, "Simple", 12000.5);
-//        TipoHabitacionData tipodata = new TipoHabitacionData();
-//        Habitacion hab1 = new Habitacion(4, true, 1, hab);
-//      
-        
 //        HabitacionData habdata = new HabitacionData();
-        
+//        
+//        for (Habitacion hab : habdata.listarHabitaciones()) {
+//            System.out.println(hab.getIdHabitacion());
+//            System.out.println(hab.getNumero());
+//            System.out.println(hab.getPiso());
+//            System.out.println(hab.isEstado());
+//            System.out.println(hab.getTipoHabitacion());
+//            
+//        }
+        Huesped carlos = new Huesped(1, "Carlos", "Nardone", "37577100", "Berrutti 1840", "carlin1994@live.com.ar", 155155655, true);
+
+        TipoHabitacion hab = new TipoHabitacion(1, 1, 1, 1, "Simple", 15000);
+        TipoHabitacionData tipodata = new TipoHabitacionData();
+        Habitacion hab1 = new Habitacion(15,1, true, 2, hab);
+
+        HabitacionData habdata = new HabitacionData();
+
+        Reserva reserva = new Reserva(LocalDate.of(2023, 10, 6), LocalDate.of(2023, 10, 10), 3, 40000, true, carlos, hab1);
+        ReservaData reserdata = new ReservaData();
+        reserdata.agregarReserva(reserva, hab1, carlos);
+
 //        String apellido = "Carlos";  
 //        HuespedData huespedata = new HuespedData();
 //         
@@ -86,25 +84,11 @@ public class HotelFederal {
 //         System.out.println("Codigo: " + habitacion.getCodigo());
 //         System.out.println("MAX: " + habitacion.getCapacidadMaxima());
 //         System.out.println("Cantidad de camas: " + habitacion.getCantidadCamas());
-         
 //    }
-
-
-
-         
-
-
-//         Reserva reserva = new Reserva(LocalDate.of(2023, 10, 6), LocalDate.of(2023, 10, 10), 3, 40000, true, carlos, hab1);
-//         ReservaData reserdata = new ReservaData();
-//         reserdata.agregarReserva(reserva, hab1, carlos);
-        
-
 //            TipoHabitacion tphab = new TipoHabitacion(3, 3, 2, "KING", 3000);
 //            TipoHabitacionData tphadata = new TipoHabitacionData();
 //tphadata.eliminarTipoHabitacion("5");
 //        tphadata.modificartipoHabitacion(tphab);
-
-        
 //        for (Huesped huesped : huespedata.listarHuespedesXApellido(apellido)) {
 //            System.out.println("DNI: " + huesped.getDni());
 //            System.out.println("Apellido: " + huesped.getApellido());
@@ -112,12 +96,9 @@ public class HotelFederal {
 //            System.out.println("Domicilio: " + huesped.getDomicilio());
 //            System.out.println("Correo: " + huesped.getCorreo());
 //            System.out.println("Correo: " + huesped.getCelular());
-            
 //            System.out.println("piso: " + habitacion.getPiso());
 //            System.out.println("TIPO: " + habitacion.getTipoHabitacion());
-            
-            
-        }     
+    }
 //            
 //            System.out.println("Codigo: " + tipoHabitacion.getCodigo());
 //            System.out.println("Capacidad Maxima: " + tipoHabitacion.getCapacidadMaxima());
@@ -126,7 +107,4 @@ public class HotelFederal {
 //            System.out.println("Precio de la noche: " + tipoHabitacion.getPrecioNoche());    
 //        }
 
-        
-
-    }
-
+}
