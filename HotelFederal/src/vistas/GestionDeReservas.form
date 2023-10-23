@@ -45,11 +45,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jtfCantidadPersonas" min="-2" pref="74" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -59,9 +55,11 @@
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="jbSalir" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jtfCantidadPersonas" min="-2" pref="74" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jdcFechaSalida" min="-2" max="-2" attributes="0"/>
                                               <Component id="jdcFechaEntrada" min="-2" max="-2" attributes="0"/>
@@ -70,7 +68,6 @@
                                           <Component id="jbCrearNReserva" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
