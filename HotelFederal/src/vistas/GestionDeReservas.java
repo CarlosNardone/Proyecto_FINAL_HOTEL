@@ -106,6 +106,8 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Monto Estadía:");
 
+        jtfMontoEstadia.setEditable(false);
+
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
