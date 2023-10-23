@@ -147,6 +147,16 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
 
         jButton3.setText("Reservas");
 
+        jtfApellido.setEditable(false);
+
+        jtfNombre.setEditable(false);
+
+        jtfCorreo.setEditable(false);
+
+        jtfDomicilio.setEditable(false);
+
+        jtfCelular.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
