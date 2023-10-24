@@ -322,7 +322,7 @@ public class HabitacionData {
         return habitaciones;
     }
     
-        public List<Habitacion> listarHabitacionesxNumero(int numero) {
+    public List<Habitacion> listarHabitacionesxNumero(int numero) {
         String sql = "SELECT idHabitacion ,numero, estado, piso, idTipoHabitacion FROM habitacion WHERE numero = ?";
         ArrayList<Habitacion> habitaciones = new ArrayList<>();
 
@@ -356,7 +356,7 @@ public class HabitacionData {
         return habitaciones;
     }
         
-        public List<Habitacion> listarHabitacionesxEstado(boolean estado) {
+    public List<Habitacion> listarHabitacionesxEstado(boolean estado) {
         String sql = "SELECT idHabitacion ,numero, estado, piso, idTipoHabitacion FROM habitacion WHERE estado = ?";
         ArrayList<Habitacion> habitaciones = new ArrayList<>();
 

@@ -51,8 +51,8 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         modelo = new DefaultTableModel();
         armarCabeceraTabla();
         centrarVentana();
-        //arreglar
-                jtListaHabitaciones.addMouseListener(new MouseAdapter() {
+        
+        jtListaHabitaciones.addMouseListener(new MouseAdapter() {
         public void mousePressed(MouseEvent Mouse_evt){
             JTable modelo = (JTable)Mouse_evt.getSource();
             Point point = Mouse_evt.getPoint();
