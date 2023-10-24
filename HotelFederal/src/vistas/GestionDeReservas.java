@@ -105,6 +105,7 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
         jbSalir = new javax.swing.JButton();
         jbCrearNReserva = new javax.swing.JButton();
         jbLimpiarTodo = new javax.swing.JButton();
+        jbBuscarReservas = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -169,6 +170,12 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel4.setText("Cantidad de Personas:");
+
+        jtfCantidadPersonas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfCantidadPersonasKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -387,12 +394,25 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
         jbCrearNReserva.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jbCrearNReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/NuevaReserva.png"))); // NOI18N
         jbCrearNReserva.setText("Nueva Reserva");
+        jbCrearNReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCrearNReservaActionPerformed(evt);
+            }
+        });
 
         jbLimpiarTodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/limpiar.png"))); // NOI18N
         jbLimpiarTodo.setText("Limpiar");
         jbLimpiarTodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbLimpiarTodoActionPerformed(evt);
+            }
+        });
+
+        jbBuscarReservas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
+        jbBuscarReservas.setText("Buscar Reservas");
+        jbBuscarReservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarReservasActionPerformed(evt);
             }
         });
 
@@ -405,18 +425,24 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
                 .addComponent(jbLimpiarTodo)
                 .addGap(32, 32, 32)
                 .addComponent(jbCrearNReserva)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jbBuscarReservas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbLimpiarTodo)
-                    .addComponent(jbSalir)
-                    .addComponent(jbCrearNReserva))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jbBuscarReservas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jbLimpiarTodo)
+                            .addComponent(jbSalir)
+                            .addComponent(jbCrearNReserva))))
                 .addGap(17, 17, 17))
         );
 
@@ -472,10 +498,6 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(318, 318, 318))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(234, 234, 234)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -491,6 +513,10 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
                     .addComponent(jSeparator1)
                     .addComponent(jSeparator3))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(234, 234, 234)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -587,7 +613,35 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
 
     private void jbLimpiarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarTodoActionPerformed
         // TODO add your handling code here:
+        limpiarCampos();
     }//GEN-LAST:event_jbLimpiarTodoActionPerformed
+
+    private void jbCrearNReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCrearNReservaActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jbCrearNReservaActionPerformed
+
+    private void jtfCantidadPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCantidadPersonasKeyTyped
+        // TODO add your handling code here:
+                int key = evt.getKeyChar();
+
+        boolean numero = key >= 48 && key <= 57;
+
+        if (!numero) {
+            evt.consume();
+        }
+        if (jtfCantidadPersonas.getText().trim().length() == 1) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfCantidadPersonasKeyTyped
+
+    private void jbBuscarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarReservasActionPerformed
+        // TODO add your handling code here:
+        BusquedaXReservasView bxr = new BusquedaXReservasView();
+        MenuPrincipalView.jdEscritorio.add(bxr);
+        bxr.toFront();
+        bxr.setVisible(true);
+    }//GEN-LAST:event_jbBuscarReservasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -615,6 +669,7 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable2;
     private javax.swing.JButton jbBuscarHuespedXDni;
+    private javax.swing.JButton jbBuscarReservas;
     private javax.swing.JButton jbBuscarTipoXcantidadP;
     private javax.swing.JButton jbCalcularMontoE;
     private javax.swing.JButton jbCrearNReserva;
@@ -650,6 +705,26 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
 //    busquedasXReservasView.setVisible(true);
 //}
     
+        private void limpiarCampos() {
+        jtfApellido.setText("");
+        jtfDniHuesped.setText("");
+        jtfNombre.setText("");
+        jtfDomicilio.setText("");
+        jrbEstado.setSelected(false);
+        jtfCorreo.setText("");
+        jtfMontoEstadia.setText("");
+        jtfCelular.setText("");
+        jtfCantidadPersonas.setText("");
+        jdcFechaEntrada.setDate(null);
+        jdcFechaSalida.setDate(null);
+
+    }
     
+//    private void borrarFilaTabla() {
+//        int indice = modelo.getRowCount() - 1;
+//        for (int i = indice; i >= 0; i--) {
+//            modelo.removeRow(i);
+//        }
+//    }
     
 }

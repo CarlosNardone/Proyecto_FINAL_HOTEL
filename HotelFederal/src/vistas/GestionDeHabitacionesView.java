@@ -51,20 +51,22 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         modelo = new DefaultTableModel();
         armarCabeceraTabla();
         centrarVentana();
-//                jtListaHabitaciones.addMouseListener(new MouseAdapter() {
-//        public void mousePressed(MouseEvent Mouse_evt){
-//            JTable modelo = (JTable)Mouse_evt.getSource();
-//            Point point = Mouse_evt.getPoint();
-//            int fila = modelo.rowAtPoint(point);
-//            if(Mouse_evt.getClickCount() == 1){
-//                jtfNumero.setText(modelo.getValueAt(fila, 1).toString()); 
-//                jtfPiso.setText(modelo.getValueAt(fila, 2).toString());
-//                jtfTipoNuevo.setText(modelo.getValueAt(fila, 3).toString());
-//                boolean estado = (boolean) modelo.getValueAt(fila, 4);
-//                jrbEstado.setSelected(estado);    
-//            }
-//        }
-//        });
+        //arreglar
+                jtListaHabitaciones.addMouseListener(new MouseAdapter() {
+        public void mousePressed(MouseEvent Mouse_evt){
+            JTable modelo = (JTable)Mouse_evt.getSource();
+            Point point = Mouse_evt.getPoint();
+            int fila = modelo.rowAtPoint(point);
+            if(Mouse_evt.getClickCount() == 1){
+                jtfNumero.setText(modelo.getValueAt(fila, 1).toString()); 
+                boolean estado = (boolean) modelo.getValueAt(fila, 2);
+                jrbEstado.setSelected(estado);   
+                jtfPiso.setText(modelo.getValueAt(fila, 3).toString());
+                jtfTipoNuevo.setText(modelo.getValueAt(fila, 4).toString());
+ 
+            }
+        }
+        });
 
     }
 
@@ -171,9 +173,26 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Estado");
 
+        jtfNumeroNuevo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNumeroNuevoKeyTyped(evt);
+            }
+        });
+
+        jtfPisoNuevo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfPisoNuevoKeyTyped(evt);
+            }
+        });
+
         jtfTipoNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfTipoNuevoActionPerformed(evt);
+            }
+        });
+        jtfTipoNuevo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfTipoNuevoKeyTyped(evt);
             }
         });
 
@@ -196,13 +215,11 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
                     .addComponent(jLabel10))
                 .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jrbEstadoNuevo)
-                        .addGap(140, 140, 140))
+                    .addComponent(jrbEstadoNuevo)
                     .addComponent(jtfPisoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfTipoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfNumeroNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                .addGap(29, 29, 29))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,6 +272,17 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         jtfNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfNumeroActionPerformed(evt);
+            }
+        });
+        jtfNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNumeroKeyTyped(evt);
+            }
+        });
+
+        jtfPiso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfPisoKeyTyped(evt);
             }
         });
 
@@ -568,6 +596,77 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
        
     }//GEN-LAST:event_jbBuscarEstadoActionPerformed
 
+    private void jtfNumeroNuevoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNumeroNuevoKeyTyped
+        // TODO add your handling code here:
+                int key = evt.getKeyChar();
+
+        boolean numero = key >= 48 && key <= 57;
+
+        if (!numero) {
+            evt.consume();
+        }
+        if (jtfNumeroNuevo.getText().trim().length() == 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfNumeroNuevoKeyTyped
+
+    private void jtfPisoNuevoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPisoNuevoKeyTyped
+        // TODO add your handling code here:
+                int key = evt.getKeyChar();
+
+        boolean numero = key >= 48 && key <= 57;
+
+        if (!numero) {
+            evt.consume();
+        }
+        if (jtfPisoNuevo.getText().trim().length() == 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfPisoNuevoKeyTyped
+
+    private void jtfTipoNuevoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTipoNuevoKeyTyped
+        // TODO add your handling code here:
+                int key = evt.getKeyChar();
+
+        boolean numero = key >= 48 && key <= 57;
+
+        if (!numero) {
+            evt.consume();
+        }
+        if (jtfTipoNuevo.getText().trim().length() == 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfTipoNuevoKeyTyped
+
+    private void jtfNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNumeroKeyTyped
+        // TODO add your handling code here:
+                int key = evt.getKeyChar();
+
+        boolean numero = key >= 48 && key <= 57;
+
+        if (!numero) {
+            evt.consume();
+        }
+        if (jtfNumero.getText().trim().length() == 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfNumeroKeyTyped
+
+    private void jtfPisoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPisoKeyTyped
+        // TODO add your handling code here:
+                int key = evt.getKeyChar();
+
+        boolean numero = key >= 48 && key <= 57;
+
+        if (!numero) {
+            evt.consume();
+        }
+        if (jtfPiso.getText().trim().length() == 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfPisoKeyTyped
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;

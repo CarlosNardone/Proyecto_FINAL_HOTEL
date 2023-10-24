@@ -97,6 +97,12 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
 
         jtfCCamas.setEditable(false);
 
+        jtfPrecioxNoche.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfPrecioxNocheKeyTyped(evt);
+            }
+        });
+
         jcbTiposCamas.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jcbTiposCamas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,6 +275,20 @@ public class TipoDeHabitacionView extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en estos campos");
         }
     }//GEN-LAST:event_jbModificarActionPerformed
+
+    private void jtfPrecioxNocheKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPrecioxNocheKeyTyped
+        // TODO add your handling code here:
+                int key = evt.getKeyChar();
+
+        boolean numero = key >= 48 && key <= 57;
+
+        if (!numero) {
+            evt.consume();
+        }
+        if (jtfPrecioxNoche.getText().trim().length() == 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfPrecioxNocheKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

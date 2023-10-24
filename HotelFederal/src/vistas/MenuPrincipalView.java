@@ -82,7 +82,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -141,14 +140,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
             }
         });
         jMenu4.add(jMenuItem4);
-
-        jMenuItem5.setText("Busqueda De Reservas");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem5);
 
         jMenuBar1.add(jMenu4);
 
@@ -230,17 +221,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jdEscritorio.moveToFront(gr);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-         jdEscritorio.removeAll();
-        jdEscritorio.repaint();
-        BusquedaXReservasView bxr = new BusquedaXReservasView();
-        bxr.setVisible(true);
-        bxr.getContentPane().setBackground(new Color(68,167,132));
-        jdEscritorio.add(bxr);
-        jdEscritorio.moveToFront(bxr);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -286,7 +266,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JDesktopPane jdEscritorio;
+    public static javax.swing.JDesktopPane jdEscritorio;
     // End of variables declaration//GEN-END:variables
 }

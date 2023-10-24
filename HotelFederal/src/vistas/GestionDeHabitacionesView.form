@@ -100,15 +100,12 @@
                   </Group>
                   <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jrbEstadoNuevo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jrbEstadoNuevo" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jtfPisoNuevo" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
                       <Component id="jtfTipoNuevo" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
                       <Component id="jtfNumeroNuevo" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -174,12 +171,19 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtfNumeroNuevo">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfNumeroNuevoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jtfPisoNuevo">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfPisoNuevoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jtfTipoNuevo">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfTipoNuevoActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfTipoNuevoKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jrbEstadoNuevo">
@@ -362,9 +366,13 @@
             <Component class="javax.swing.JTextField" name="jtfNumero">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfNumeroActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfNumeroKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jtfPiso">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfPisoKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbBuscarNumero">
               <Properties>
