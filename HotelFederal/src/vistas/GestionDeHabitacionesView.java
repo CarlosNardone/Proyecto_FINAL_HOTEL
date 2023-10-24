@@ -58,10 +58,10 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
             Point point = Mouse_evt.getPoint();
             int fila = modelo.rowAtPoint(point);
             if(Mouse_evt.getClickCount() == 1){
-                jtfNumero.setText(modelo.getValueAt(fila, 1).toString()); 
+                jtfNumeroNuevo.setText(modelo.getValueAt(fila, 1).toString()); 
                 boolean estado = (boolean) modelo.getValueAt(fila, 2);
-                jrbEstado.setSelected(estado);   
-                jtfPiso.setText(modelo.getValueAt(fila, 3).toString());
+                jrbEstadoNuevo.setSelected(estado);   
+                jtfPisoNuevo.setText(modelo.getValueAt(fila, 3).toString());
                 jtfTipoNuevo.setText(modelo.getValueAt(fila, 4).toString());
  
             }

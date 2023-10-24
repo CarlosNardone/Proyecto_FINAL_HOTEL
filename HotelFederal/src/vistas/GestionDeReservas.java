@@ -106,11 +106,6 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
         jbCrearNReserva = new javax.swing.JButton();
         jbLimpiarTodo = new javax.swing.JButton();
         jbBuscarReservas = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jSeparator3 = new javax.swing.JSeparator();
 
         setClosable(true);
         setIconifiable(true);
@@ -446,43 +441,6 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
                 .addGap(17, 17, 17))
         );
 
-        jLabel15.setFont(new java.awt.Font("Calibri", 1, 40)); // NOI18N
-        jLabel15.setText("Búsqueda Reserva");
-
-        jPanel4.setBackground(new java.awt.Color(68, 167, 132));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jSeparator3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 102, 0), 1, true));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -498,20 +456,9 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(318, 318, 318))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addGap(316, 316, 316))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(122, 122, 122))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
-                    .addComponent(jSeparator3))
+                .addComponent(jSeparator1)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(234, 234, 234)
@@ -531,13 +478,7 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(13, 13, 13)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addGap(311, 311, 311))
         );
 
         pack();
@@ -567,27 +508,34 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
     private void jbBuscarTipoXcantidadPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarTipoXcantidadPActionPerformed
         try {
             int cantidadPersonas = Integer.parseInt(jtfCantidadPersonas.getText());
-            TipoHabitacion tipoxCantidad = tipoDat.buscarTipoHabitacionXCantidaP(cantidadPersonas);
-            JOptionPane.showMessageDialog(null, "tipo y precio " + tipoxCantidad.getTipoCamas() + " " + tipoxCantidad.getPrecioNoche());
-            jlTipoHab.setText(tipoxCantidad.getTipoCamas());
-            jlPrecioxNoche.setText(Double.toString(tipoxCantidad.getPrecioNoche()));
+            if (cantidadPersonas != 0 && cantidadPersonas <= 4) {
+                TipoHabitacion tipoxCantidad = tipoDat.buscarTipoHabitacionXCantidaP(cantidadPersonas);
+                jlTipoHab.setText(tipoxCantidad.getTipoCamas());
+                jlPrecioxNoche.setText(Double.toString(tipoxCantidad.getPrecioNoche()));
+            } else {
+                JOptionPane.showMessageDialog(this, "Hospedamos de 1 a 4 personas, maximo por habitacion");
+            }
+
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "parametro incorrecto");
         }
     }//GEN-LAST:event_jbBuscarTipoXcantidadPActionPerformed
 
     private void jbCalcularMontoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCalcularMontoEActionPerformed
-        
-        Date fechaEntrada = jdcFechaEntrada.getDate();
-        Date fechaSalida = jdcFechaSalida.getDate();
-        Double precioXNoche = Double.parseDouble(jlPrecioxNoche.getText());
-        LocalDate localDateEntrada = fechaEntrada.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate localDateSalida = fechaSalida.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        long diasTotales = ChronoUnit.DAYS.between(localDateEntrada, localDateSalida);
-        Double MontoFinal = precioXNoche * diasTotales;
-        jtfMontoEstadia.setText(MontoFinal+"");
-        
-       
+        try {
+            Date fechaEntrada = jdcFechaEntrada.getDate();
+            Date fechaSalida = jdcFechaSalida.getDate();
+            Double precioXNoche = Double.parseDouble(jlPrecioxNoche.getText());
+            LocalDate localDateEntrada = fechaEntrada.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate localDateSalida = fechaSalida.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            long diasTotales = ChronoUnit.DAYS.between(localDateEntrada, localDateSalida);
+            Double MontoFinal = precioXNoche * diasTotales;
+            jtfMontoEstadia.setText(MontoFinal + "");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Los parametros tienen que estar completos.");
+        }catch(NullPointerException nu){
+            JOptionPane.showMessageDialog(this, "Seleccione fecha de su estadia.");
+        }
 
 
     }//GEN-LAST:event_jbCalcularMontoEActionPerformed
@@ -595,13 +543,13 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
     private void jtfDniHuespedKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDniHuespedKeyTyped
         // TODO add your handling code here:
         int key = evt.getKeyChar();
-        
+
         boolean numero = key >= 48 && key <= 57;
-        
-        if(!numero){
+
+        if (!numero) {
             evt.consume();
         }
-        if(jtfDniHuesped.getText().trim().length() == 10){
+        if (jtfDniHuesped.getText().trim().length() == 10) {
             evt.consume();
         }
     }//GEN-LAST:event_jtfDniHuespedKeyTyped
@@ -618,12 +566,12 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
 
     private void jbCrearNReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCrearNReservaActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jbCrearNReservaActionPerformed
 
     private void jtfCantidadPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCantidadPersonasKeyTyped
         // TODO add your handling code here:
-                int key = evt.getKeyChar();
+        int key = evt.getKeyChar();
 
         boolean numero = key >= 48 && key <= 57;
 
@@ -641,6 +589,7 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
         MenuPrincipalView.jdEscritorio.add(bxr);
         bxr.toFront();
         bxr.setVisible(true);
+        bxr.getContentPane().setBackground(new Color(68, 167, 132));
     }//GEN-LAST:event_jbBuscarReservasActionPerformed
 
 
@@ -651,7 +600,6 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -663,11 +611,7 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTable jTable2;
     private javax.swing.JButton jbBuscarHuespedXDni;
     private javax.swing.JButton jbBuscarReservas;
     private javax.swing.JButton jbBuscarTipoXcantidadP;
@@ -692,20 +636,7 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
 
-//    private void openBusquedasXReservasView() {
-//    BusquedasXReservasView busquedasXReservasView = new BusquedasXReservasView();
-//
-//    // Obtén el JDesktopPane desde el contenedor padre
-//    jdEscritorio desktopPane = (jdEscritorio) getParent();
-//    
-//    // Agrega el BusquedasXReservasView al JDesktopPane
-//    desktopPane.add(busquedasXReservasView);
-//    
-//    // Establece que el JInternalFrame sea visible
-//    busquedasXReservasView.setVisible(true);
-//}
-    
-        private void limpiarCampos() {
+    private void limpiarCampos() {
         jtfApellido.setText("");
         jtfDniHuesped.setText("");
         jtfNombre.setText("");
@@ -717,14 +648,9 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
         jtfCantidadPersonas.setText("");
         jdcFechaEntrada.setDate(null);
         jdcFechaSalida.setDate(null);
+        jlPrecioxNoche.setText("-------------");
+        jlTipoHab.setText("-------------");
 
     }
-    
-//    private void borrarFilaTabla() {
-//        int indice = modelo.getRowCount() - 1;
-//        for (int i = indice; i >= 0; i--) {
-//            modelo.removeRow(i);
-//        }
-//    }
-    
+
 }
