@@ -7,6 +7,7 @@ package vistas;
 
 import accesoadatos.HabitacionData;
 import accesoadatos.HuespedData;
+import accesoadatos.ReservaData;
 import accesoadatos.TipoHabitacionData;
 import entidades.Habitacion;
 import entidades.Huesped;
@@ -35,6 +36,7 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
     private HuespedData hue;
     private Huesped huesped;
     private Reserva reserva;
+    private ReservaData reservaData;
     private Habitacion habitacion;
     private HabitacionData habitaciondata;
     private TipoHabitacion tipoHab = new TipoHabitacion();
@@ -47,6 +49,7 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
         this.habitacion = new Habitacion();
         this.habitaciondata = new HabitacionData();
         this.huesped = huesped;
+        this.reservaData = new ReservaData();
         initComponents();
         centrarVentana();
         modelo = new DefaultTableModel();
@@ -648,9 +651,11 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
 
     private void jbCrearNReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCrearNReservaActionPerformed
         int dni = Integer.parseInt(jtfDniHuesped.getText());
-        
+        int numeroH = Integer.parseInt(jlNHabitacion.getText());
         Huesped huespedXId = hue.buscarHuepedPorDni(dni);
-//        Habitacion habitacionxId = habitaciondata.buscarHabitacionXTipo(ERROR, tipoHab)
+        Habitacion habitacionxId = habitaciondata.buscarHabitacionXNro(numeroH);
+        
+//        reservaData.agregarReserva(reserva, habitacionxId, huespedXId);
     }//GEN-LAST:event_jbCrearNReservaActionPerformed
 
     private void jtfCantidadPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCantidadPersonasKeyTyped
