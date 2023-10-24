@@ -133,6 +133,12 @@ public class HuespedView extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel9.setText("Estado:");
 
+        jtfDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfDNIKeyTyped(evt);
+            }
+        });
+
         jtfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtfNombreKeyTyped(evt);
@@ -142,6 +148,12 @@ public class HuespedView extends javax.swing.JInternalFrame {
         jtfApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtfApellidoKeyTyped(evt);
+            }
+        });
+
+        jtfCelular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfCelularKeyTyped(evt);
             }
         });
 
@@ -353,8 +365,6 @@ public class HuespedView extends javax.swing.JInternalFrame {
                 .addContainerGap(84, Short.MAX_VALUE))
         );
 
-        jbGuardar.getAccessibleContext().setAccessibleName("Guardar");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -483,6 +493,34 @@ public class HuespedView extends javax.swing.JInternalFrame {
             evt.consume();
         }             
     }//GEN-LAST:event_jTApellidoBusquedaKeyTyped
+
+    private void jtfDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDNIKeyTyped
+        // TODO add your handling code here:
+                int key = evt.getKeyChar();
+        
+        boolean numero = key >= 48 && key <= 57;
+        
+        if(!numero){
+            evt.consume();
+        }
+        if(jtfDNI.getText().trim().length() == 10){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfDNIKeyTyped
+
+    private void jtfCelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCelularKeyTyped
+        // TODO add your handling code here:
+                int key = evt.getKeyChar();
+        
+        boolean numero = key >= 48 && key <= 57;
+        
+        if(!numero){
+            evt.consume();
+        }
+        if(jtfCelular.getText().trim().length() == 10){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfCelularKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

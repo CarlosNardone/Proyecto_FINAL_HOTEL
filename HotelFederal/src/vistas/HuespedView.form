@@ -254,6 +254,9 @@
     <Component class="javax.swing.JTextField" name="jtfCorreo">
     </Component>
     <Component class="javax.swing.JTextField" name="jtfDNI">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfDNIKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfNombre">
       <Events>
@@ -266,6 +269,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfCelular">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfCelularKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jrbEstado">
       <Events>

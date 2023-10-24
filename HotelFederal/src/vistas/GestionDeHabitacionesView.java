@@ -10,14 +10,18 @@ import accesoadatos.TipoHabitacionData;
 import entidades.Habitacion;
 import entidades.TipoHabitacion;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -47,6 +51,20 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         modelo = new DefaultTableModel();
         armarCabeceraTabla();
         centrarVentana();
+//                jtListaHabitaciones.addMouseListener(new MouseAdapter() {
+//        public void mousePressed(MouseEvent Mouse_evt){
+//            JTable modelo = (JTable)Mouse_evt.getSource();
+//            Point point = Mouse_evt.getPoint();
+//            int fila = modelo.rowAtPoint(point);
+//            if(Mouse_evt.getClickCount() == 1){
+//                jtfNumero.setText(modelo.getValueAt(fila, 1).toString()); 
+//                jtfPiso.setText(modelo.getValueAt(fila, 2).toString());
+//                jtfTipoNuevo.setText(modelo.getValueAt(fila, 3).toString());
+//                boolean estado = (boolean) modelo.getValueAt(fila, 4);
+//                jrbEstado.setSelected(estado);    
+//            }
+//        }
+//        });
 
     }
 
