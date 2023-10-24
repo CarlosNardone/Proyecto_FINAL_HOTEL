@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2023 at 02:09 AM
+-- Generation Time: Oct 25, 2023 at 01:07 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -40,7 +40,9 @@ CREATE TABLE `habitacion` (
 --
 
 INSERT INTO `habitacion` (`idHabitacion`, `numero`, `estado`, `piso`, `idTipoHabitacion`) VALUES
-(10, 1, 1, 2, 1);
+(10, 1, 1, 2, 1),
+(15, 2, 1, 3, 4),
+(16, 3, 1, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -90,6 +92,15 @@ CREATE TABLE `reserva` (
   `idHabitacion` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `reserva`
+--
+
+INSERT INTO `reserva` (`idReserva`, `fechaEntrada`, `fechaSalida`, `cantidadPersonas`, `precioTotal`, `estado`, `idHuesped`, `idHabitacion`) VALUES
+(5, '2023-10-22', '2023-10-27', 3, 40000, 1, 1, 10),
+(7, '2023-10-22', '2023-10-27', 3, 40000, 1, 12, 15),
+(8, '2023-10-06', '2023-10-10', 3, 40000, 1, 1, 15);
+
 -- --------------------------------------------------------
 
 --
@@ -111,8 +122,9 @@ CREATE TABLE `tipohabitacion` (
 
 INSERT INTO `tipohabitacion` (`idTipoHabitacion`, `codigo`, `capacidadMaxima`, `cantidadCamas`, `tipoCamas`, `precioNoche`) VALUES
 (1, 1, 1, 1, 'Simple', 10000),
-(4, 3, 2, 2, 'Doble', 15000),
-(6, 2, 4, 5, 'King Size', 350000);
+(4, 2, 2, 2, 'Doble', 15000),
+(6, 3, 3, 2, 'King Size', 25000),
+(7, 4, 4, 3, 'Queen Size', 30000);
 
 --
 -- Indexes for dumped tables
@@ -155,7 +167,7 @@ ALTER TABLE `tipohabitacion`
 -- AUTO_INCREMENT for table `habitacion`
 --
 ALTER TABLE `habitacion`
-  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `huesped`
@@ -167,13 +179,13 @@ ALTER TABLE `huesped`
 -- AUTO_INCREMENT for table `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tipohabitacion`
 --
 ALTER TABLE `tipohabitacion`
-  MODIFY `idTipoHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idTipoHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
