@@ -114,16 +114,24 @@ public class ReservaData {
             while (rs.next()) {
                 Reserva resr = new Reserva();
                 resr.setIdReserva(rs.getInt("idReserva"));
-                Huesped hue = hdata.buscarHuepedPorDni(rs.getInt("idHuesped"));
-                Habitacion hab = habData.buscarHabitacionXNro(rs.getInt("idHabitacion"));
-                resr.setHuesped(hue);
-                resr.setHabitacion(hab);
-                resr.setIdReserva(rs.getInt("idReserva"));
+
+                
+//                Huesped hue = hdata.buscarHuepedPorDni(rs.getInt("idHuesped"));
+//                Habitacion hab = habData.buscarHabitacionXNro(rs.getInt("idHabitacion"));
+                
+//                resr.setIdReserva(rs.getInt("idReserva"));
+                   resr.setFechaDeEntrada(rs.getDate("fechaEntrada").toLocalDate());
+                   resr.setFechaDeSalida(rs.getDate("fechaSalida").toLocalDate());
+                resr.setCantidadPersonas(rs.getInt("cantidadPersonas"));
+                resr.setPrecioTotal(rs.getDouble("precioTotal"));
+                resr.setEstado(true);
+//                resr.setHuesped(hue);
+//                resr.setHabitacion(hab);
                 reservas.add(resr);
-                if (hue != null && hab != null) {
-                    resr.setHuesped(hue);
-                    resr.setHabitacion(hab);
-                }
+//                if (hue != null && hab != null) {
+//                    resr.setHuesped(hue);
+//                    resr.setHabitacion(hab);
+//                }
             }
 
             ps.close();
@@ -198,8 +206,8 @@ public class ReservaData {
         ps.setInt(3, reserva.getCantidadPersonas());
         ps.setDouble(4, reserva.getPrecioTotal());
         ps.setBoolean(5, reserva.isEstado());
-        ps.setInt(6, reserva.getHuesped()); // Asumiendo que getHuesped() devuelve la ID del huésped
-        ps.setInt(7, reserva.getHabitacion()); // Asumiendo que getHabitacion() devuelve la ID de la habitación
+//        ps.setInt(6, reserva.getHuesped()); // Asumiendo que getHuesped() devuelve la ID del huésped
+//        ps.setInt(7, reserva.getHabitacion()); // Asumiendo que getHabitacion() devuelve la ID de la habitación
 
         int rowsUpdated = ps.executeUpdate();
 
