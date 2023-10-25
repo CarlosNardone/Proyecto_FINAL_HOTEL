@@ -65,21 +65,21 @@ public class HotelFederal {
         ReservaData reserdata = new ReservaData();
 //        reserdata.agregarReserva(reserva, hab1, carlos);
 
-        reserdata.borrarReserva(1, 15, true);
+//        reserdata.borrarReserva(1, 15, true);
 
         
-//                for (Reserva reserva : reserdata.obtenerReservasPorHuesped(1)) {
-//            System.out.println(reserva.getIdReserva());
-//            System.out.println(reserva.getFechaDeEntrada());
-//            System.out.println(reserva.getFechaDeSalida());
-//            System.out.println(reserva.getCantidadPersonas());
-//            System.out.println(reserva.getPrecioTotal());
-//            System.out.println(reserva.isEstado());
-//            System.out.println(reserva.getHuesped());
-//            System.out.println(reserva.getHabitacion());
-//            
-//
-//                } //revisar el for
+                for (Reserva reserva : reserdata.obtenerReservasPorHuesped(1)) {
+            System.out.println(reserva.getIdReserva());
+            System.out.println(reserva.getFechaDeEntrada());
+            System.out.println(reserva.getFechaDeSalida());
+            System.out.println(reserva.getCantidadPersonas());
+            System.out.println(reserva.getPrecioTotal());
+            System.out.println(reserva.isEstado());
+            System.out.println(reserva.getHuesped());
+            System.out.println(reserva.getHabitacion());
+            
+
+                } //revisar el for
                 
 
                 
