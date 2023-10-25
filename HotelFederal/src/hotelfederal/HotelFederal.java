@@ -54,17 +54,35 @@ public class HotelFederal {
 //            
 //        }
         Huesped carlos = new Huesped(1, "Carlos", "Nardone", "37577100", "Berrutti 1840", "carlin1994@live.com.ar", 155155655, true);
-
+//
         TipoHabitacion hab = new TipoHabitacion(1, 1, 1, 1, "Simple", 15000);
-        TipoHabitacionData tipodata = new TipoHabitacionData();
-        Habitacion hab1 = new Habitacion(15,1, true, 2, hab);
+//        TipoHabitacionData tipodata = new TipoHabitacionData();
+        Habitacion hab1 = new Habitacion(15, 1, true, 2, hab);
 
         HabitacionData habdata = new HabitacionData();
 
-        Reserva reserva = new Reserva(LocalDate.of(2023, 10, 6), LocalDate.of(2023, 10, 10), 3, 40000, true, carlos, hab1);
+//        Reserva reserva = new Reserva(LocalDate.of(2023, 10, 6), LocalDate.of(2023, 10, 10), 3, 40000, true, carlos, hab1);
         ReservaData reserdata = new ReservaData();
-        reserdata.agregarReserva(reserva, hab1, carlos);
+//        reserdata.agregarReserva(reserva, hab1, carlos);
 
+        reserdata.borrarReserva(1, 15, true);
+
+        
+//                for (Reserva reserva : reserdata.obtenerReservasPorHuesped(1)) {
+//            System.out.println(reserva.getIdReserva());
+//            System.out.println(reserva.getFechaDeEntrada());
+//            System.out.println(reserva.getFechaDeSalida());
+//            System.out.println(reserva.getCantidadPersonas());
+//            System.out.println(reserva.getPrecioTotal());
+//            System.out.println(reserva.isEstado());
+//            System.out.println(reserva.getHuesped());
+//            System.out.println(reserva.getHabitacion());
+//            
+//
+//                } //revisar el for
+                
+
+                
 //        String apellido = "Carlos";  
 //        HuespedData huespedata = new HuespedData();
 //         
