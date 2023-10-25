@@ -7,18 +7,23 @@ package vistas;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Carlos
  */
 public class BusquedaXReservasView extends javax.swing.JInternalFrame {
+    private DefaultTableModel modelo;
 
     /**
      * Creates new form BusquedaXReservasView
      */
     public BusquedaXReservasView() {
         initComponents();
+                modelo = new DefaultTableModel();
+        armarCabeceraTabla();
         centrarVentana();
     }
 
@@ -55,7 +60,7 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jtBuscarReservas = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jbBuscarxHuesped = new javax.swing.JButton();
@@ -80,7 +85,7 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
 
         jPanel4.setBackground(new java.awt.Color(68, 167, 132));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jtBuscarReservas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -91,7 +96,7 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(jtBuscarReservas);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -196,9 +201,31 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JButton jbBuscarXFechas;
     private javax.swing.JButton jbBuscarxHuesped;
     private javax.swing.JButton jbSalir;
+    private javax.swing.JTable jtBuscarReservas;
     // End of variables declaration//GEN-END:variables
+    private void borrarFilaTabla() {
+        int indice = modelo.getRowCount() - 1;
+        for (int i = indice; i >= 0; i--) {
+            modelo.removeRow(i);
+        }
+    }
+    
+    private void armarCabeceraTabla() {
+        ArrayList<Object> filaCabecera = new ArrayList<>();
+        filaCabecera.add("fechaEntrada");
+        filaCabecera.add("fechaSalida");
+        filaCabecera.add("cantidadPersonas");
+        filaCabecera.add("precioTotal");
+        filaCabecera.add("estado");
+        filaCabecera.add("idHuesped");
+        filaCabecera.add("idHabitacion");
+        for (Object it : filaCabecera) {
+            modelo.addColumn(it);
+        }
+        jtBuscarReservas.setModel(modelo);
+    }
+
 }
