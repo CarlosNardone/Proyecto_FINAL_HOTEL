@@ -499,4 +499,53 @@ public class HabitacionData {
         return count;
     }
 
+    
+    public void habitacionOcupada(int idHabitacion){
+        
+            String sql = "UPDATE habitacion SET estado = 0 WHERE idHabitacion = ?";
+
+            try {
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setInt(1, idHabitacion);
+                
+               
+                int rowsUpdated = ps.executeUpdate();
+
+//                if (rowsUpdated == 1) {
+//                    JOptionPane.showMessageDialog(null, "La habitación camb");
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Habitación inexistente");
+//                }
+
+                ps.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitación");
+                System.err.println(ex);
+            }
+        }
+
+    public void habitacionLibre(int numero){
+        
+            String sql = "UPDATE habitacion SET estado = 1 WHERE numero = ?";
+
+            try {
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setInt(1, numero);
+                
+               
+                int rowsUpdated = ps.executeUpdate();
+
+//                if (rowsUpdated == 1) {
+//                    JOptionPane.showMessageDialog(null, "La habitación camb");
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Habitación inexistente");
+//                }
+
+                ps.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitación");
+                System.err.println(ex);
+            }
+        }
+    
 }

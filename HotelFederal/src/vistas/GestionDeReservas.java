@@ -651,30 +651,14 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
 
     private void jbCrearNReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCrearNReservaActionPerformed
 
-//        boolean reservaEstado = true;
-//        int dni = Integer.parseInt(jtfDniHuesped.getText());
-//        int numeroH = Integer.parseInt(jlNHabitacion.getText());
-//        Huesped huespedXId = hue.buscarHuepedPorDni(dni);
-//        Habitacion habitacionxId = habitaciondata.buscarHabitacionXNro(numeroH);
-//        reserva.setCantidadPersonas(Integer.parseInt(jtfCantidadPersonas.getText()));
-//        Date fechaEntradaDate = jdcFechaEntrada.getDate();
-//        Date fechaSalidaDate = jdcFechaSalida.getDate();
-//        LocalDate fechaEntrada = fechaEntradaDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//        LocalDate fechaSalida = fechaSalidaDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//        reserva.setFechaDeEntrada(fechaEntrada);
-//        reserva.setFechaDeSalida(fechaSalida);
-//        reserva.setPrecioTotal(Double.parseDouble(jtfMontoEstadia.getText()));
-//        reserva.setEstado(reservaEstado);
-//        reserva.setHuesped(huespedXId);
-//        reserva.setHabitacion(habitacionxId);
-//        reservaData.agregarReserva(reserva);
+
         try {
             boolean reservaEstado = true;
             int dni = Integer.parseInt(jtfDniHuesped.getText());
             int numeroH = Integer.parseInt(jlNHabitacion.getText());
             Huesped huespedXId = hue.buscarHuepedPorDni(dni);
             Habitacion habitacionxId = habitaciondata.buscarHabitacionXNro(numeroH);
-            habitacionxId.setEstado(false);
+            habitaciondata.habitacionOcupada(habitacionxId.getIdHabitacion());
 
             if (huespedXId == null || habitacionxId == null) {
                 throw new NullPointerException("Debe completar todos los datos para crear una nueva reserva.");

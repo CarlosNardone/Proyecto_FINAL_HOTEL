@@ -451,29 +451,35 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
 //        }
 
 //Intento 3
-        int dni;
-        int numeroHabitacion;
-
+        
         try {
             int filaSeleccionada = jtBuscarReservas.getSelectedRow();
             if (filaSeleccionada != -1) {
-                String dniStr = modelo.getValueAt(filaSeleccionada, 0).toString();
-                String nHabitacionStr = modelo.getValueAt(filaSeleccionada, 8).toString();
-
-                if (esNumeroValido(dniStr) && esNumeroValido(nHabitacionStr)) {
-                    dni = Integer.parseInt(dniStr);
-                    numeroHabitacion = Integer.parseInt(nHabitacionStr);
-
-//                    reservaData.cancelarReserva(dni, numeroHabitacion, false);
-                    borrarFilaTabla();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Los valores en la tabla no son números válidos "
-                            + " Dni: " + dniStr + " Numero Habitacion: " + nHabitacionStr);
-                }
-                System.out.println("Dni: " + dniStr);
-                System.out.println("Numero Habitacion: " + nHabitacionStr);
-
-            } else {
+            int idReserva = Integer.parseInt(modelo.getValueAt(filaSeleccionada, 0).toString());
+            int numeroHabitacion = Integer.parseInt(modelo.getValueAt(filaSeleccionada, 9).toString()); 
+                habitaciondata.habitacionLibre(numeroHabitacion);
+                reservaData.cancelarReserva(idReserva);
+            }
+            
+//            int filaSeleccionada = jtBuscarReservas.getSelectedRow();
+//            if (filaSeleccionada != -1) {
+//                String dniStr = modelo.getValueAt(filaSeleccionada, 0).toString();
+//                String nHabitacionStr = modelo.getValueAt(filaSeleccionada, 8).toString();
+//
+//                if (esNumeroValido(dniStr) && esNumeroValido(nHabitacionStr)) {
+//                    dni = Integer.parseInt(dniStr);
+//                    numeroHabitacion = Integer.parseInt(nHabitacionStr);
+//
+//                   reservaData.cancelarReserva(dni, numeroHabitacion, false);
+//                    borrarFilaTabla();
+//                } else {
+//                    JOptionPane.showMessageDialog(this, "Los valores en la tabla no son números válidos "
+//                            + " Dni: " + dniStr + " Numero Habitacion: " + nHabitacionStr);
+//                }
+//                System.out.println("Dni: " + dniStr);
+//                System.out.println("Numero Habitacion: " + nHabitacionStr);
+//
+             else {
                 JOptionPane.showMessageDialog(this, "Usted debe seleccionar una fila de la tabla");
             }
         } catch (NumberFormatException ex) {
@@ -520,6 +526,7 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
 
     private void armarCabeceraTabla() {
         ArrayList<Object> filaCabecera = new ArrayList<>();
+        filaCabecera.add("ID");
         filaCabecera.add("DNI");
         filaCabecera.add("Apellido");
         filaCabecera.add("Nombre");
@@ -548,8 +555,10 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
             if (huesped != null && habitacion != null) {
                 String estadoReserva = reserva.isEstado() ? "Activa" : "Cancelada";
                 TipoHabitacion tipoHabitacion = habitacion.getTipoHabitacion();
+                
 
                 Object[] rowData = {
+                    reserva.getIdReserva(),
                     huesped.getDni(),
                     huesped.getApellido(),
                     huesped.getNombre(),
@@ -558,7 +567,9 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
                     reserva.getCantidadPersonas(),
                     reserva.getPrecioTotal(),
                     estadoReserva,
+                    habitacion.getNumero(),
                     tipoHabitacion
+                    
                 };
 
                 modelo.addRow(rowData);
@@ -579,6 +590,7 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
                     TipoHabitacion tipoHabitacion = habitacion.getTipoHabitacion();
 
                     Object[] rowData = {
+                        reserva.getIdReserva(),
                         huesped.getDni(),
                         huesped.getApellido(),
                         huesped.getNombre(),
