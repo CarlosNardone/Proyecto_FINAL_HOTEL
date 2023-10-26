@@ -98,7 +98,6 @@ tipoHabitacion = new TipoHabitacion();
         setTitle("Hotel Federal");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/fondo.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
 
         jdEscritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

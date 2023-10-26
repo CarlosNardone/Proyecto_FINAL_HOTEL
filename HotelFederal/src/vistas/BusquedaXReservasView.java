@@ -84,7 +84,7 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jbSalir = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jbCancelarReserva = new javax.swing.JButton();
         jbLiampiar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -162,14 +162,14 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 153));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/cancelar.png"))); // NOI18N
-        jButton1.setText("Cancelar Reserva");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbCancelarReserva.setBackground(new java.awt.Color(255, 153, 153));
+        jbCancelarReserva.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jbCancelarReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/cancelar.png"))); // NOI18N
+        jbCancelarReserva.setText("Cancelar Reserva");
+        jbCancelarReserva.setBorder(null);
+        jbCancelarReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbCancelarReservaActionPerformed(evt);
             }
         });
 
@@ -189,7 +189,7 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jbLiampiar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbCancelarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
@@ -199,7 +199,7 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbCancelarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbLiampiar)
                     .addComponent(jbSalir))
                 .addContainerGap(21, Short.MAX_VALUE))
@@ -410,17 +410,18 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jbBuscarXFechaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbCancelarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarReservaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbCancelarReservaActionPerformed
 
     private void jbLiampiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLiampiarActionPerformed
         // TODO add your handling code here:
+        limpiarCampos();
+        borrarFilaTabla();
     }//GEN-LAST:event_jbLiampiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel15;
@@ -435,6 +436,7 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JButton jbBuscarHuespedXDni;
     private javax.swing.JButton jbBuscarXFecha;
+    private javax.swing.JButton jbCancelarReserva;
     private javax.swing.JButton jbLiampiar;
     private javax.swing.JButton jbSalir;
     private com.toedter.calendar.JDateChooser jdcFechaDesde;
@@ -529,6 +531,12 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Por favor, seleccione ambas fechas.");
         }
 
+    }
+    
+        private void limpiarCampos(){
+        jtfDniHuesped.setText("");
+        jdcFechaDesde.setDate(null);
+        jdcFechaHasta.setDate(null);
     }
 
 }
