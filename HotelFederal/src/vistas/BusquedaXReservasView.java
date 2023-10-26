@@ -456,9 +456,10 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
         filaCabecera.add("Nombre");
         filaCabecera.add("FechaEntrada");
         filaCabecera.add("FechaSalida");
-        filaCabecera.add("Cantidad");
+        filaCabecera.add("Cant. Huesped");
         filaCabecera.add("Precio Total");
         filaCabecera.add("Estado");
+        filaCabecera.add("N° Habitacion");
         filaCabecera.add("Tipo");
         for (Object it : filaCabecera) {
             modelo.addColumn(it);
@@ -516,7 +517,8 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
                         reserva.getFechaDeSalida(), 
                         reserva.getCantidadPersonas(), 
                         reserva.getPrecioTotal(), 
-                        estadoReserva, 
+                        estadoReserva,
+                        habitacion.getNumero(),
                         tipoHabitacion 
                     };
 
