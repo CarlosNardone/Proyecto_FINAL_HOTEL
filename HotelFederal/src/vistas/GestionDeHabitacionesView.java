@@ -151,12 +151,13 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         jbSalir = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        jlTotal = new javax.swing.JLabel();
+        jlLibre = new javax.swing.JLabel();
+        jlOcupadas = new javax.swing.JLabel();
+        jlTotalN = new javax.swing.JLabel();
+        jlLibreN = new javax.swing.JLabel();
+        jlOcupadasN = new javax.swing.JLabel();
+        jbActualizarHabitaciones = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -466,57 +467,82 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         jPanel5.setBackground(new java.awt.Color(68, 167, 132));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel1.setText("TOTAL Habitaciones:");
+        jlTotal.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jlTotal.setText("TOTAL Habitaciones:");
 
-        jLabel11.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel11.setText("Habitaciones Libres:");
+        jlLibre.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jlLibre.setText("Habitaciones Libres:");
 
-        jLabel12.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel12.setText("Habitaciones Ocupadas:");
+        jlOcupadas.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jlOcupadas.setText("Habitaciones Ocupadas:");
 
-        jLabel13.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
-        jLabel13.setText("------");
+        jlTotalN.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        jlTotalN.setText("---");
 
-        jLabel14.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
-        jLabel14.setText("------");
+        jlLibreN.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        jlLibreN.setForeground(new java.awt.Color(102, 204, 0));
+        jlLibreN.setText("---");
 
-        jLabel15.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
-        jLabel15.setText("------");
+        jlOcupadasN.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        jlOcupadasN.setForeground(new java.awt.Color(255, 0, 0));
+        jlOcupadasN.setText("---");
+
+        jbActualizarHabitaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/actualizaHabitaciones.png"))); // NOI18N
+        jbActualizarHabitaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbActualizarHabitacionesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlLibre, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jlTotal, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jlOcupadas)))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel14))
-                .addContainerGap(70, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jlOcupadasN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbActualizarHabitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlTotalN)
+                            .addComponent(jlLibreN))
+                        .addGap(0, 57, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlLibre)
+                            .addComponent(jlLibreN))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jlOcupadasN))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlOcupadas))))
+                    .addComponent(jbActualizarHabitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel13))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(jlTotal)
+                    .addComponent(jlTotalN))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -534,7 +560,7 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
                                 .addGap(53, 53, 53)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
+                                .addGap(76, 76, 76)
                                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -734,16 +760,21 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jtfPisoKeyTyped
 
+    private void jbActualizarHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarHabitacionesActionPerformed
+    int habitacionesLibres = hdata.contarHabitacionesLibres();
+    int habitacionesOcupadas = hdata.contarHabitacionesOcupadas();
+    int totalHabitaciones = hdata.contarTotalHabitaciones();
+
+    // Actualizar etiquetas en la interfaz con estos valores
+    jlLibreN.setText("" + habitacionesLibres);
+    jlOcupadasN.setText("" + habitacionesOcupadas);
+    jlTotalN.setText(""+totalHabitaciones);
+    }//GEN-LAST:event_jbActualizarHabitacionesActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -759,6 +790,7 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton jbActualizarHabitaciones;
     private javax.swing.JButton jbBuscarEstado;
     private javax.swing.JButton jbBuscarNumero;
     private javax.swing.JButton jbBuscarPiso;
@@ -767,6 +799,12 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<TipoHabitacion> jcbTipo;
+    private javax.swing.JLabel jlLibre;
+    private javax.swing.JLabel jlLibreN;
+    private javax.swing.JLabel jlOcupadas;
+    private javax.swing.JLabel jlOcupadasN;
+    private javax.swing.JLabel jlTotal;
+    private javax.swing.JLabel jlTotalN;
     private javax.swing.JRadioButton jrbEstado;
     private javax.swing.JRadioButton jrbEstadoNuevo;
     private javax.swing.JTable jtListaHabitaciones;
