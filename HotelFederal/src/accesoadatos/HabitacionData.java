@@ -154,7 +154,33 @@ public class HabitacionData {
 
  }
 
-    
+    public Habitacion buscarHabitacionPorId(int idHabitacion) {
+    Habitacion habitacion = null;
+    String sql = "SELECT * FROM habitacion WHERE idHabitacion = ?";
+
+    try {
+        
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, idHabitacion);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            int numero = rs.getInt("numero");
+            boolean estado = rs.getBoolean("estado");
+            int piso = rs.getInt("piso");
+            int idTipoHabitacion = rs.getInt("idTipoHabitacion");
+            TipoHabitacion tipoHabitacion = dat.buscarTipoHabitacionPorId(idTipoHabitacion);
+            habitacion = new Habitacion(idHabitacion, numero, estado, piso, tipoHabitacion);
+            habitacion.setTipoHabitacion(tipoHabitacion);
+        }
+
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al buscar la habitación por ID");
+    }
+
+    return habitacion;
+}
+
     
     public Habitacion buscarHabitacionXNro(int numero) {
         String sql = "SELECT h.idHabitacion, h.numero, h.estado, h.piso, h.idTipohabitacion, t.tipoCamas FROM habitacion h\n" +

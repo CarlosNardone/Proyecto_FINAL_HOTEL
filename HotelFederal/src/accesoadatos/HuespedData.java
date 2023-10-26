@@ -149,6 +149,35 @@ public class HuespedData {
         }
     }
     
+    public Huesped buscarHuespedPorId(int idHuesped) {
+    Huesped huesped = null;
+    String sql = "SELECT * FROM huesped WHERE idHuesped = ?";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, idHuesped);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            String apellido = rs.getString("apellido");
+            String nombre = rs.getString("nombre");
+            String dni = rs.getString("dni");
+            String domicilio = rs.getString("domicilio");
+            String correo = rs.getString("correo");
+            int celular = rs.getInt("celular");
+            boolean estado = rs.getBoolean("estado");
+            
+            // Luego, crea el objeto de la clase Huesped con los datos recuperados.
+            huesped = new Huesped(idHuesped, apellido, nombre, dni, domicilio, correo, celular, estado);
+        }
+
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al buscar al huésped por ID");
+    }
+
+    return huesped;
+}
+        
     public  Huesped buscarHuepedPorDni(int dni){
         String sql = "SELECT idHuesped, nombre, apellido, DNI, domicilio, correo, celular, estado FROM huesped WHERE dni = ? AND estado = 1";
         Huesped huesped = null;

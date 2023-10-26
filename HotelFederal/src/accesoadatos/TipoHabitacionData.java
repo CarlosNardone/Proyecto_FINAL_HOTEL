@@ -69,6 +69,35 @@ public class TipoHabitacionData {
         }
     }
 
+    
+    public TipoHabitacion buscarTipoHabitacionPorId(int idTipoHabitacion) {
+    TipoHabitacion tipoHabitacion = null;
+    String sql = "SELECT * FROM tipohabitacion WHERE idTipoHabitacion = ?";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, idTipoHabitacion);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            int codigo = rs.getInt("codigo");
+            int capacidadMaxima = rs.getInt("capacidadMaxima");
+            int cantidadCamas = rs.getInt("cantidadCamas");
+            String tipoCamas = rs.getString("tipoCamas");
+            double precioNoche = rs.getDouble("precioNoche");
+
+            // Luego, crea el objeto de la clase TipoHabitacion con los datos recuperados.
+            tipoHabitacion = new TipoHabitacion(idTipoHabitacion, codigo, capacidadMaxima, cantidadCamas, tipoCamas, precioNoche);
+        }
+
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al buscar el tipo de habitación por ID");
+    }
+
+    return tipoHabitacion;
+}
+
+    
     public TipoHabitacion buscarTipoHabitacionXCodigo(int codigo) {
         String sql = "SELECT idTipoHabitacion , codigo, capacidadMaxima, cantidadCamas, tipoCamas, precioNoche FROM tipohabitacion WHERE codigo = ? ";
         TipoHabitacion tipoHabitacion = null;

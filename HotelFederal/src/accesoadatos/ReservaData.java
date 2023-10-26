@@ -22,40 +22,7 @@ public class ReservaData {
         HabitacionData habData = new HabitacionData();
     }
 
-    /*
-      public void agregarReserva(Reserva reserva, Habitacion habitacion,Huesped huesped ) {
 
-        try {
-
-            PreparedStatement ps = con.prepareStatement("INSERT INTO reserva"
-                    + "(fechaEntrada, fechaSalida, cantidadPersonas, precioTotal, estado, idHuesped, idHabitacion) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-    
-            ps.setDate(1, Date.valueOf(reserva.getFechaDeEntrada()));
-            ps.setDate(2, Date.valueOf(reserva.getFechaDeSalida()));
-            ps.setInt(3, reserva.getCantidadPersonas());
-            ps.setDouble(4, reserva.getPrecioTotal());
-            ps.setBoolean(5, reserva.isEstado());
-            ps.setInt(6, huesped.getIdHuesped());
-            ps.setInt(7, habitacion.getIdHabitacion());
-            ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Reserva Ejecutada");
-            } else {
-                JOptionPane.showMessageDialog(null, "Reserva existente");
-            }
-            rs.close();
-            ps.close();
-            System.out.println(rs);
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla reserva"); //revisar
-            System.err.println(ex);
-        }
-
-    }
-     */
     public void agregarReserva(Reserva reserva) {
         try {
                  
@@ -85,60 +52,97 @@ public class ReservaData {
         }
     }
 
-    // Método para verificar si una habitación existe en la base de datos
+    
     private boolean habitacionExiste(int idHabitacion) {
         try {
             JOptionPane.showMessageDialog(null, "idHabitacion " + idHabitacion);
             PreparedStatement ps = con.prepareStatement("SELECT idHabitacion FROM habitacion WHERE idHabitacion = ?");
             ps.setInt(1, idHabitacion);
             ResultSet rs = ps.executeQuery();
-            return rs.next(); // Devuelve true si la habitación existe, de lo contrario, false.
+            return rs.next(); 
         } catch (SQLException ex) {
             System.err.println(ex);
-            return false; // En caso de error, asumimos que la habitación no existe.
+            return false; 
         }
-    }
-
-    public List<Reserva> obtenerReservasPorHuesped(int idHuesped) { //revisar
-        ArrayList<Reserva> reservas = new ArrayList<>();
-        String sql = "SELECT * FROM reserva WHERE idHuesped = ?";
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idHuesped);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Reserva resr = new Reserva();
-                resr.setIdReserva(rs.getInt("idReserva"));
-
-                
-//                Huesped hue = hdata.buscarHuepedPorDni(rs.getInt("idHuesped"));
-//                Habitacion hab = habData.buscarHabitacionXNro(rs.getInt("idHabitacion"));
-                
-//                resr.setIdReserva(rs.getInt("idReserva"));
-                   resr.setFechaDeEntrada(rs.getDate("fechaEntrada").toLocalDate());
-                   resr.setFechaDeSalida(rs.getDate("fechaSalida").toLocalDate());
-                resr.setCantidadPersonas(rs.getInt("cantidadPersonas"));
-                resr.setPrecioTotal(rs.getDouble("precioTotal"));
-                resr.setEstado(true);
-//                resr.setHuesped(hue);
-//                resr.setHabitacion(hab);
-                reservas.add(resr);
-//                if (hue != null && hab != null) {
-//                    resr.setHuesped(hue);
-//                    resr.setHabitacion(hab);
-//                }
-            }
-
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla reserva");
-        }
-
-        return reservas;
     }
     
-        public void borrarReserva(int idHuesped, int idHabitacion, boolean estado ) {
+    
+    
+    public List<Reserva> ListarReservasPorIdHuesped(int idHuesped) { 
+    List<Reserva> reservas = new ArrayList<>();
+    String sql = "SELECT * FROM reserva WHERE idHuesped = ?";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, idHuesped);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Reserva reserva = new Reserva();
+            HuespedData huespedData = new HuespedData();
+            HabitacionData habitacionData = new HabitacionData();
+            reserva.setIdReserva(rs.getInt("idReserva"));
+            reserva.setFechaDeEntrada(rs.getDate("fechaEntrada").toLocalDate());
+            reserva.setFechaDeSalida(rs.getDate("fechaSalida").toLocalDate());
+            reserva.setCantidadPersonas(rs.getInt("cantidadPersonas"));
+            reserva.setPrecioTotal(rs.getDouble("precioTotal"));
+            reserva.setEstado(rs.getBoolean("estado"));
+            Huesped huesped = huespedData.buscarHuespedPorId(rs.getInt("idHuesped"));
+            Habitacion habitacion = habitacionData.buscarHabitacionPorId(rs.getInt("idHabitacion"));
+            reserva.setHuesped(huesped);
+            reserva.setHabitacion(habitacion);
+
+            reservas.add(reserva);
+        }
+
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla reserva");
+    }
+
+    return reservas;
+}
+
+    
+    public List<Reserva> ListarReservasPorFechas(Date fechaDesde, Date fechaHasta) {
+    List<Reserva> reservas = new ArrayList<>();
+    String sql = "SELECT * FROM reserva WHERE fechaEntrada BETWEEN ? AND ?";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setDate(1, new java.sql.Date(fechaDesde.getTime()));
+        ps.setDate(2, new java.sql.Date(fechaHasta.getTime()));
+        ResultSet rs = ps.executeQuery();
+        
+        HuespedData huespedData = new HuespedData();
+        HabitacionData habitacionData = new HabitacionData();
+        
+        while (rs.next()) {
+            Reserva reserva = new Reserva();
+            reserva.setIdReserva(rs.getInt("idReserva"));
+            reserva.setFechaDeEntrada(rs.getDate("fechaEntrada").toLocalDate());
+            reserva.setFechaDeSalida(rs.getDate("fechaSalida").toLocalDate());
+            reserva.setCantidadPersonas(rs.getInt("cantidadPersonas"));
+            reserva.setPrecioTotal(rs.getDouble("precioTotal"));
+            reserva.setEstado(rs.getBoolean("estado"));
+            Huesped huesped = huespedData.buscarHuespedPorId(rs.getInt("idHuesped"));
+            Habitacion habitacion = habitacionData.buscarHabitacionPorId(rs.getInt("idHabitacion"));
+            reserva.setHuesped(huesped);
+            reserva.setHabitacion(habitacion);
+
+            reservas.add(reserva);
+        }
+
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla reserva");
+    }
+
+    return reservas;
+}
+    
+    
+    
+        public void cancelarReserva(int idHuesped, int idHabitacion, boolean estado ) {
         String sql = "UPDATE reserva SET estado = 0 WHERE idHuesped = ? AND idHabitacion = ? AND estado = 1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -160,36 +164,7 @@ public class ReservaData {
 
     }
         
-        /*
-            public void modificarReserva(Reserva reserva) {
-    String sql = "UPDATE reserva SET fechaEntrada = ?, fechaSalida = ?, cantidadPersonas = ?, precioTotal = ?, estado = ? "
-            + "WHERE idHuesped = ? AND idHabitacion = ?";
 
-    try {
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setDate(1, Date.valueOf(reserva.getFechaDeEntrada()));
-        ps.setDate(2, Date.valueOf(reserva.getFechaDeSalida()));
-        ps.setInt(3, reserva.getCantidadPersonas());
-        ps.setDouble(4, reserva.getPrecioTotal());
-        ps.setBoolean(5, reserva.isEstado());
-        ps.setInt(6, reserva.getIdHuesped());
-        ps.setInt(7, reserva.getIdHabitacion());
-
-        int rowsUpdated = ps.executeUpdate();
-
-        if (rowsUpdated == 1) {
-            JOptionPane.showMessageDialog(null, "Reserva modificada");
-        } else {
-            JOptionPane.showMessageDialog(null, "Reserva inexistente");
-        }
-
-        ps.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla reserva");
-        System.err.println(ex);
-    }
-}
-*/
         
         public void modificarReserva(Reserva reserva) {
     String sql = "UPDATE reserva SET fechaEntrada = ?, fechaSalida = ?, cantidadPersonas = ?, precioTotal = ?, estado = ? "

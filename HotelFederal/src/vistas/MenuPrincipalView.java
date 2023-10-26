@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vistas;
 
 import accesoadatos.HabitacionData;
@@ -11,11 +7,13 @@ import accesoadatos.TipoHabitacionData;
 import entidades.Habitacion;
 import entidades.Huesped;
 import entidades.TipoHabitacion;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -30,18 +28,29 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private TipoHabitacionData tipohab;
     private TipoHabitacion tipoHabitacion;
     
-    /**
-     * Creates new form MenuPrincipalView
-     */
+  
     public MenuPrincipalView() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("/recursos/GestionHuesped.png")).getImage());
-        centrarVentana();
-        hue = new HuespedData();
-        hab = new HabitacionData();
-        habitacion = new Habitacion();
-        tipohab = new TipoHabitacionData();
-        tipoHabitacion = new TipoHabitacion();
+
+jdEscritorio.setLayout(new BorderLayout());
+setIconImage(new ImageIcon(getClass().getResource("/recursos/GestionHuesped.png")).getImage());
+centrarVentana();
+hue = new HuespedData();
+hab = new HabitacionData();
+habitacion = new Habitacion();
+tipohab = new TipoHabitacionData();
+tipoHabitacion = new TipoHabitacion();
+//// Obtener el tamaño máximo de la pantalla
+//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//
+//// Configurar el tamaño del panel para que ocupe toda la pantalla
+//jdEscritorio.setSize(screenSize.width, screenSize.height);
+//
+//// Crear un PanelConImagen con la imagen de fondo deseada
+//PanelConImagen panelConImagen = new PanelConImagen("/recursos/fondo.jpg");
+//
+//// Agregar el panelConImagen al jdEscritorio
+//jdEscritorio.add(panelConImagen, BorderLayout.CENTER);
     }
     
     public void centrarVentana(){
@@ -74,6 +83,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private void initComponents() {
 
         jdEscritorio = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -87,21 +97,33 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hotel Federal");
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/fondo.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
+        jdEscritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jdEscritorioLayout = new javax.swing.GroupLayout(jdEscritorio);
         jdEscritorio.setLayout(jdEscritorioLayout);
         jdEscritorioLayout.setHorizontalGroup(
             jdEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1445, Short.MAX_VALUE)
+            .addGroup(jdEscritorioLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 712, Short.MAX_VALUE))
         );
         jdEscritorioLayout.setVerticalGroup(
             jdEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 784, Short.MAX_VALUE)
+            .addGroup(jdEscritorioLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 339, Short.MAX_VALUE))
         );
 
         jMenu1.setBorder(null);
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/GestionHuesped.png"))); // NOI18N
 
+        jMenuItem1.setBackground(new java.awt.Color(204, 255, 102));
+        jMenuItem1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jMenuItem1.setText("Gestion De Huespedes");
+        jMenuItem1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -113,6 +135,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/GestionHabitacion.png"))); // NOI18N
 
+        jMenuItem2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jMenuItem2.setText("Tipos de Habitaciones");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +144,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
+        jMenuItem3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jMenuItem3.setText("Gestion de Habitaciones");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +157,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/GestionReserva.png"))); // NOI18N
 
+        jMenuItem4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jMenuItem4.setText("Gestion De Reservas");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,17 +197,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        jdEscritorio.removeAll();
-        jdEscritorio.repaint();
-        HuespedView hd = new HuespedView();
-        hd.setVisible(true);
-        hd.getContentPane().setBackground(new Color(68,167,132));
-        jdEscritorio.add(hd);
-        jdEscritorio.moveToFront(hd);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
                         jdEscritorio.removeAll();
@@ -221,15 +235,22 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jdEscritorio.moveToFront(gr);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        jdEscritorio.removeAll();
+        jdEscritorio.repaint();
+        HuespedView hd = new HuespedView();
+        hd.setVisible(true);
+        hd.getContentPane().setBackground(new Color(68,167,132));
+        jdEscritorio.add(hd);
+        jdEscritorio.moveToFront(hd);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+      
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -246,17 +267,18 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MenuPrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
+       
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuPrincipalView().setVisible(true);
-            }
-        });
-    }
+        public void run() {
+            MenuPrincipalView menu = new MenuPrincipalView();
+            menu.setExtendedState(JFrame.NORMAL); // Abre la ventana en pantalla completa
+            menu.setVisible(true);
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
