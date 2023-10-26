@@ -56,17 +56,17 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
         armarCabeceraTabla();
 
         jtListaHabitaciones.addMouseListener(new MouseAdapter() {
-        public void mousePressed(MouseEvent Mouse_evt){
-            JTable modelo = (JTable)Mouse_evt.getSource();
-            Point point = Mouse_evt.getPoint();
-            int fila = modelo.rowAtPoint(point);
-            if(Mouse_evt.getClickCount() == 1){
-                jlNHabitacion.setText(modelo.getValueAt(fila, 0).toString()); 
-          }
-        }
+            public void mousePressed(MouseEvent Mouse_evt) {
+                JTable modelo = (JTable) Mouse_evt.getSource();
+                Point point = Mouse_evt.getPoint();
+                int fila = modelo.rowAtPoint(point);
+                if (Mouse_evt.getClickCount() == 1) {
+                    jlNHabitacion.setText(modelo.getValueAt(fila, 0).toString());
+                }
+            }
         });
-        
-    }  
+
+    }
 
     public void centrarVentana() {
         //El tamaño de nuestra pantalla
@@ -580,8 +580,8 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
             jtfDomicilio.setText(huespedxdni.getDomicilio());
             jtfCelular.setText(Integer.toString(huespedxdni.getCelular()));
             jrbEstado.setSelected(huespedxdni.isEstado());
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "parametro incorrecto");
+        } catch (NumberFormatException | NullPointerException ex) {
+            JOptionPane.showMessageDialog(this, "Vuelva a escribir otro DNI");
         }
 
 
@@ -618,7 +618,7 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
             jtfMontoEstadia.setText(MontoFinal + "");
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Los parametros tienen que estar completos.");
-        }catch(NullPointerException nu){
+        } catch (NullPointerException nu) {
             JOptionPane.showMessageDialog(this, "Seleccione fecha de su estadia.");
         }
 
@@ -645,17 +645,64 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbLimpiarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarTodoActionPerformed
-        // TODO add your handling code here:
-        limpiarCampos();
+       limpiarCampos();
+       borrarFilaTabla();
     }//GEN-LAST:event_jbLimpiarTodoActionPerformed
 
     private void jbCrearNReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCrearNReservaActionPerformed
-        int dni = Integer.parseInt(jtfDniHuesped.getText());
-        int numeroH = Integer.parseInt(jlNHabitacion.getText());
-        Huesped huespedXId = hue.buscarHuepedPorDni(dni);
-        Habitacion habitacionxId = habitaciondata.buscarHabitacionXNro(numeroH);
-        
-//        reservaData.agregarReserva(reserva, habitacionxId, huespedXId);
+
+//        boolean reservaEstado = true;
+//        int dni = Integer.parseInt(jtfDniHuesped.getText());
+//        int numeroH = Integer.parseInt(jlNHabitacion.getText());
+//        Huesped huespedXId = hue.buscarHuepedPorDni(dni);
+//        Habitacion habitacionxId = habitaciondata.buscarHabitacionXNro(numeroH);
+//        reserva.setCantidadPersonas(Integer.parseInt(jtfCantidadPersonas.getText()));
+//        Date fechaEntradaDate = jdcFechaEntrada.getDate();
+//        Date fechaSalidaDate = jdcFechaSalida.getDate();
+//        LocalDate fechaEntrada = fechaEntradaDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//        LocalDate fechaSalida = fechaSalidaDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//        reserva.setFechaDeEntrada(fechaEntrada);
+//        reserva.setFechaDeSalida(fechaSalida);
+//        reserva.setPrecioTotal(Double.parseDouble(jtfMontoEstadia.getText()));
+//        reserva.setEstado(reservaEstado);
+//        reserva.setHuesped(huespedXId);
+//        reserva.setHabitacion(habitacionxId);
+//        reservaData.agregarReserva(reserva);
+        try {
+            boolean reservaEstado = true;
+            int dni = Integer.parseInt(jtfDniHuesped.getText());
+            int numeroH = Integer.parseInt(jlNHabitacion.getText());
+            Huesped huespedXId = hue.buscarHuepedPorDni(dni);
+            Habitacion habitacionxId = habitaciondata.buscarHabitacionXNro(numeroH);
+
+            if (huespedXId == null || habitacionxId == null) {
+                throw new NullPointerException("Debe completar todos los datos para crear una nueva reserva.");
+            }
+
+            Reserva reserva = new Reserva(); // Asumiendo que tienes una instancia de Reserva
+
+            reserva.setCantidadPersonas(Integer.parseInt(jtfCantidadPersonas.getText()));
+            Date fechaEntradaDate = jdcFechaEntrada.getDate();
+            Date fechaSalidaDate = jdcFechaSalida.getDate();
+            LocalDate fechaEntrada = fechaEntradaDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate fechaSalida = fechaSalidaDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            reserva.setFechaDeEntrada(fechaEntrada);
+            reserva.setFechaDeSalida(fechaSalida);
+            reserva.setPrecioTotal(Double.parseDouble(jtfMontoEstadia.getText()));
+
+            reserva.setEstado(reservaEstado);
+            reserva.setHuesped(huespedXId);
+            reserva.setHabitacion(habitacionxId);
+
+            reservaData.agregarReserva(reserva);
+        } catch (NumberFormatException | NullPointerException e) {
+            // Manejo de excepciones para NumberFormatException y NullPointerException
+            // Mostrar un mensaje de error
+            JOptionPane.showMessageDialog(this, "Debe completar todos los datos para crear una nueva reserva.");
+        }
+    
+
+
     }//GEN-LAST:event_jbCrearNReservaActionPerformed
 
     private void jtfCantidadPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCantidadPersonasKeyTyped
@@ -744,7 +791,7 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
         jdcFechaSalida.setDate(null);
         jlPrecioxNoche.setText("-------------");
         jlTipoHab.setText("-------------");
-
+        
     }
 
     private void borrarFilaTabla() {
@@ -753,7 +800,7 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
             modelo.removeRow(i);
         }
     }
-    
+
     private void armarCabeceraTabla() {
         ArrayList<Object> filaCabecera = new ArrayList<>();
         filaCabecera.add("Numero");
@@ -766,14 +813,11 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
         jtListaHabitaciones.setModel(modelo);
     }
 
-        private void cargarHabitacionXTipo(TipoHabitacion tipohab) {
+    private void cargarHabitacionXTipo(TipoHabitacion tipohab) {
         List<Habitacion> listah = (ArrayList) habitaciondata.listarHabitacionesxTipoYEstado(tipohab);
         for (Habitacion h : listah) {
             modelo.addRow(new Object[]{h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
         }
     }
 
-
 }
-
-

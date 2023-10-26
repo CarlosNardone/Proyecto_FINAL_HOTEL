@@ -56,10 +56,9 @@ public class ReservaData {
 
     }
      */
-    public void agregarReserva(Reserva reserva, Habitacion habitacion, Huesped huesped) {
+    public void agregarReserva(Reserva reserva) {
         try {
-            // Verifica si la habitación existe antes de insertar la reserva
-            if (habitacionExiste(habitacion.getIdHabitacion())) {
+                 
                 PreparedStatement ps = con.prepareStatement("INSERT INTO reserva "
                         + "(fechaEntrada, fechaSalida, cantidadPersonas, precioTotal, estado, idHuesped, idHabitacion) "
                         + "VALUES (?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
@@ -69,21 +68,18 @@ public class ReservaData {
                 ps.setInt(3, reserva.getCantidadPersonas());
                 ps.setDouble(4, reserva.getPrecioTotal());
                 ps.setBoolean(5, reserva.isEstado());
-                ps.setInt(6, huesped.getIdHuesped());
-                ps.setInt(7, habitacion.getIdHabitacion());
+                ps.setInt(6,reserva.getHuesped().getIdHuesped());
+                ps.setInt(7,reserva.getHabitacion().getIdHabitacion());
                 ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();
                 if (rs.next()) {
-                    JOptionPane.showMessageDialog(null, "Reserva Ejecutada");
+                    JOptionPane.showMessageDialog(null, "Nueva Reserva Creada");
                 } else {
                     JOptionPane.showMessageDialog(null, "Reserva existente");
                 }
                 rs.close();
                 ps.close();
-            } else {
-                JOptionPane.showMessageDialog(null, "La habitación no existe");
-            }
-        } catch (SQLException ex) {
+            } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla reserva");
             System.err.println(ex);
         }
