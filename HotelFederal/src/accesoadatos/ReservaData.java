@@ -142,13 +142,13 @@ public class ReservaData {
     
     
     
-        public void cancelarReserva(int idHuesped, int idHabitacion, boolean estado ) {
+        public void cancelarReserva(int idReserva ) {
         String sql = "UPDATE reserva SET estado = 0 WHERE idHuesped = ? AND idHabitacion = ? AND estado = 1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 //            ps.setBoolean(1, estado);
-            ps.setInt(1, idHuesped);
-            ps.setInt(2, idHabitacion);
+//            ps.setInt(1, idHuesped);
+//            ps.setInt(2, idHabitacion);
 
             int filas = ps.executeUpdate();
             if (filas > 0) {

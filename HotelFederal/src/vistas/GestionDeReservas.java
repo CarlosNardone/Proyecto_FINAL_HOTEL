@@ -674,6 +674,7 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
             int numeroH = Integer.parseInt(jlNHabitacion.getText());
             Huesped huespedXId = hue.buscarHuepedPorDni(dni);
             Habitacion habitacionxId = habitaciondata.buscarHabitacionXNro(numeroH);
+            habitacionxId.setEstado(false);
 
             if (huespedXId == null || habitacionxId == null) {
                 throw new NullPointerException("Debe completar todos los datos para crear una nueva reserva.");
