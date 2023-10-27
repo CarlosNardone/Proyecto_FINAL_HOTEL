@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2023 at 11:33 PM
+-- Generation Time: Oct 27, 2023 at 11:02 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -42,17 +42,17 @@ CREATE TABLE `habitacion` (
 INSERT INTO `habitacion` (`idHabitacion`, `numero`, `estado`, `piso`, `idTipoHabitacion`) VALUES
 (10, 1, 1, 2, 1),
 (15, 2, 1, 3, 4),
-(16, 3, 1, 2, 6),
+(16, 3, 1, 2, 7),
 (17, 4, 1, 1, 1),
 (18, 5, 1, 3, 4),
 (19, 6, 1, 1, 4),
 (20, 7, 1, 1, 7),
 (21, 8, 1, 1, 4),
 (22, 9, 1, 1, 1),
-(23, 10, 1, 2, 4),
+(23, 10, 0, 2, 4),
 (24, 11, 1, 2, 4),
 (25, 12, 1, 2, 6),
-(26, 13, 1, 3, 1),
+(26, 13, 0, 3, 1),
 (27, 14, 1, 3, 7),
 (28, 15, 1, 3, 6);
 
@@ -78,7 +78,7 @@ CREATE TABLE `huesped` (
 --
 
 INSERT INTO `huesped` (`idHuesped`, `nombre`, `apellido`, `DNI`, `domicilio`, `correo`, `celular`, `estado`) VALUES
-(1, 'Carlos', 'Nardone', '37577100', 'Berrutti 1840', 'carlin1994@live.com.ar', 155155655, 1),
+(1, 'Carlos Andres', 'Nardone', '37577100', 'Berrutti 1840', 'carlin1994@live.com.ar', 155155655, 1),
 (6, 'Pepe', 'Lopez', '574645664', 'Santa Cruz', 'jorgelopez57@gmail.com', 14141656, 1),
 (7, 'Alberto', 'Gonzales', '5734242', 'Cordoba 1040', 'albertogonzales@gmail.com', 313123121, 0),
 (8, 'Laura', 'Fernandez', '64646466', 'San Juan 340', 'lauraperez@gmail.com', 15514341, 0),
@@ -109,10 +109,14 @@ CREATE TABLE `reserva` (
 --
 
 INSERT INTO `reserva` (`idReserva`, `fechaEntrada`, `fechaSalida`, `cantidadPersonas`, `precioTotal`, `estado`, `idHuesped`, `idHabitacion`) VALUES
-(5, '2023-10-22', '2023-10-27', 3, 40000, 1, 1, 10),
-(7, '2023-10-22', '2023-10-27', 3, 40000, 1, 12, 15),
+(5, '2023-10-22', '2023-10-27', 3, 40000, 0, 1, 10),
+(7, '2023-10-22', '2023-10-27', 3, 40000, 0, 12, 15),
 (8, '2023-10-06', '2023-10-10', 3, 40000, 0, 1, 15),
-(9, '2023-10-25', '2023-10-28', 1, 30000, 1, 1, 10);
+(9, '2023-10-25', '2023-10-28', 1, 30000, 0, 1, 10),
+(10, '2023-10-24', '2023-10-27', 1, 30000, 0, 1, 22),
+(11, '2023-10-26', '2023-11-01', 3, 150000, 0, 1, 28),
+(12, '2023-10-22', '2023-10-28', 1, 60000, 1, 1, 26),
+(13, '2023-10-19', '2023-10-24', 2, 75000, 1, 12, 23);
 
 -- --------------------------------------------------------
 
@@ -192,7 +196,7 @@ ALTER TABLE `huesped`
 -- AUTO_INCREMENT for table `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tipohabitacion`
