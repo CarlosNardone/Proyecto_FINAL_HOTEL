@@ -51,44 +51,47 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
         modelo = new DefaultTableModel();
         armarCabeceraTabla();
         centrarVentana();
-        
+
         jtListaHabitaciones.addMouseListener(new MouseAdapter() {
-        public void mousePressed(MouseEvent Mouse_evt){
-            JTable modelo = (JTable)Mouse_evt.getSource();
-            Point point = Mouse_evt.getPoint();
-            int fila = modelo.rowAtPoint(point);
-            if(Mouse_evt.getClickCount() == 1){
-                jtfNumeroNuevo.setText(modelo.getValueAt(fila, 1).toString()); 
-                boolean estado = (boolean) modelo.getValueAt(fila, 2);
-                jrbEstadoNuevo.setSelected(estado);   
-                jtfPisoNuevo.setText(modelo.getValueAt(fila, 3).toString());
-                jtfTipoNuevo.setText(modelo.getValueAt(fila, 4).toString());
- 
+            public void mousePressed(MouseEvent Mouse_evt) {
+                JTable modelo = (JTable) Mouse_evt.getSource();
+                Point point = Mouse_evt.getPoint();
+                int fila = modelo.rowAtPoint(point);
+                if (Mouse_evt.getClickCount() == 1) {
+                    jtfNumeroNuevo.setText(modelo.getValueAt(fila, 1).toString());
+                    String estadoString = modelo.getValueAt(fila, 2).toString();
+                    boolean estado;
+                    if (estadoString.equals("Libre")) {
+                        estado = true;
+                    } else {
+                        estado = false;
+                    }
+                    jrbEstadoNuevo.setSelected(estado);
+                    jtfPisoNuevo.setText(modelo.getValueAt(fila, 3).toString());
+                    jtfTipoNuevo.setText(modelo.getValueAt(fila, 4).toString());
+
+                }
             }
-        }
         });
 
     }
 
-
-    
     private void cargarTipoHabitacion() {
-    TipoHabitacion tipoHabitacionNulo = null;
-    jcbTipo.addItem(tipoHabitacionNulo); // Agrega un elemento nulo al principio del JComboBox
+        TipoHabitacion tipoHabitacionNulo = null;
+        jcbTipo.addItem(tipoHabitacionNulo); 
 
-    jcbTipo.addFocusListener(new FocusAdapter() {
-        @Override
-        public void focusGained(FocusEvent e) {
-            if (jcbTipo.getItemCount() == 1) {
-                jcbTipo.removeItem(tipoHabitacionNulo); // Elimina el elemento nulo
-                for (TipoHabitacion item : listath) {
-                    jcbTipo.addItem(item);
+        jcbTipo.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (jcbTipo.getItemCount() == 1) {
+                    jcbTipo.removeItem(tipoHabitacionNulo);
+                    for (TipoHabitacion item : listath) {
+                        jcbTipo.addItem(item);
+                    }
                 }
             }
-        }
-    });
-}
-
+        });
+    }
 
     public void centrarVentana() {
         //El tamaño de nuestra pantalla
@@ -638,7 +641,7 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         // TODO add your handling code here:
         limpiarCampos();
-        
+
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
@@ -651,21 +654,21 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
             tipoHab.setTipoCamas(tipo);
             boolean estado = jrbEstadoNuevo.isSelected();
             Habitacion encontrada = hdata.buscarHabitacionXNro(numero);
-            
-            if(encontrada == null){
-               int idtipo = thData.obtenerIdTipoHabitacionPorNombre(tipo);
-               tipoHab.setIdTipoHabitacion(idtipo);
-               Habitacion nueva = new Habitacion(numero, estado, piso, tipoHab);
-               hdata.altaHabitacion(nueva);
-            }else{
+
+            if (encontrada == null) {
+                int idtipo = thData.obtenerIdTipoHabitacionPorNombre(tipo);
+                tipoHab.setIdTipoHabitacion(idtipo);
+                Habitacion nueva = new Habitacion(numero, estado, piso, tipoHab);
+                hdata.altaHabitacion(nueva);
+            } else {
                 Habitacion habitacion = new Habitacion();
                 habitacion.setNumero(numero);
                 habitacion.setPiso(piso);
                 habitacion.setEstado(estado);
-                tipoHab.setTipoCamas(tipo);    
-            hdata.modificarHabitacionPorNumero(habitacion,tipoHab);
+                tipoHab.setTipoCamas(tipo);
+                hdata.modificarHabitacionPorNumero(habitacion, tipoHab);
             }
-            }catch (NumberFormatException ex) {
+        } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en estos campos");
 
     }//GEN-LAST:event_jbModificarActionPerformed
@@ -684,15 +687,15 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfTipoNuevoActionPerformed
 
     private void jbBuscarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarEstadoActionPerformed
-       boolean estado = jrbEstado.isSelected();
-       borrarFilaTabla();
-       cargarHabitacionXEstado(estado);
-       
+        boolean estado = jrbEstado.isSelected();
+        borrarFilaTabla();
+        cargarHabitacionXEstado(estado);
+
     }//GEN-LAST:event_jbBuscarEstadoActionPerformed
 
     private void jtfNumeroNuevoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNumeroNuevoKeyTyped
         // TODO add your handling code here:
-                int key = evt.getKeyChar();
+        int key = evt.getKeyChar();
 
         boolean numero = key >= 48 && key <= 57;
 
@@ -706,7 +709,7 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
 
     private void jtfPisoNuevoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPisoNuevoKeyTyped
         // TODO add your handling code here:
-                int key = evt.getKeyChar();
+        int key = evt.getKeyChar();
 
         boolean numero = key >= 48 && key <= 57;
 
@@ -720,7 +723,7 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
 
     private void jtfTipoNuevoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTipoNuevoKeyTyped
         // TODO add your handling code here:
-                int key = evt.getKeyChar();
+        int key = evt.getKeyChar();
 
         boolean numero = key >= 48 && key <= 57;
 
@@ -734,7 +737,7 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
 
     private void jtfNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNumeroKeyTyped
         // TODO add your handling code here:
-                int key = evt.getKeyChar();
+        int key = evt.getKeyChar();
 
         boolean numero = key >= 48 && key <= 57;
 
@@ -748,7 +751,7 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
 
     private void jtfPisoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPisoKeyTyped
         // TODO add your handling code here:
-                int key = evt.getKeyChar();
+        int key = evt.getKeyChar();
 
         boolean numero = key >= 48 && key <= 57;
 
@@ -761,17 +764,16 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfPisoKeyTyped
 
     private void jbActualizarHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarHabitacionesActionPerformed
-    int habitacionesLibres = hdata.contarHabitacionesLibres();
-    int habitacionesOcupadas = hdata.contarHabitacionesOcupadas();
-    int totalHabitaciones = hdata.contarTotalHabitaciones();
+        int habitacionesLibres = hdata.contarHabitacionesLibres();
+        int habitacionesOcupadas = hdata.contarHabitacionesOcupadas();
+        int totalHabitaciones = hdata.contarTotalHabitaciones();
 
-    // Actualizar etiquetas en la interfaz con estos valores
-    jlLibreN.setText("" + habitacionesLibres);
-    jlOcupadasN.setText("" + habitacionesOcupadas);
-    jlTotalN.setText(""+totalHabitaciones);
+        // Actualizar etiquetas en la interfaz con estos valores
+        jlLibreN.setText("" + habitacionesLibres);
+        jlOcupadasN.setText("" + habitacionesOcupadas);
+        jlTotalN.setText("" + totalHabitaciones);
     }//GEN-LAST:event_jbActualizarHabitacionesActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;
@@ -838,14 +840,16 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     private void cargarHabitacionXPiso(int piso) {
         List<Habitacion> listah = (ArrayList) hdata.listarHabitacionesxPiso(piso);
         for (Habitacion h : listah) {
-            modelo.addRow(new Object[]{h.getIdHabitacion(), h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
+            String estado = h.isEstado() ? "Libre" : "Ocupado";
+            modelo.addRow(new Object[]{h.getIdHabitacion(), h.getNumero(), estado, h.getPiso(), h.getTipoHabitacion()});
         }
     }
 
     private void cargarHabitacionXTipo(TipoHabitacion tipohab) {
         List<Habitacion> listah = (ArrayList) hdata.listarHabitacionesxTipo(tipohab);
         for (Habitacion h : listah) {
-            modelo.addRow(new Object[]{h.getIdHabitacion(), h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
+            String estado = h.isEstado() ? "Libre" : "Ocupado";
+            modelo.addRow(new Object[]{h.getIdHabitacion(), h.getNumero(), estado, h.getPiso(), h.getTipoHabitacion()});
         }
     }
 
@@ -865,8 +869,8 @@ public class GestionDeHabitacionesView extends javax.swing.JInternalFrame {
     private void cargarHabitacionXEstado(boolean estado) {
         List<Habitacion> listah = (ArrayList) hdata.listarHabitacionesxEstado(estado);
         for (Habitacion h : listah) {
-            modelo.addRow(new Object[]{h.getIdHabitacion(), h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
+            String estadoHabitacion = estado ? "Libre" : "Ocupado";
+            modelo.addRow(new Object[]{h.getIdHabitacion(), h.getNumero(), estadoHabitacion, h.getPiso(), h.getTipoHabitacion()});
         }
     }
-
 }

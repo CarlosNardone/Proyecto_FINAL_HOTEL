@@ -801,8 +801,9 @@ public class GestionDeReservas extends javax.swing.JInternalFrame {
     private void cargarHabitacionXTipo(TipoHabitacion tipohab) {
         List<Habitacion> listah = (ArrayList) habitaciondata.listarHabitacionesxTipoYEstado(tipohab);
         for (Habitacion h : listah) {
-            modelo.addRow(new Object[]{h.getNumero(), h.isEstado(), h.getPiso(), h.getTipoHabitacion()});
-        }
+        String estado = h.isEstado() ? "Libre" : "Ocupado";
+        modelo.addRow(new Object[]{h.getNumero(), estado, h.getPiso(), h.getTipoHabitacion()});
     }
+}
 
 }
