@@ -146,15 +146,14 @@ public class ReservaData {
         String sql = "UPDATE reserva SET estado = 0 WHERE idReserva = ? AND estado = 1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setBoolean(1, estado);
+
             ps.setInt(1, idReserva);
-//            ps.setInt(2, idHabitacion);
 
             int filas = ps.executeUpdate();
             if (filas > 0) {
                 JOptionPane.showMessageDialog(null, "Reserva dada de baja");
             }else{
-                JOptionPane.showMessageDialog(null, "Esta reserva no existe");
+                JOptionPane.showMessageDialog(null, "Esta reserva ya se encuentra cancelada");
             }
             ps.close();
 

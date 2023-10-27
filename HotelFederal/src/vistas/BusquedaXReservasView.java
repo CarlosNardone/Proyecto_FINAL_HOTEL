@@ -411,46 +411,7 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbBuscarXFechaActionPerformed
 
     private void jbCancelarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarReservaActionPerformed
-        // TODO add your handling code here:
-
-        //Intento 1
-//                try{
-// 
-//        int filaSeleccionada = jtBuscarReservas.getSelectedRow();
-//        if (filaSeleccionada != -1) {
-//            int idHuesped = (Integer) modelo.getValueAt(filaSeleccionada, 0);
-//            int idHabitacion = (Integer) modelo.getValueAt(filaSeleccionada, 8);
-//            
-//            reservaData.cancelarReserva(idHuesped, idHabitacion, false); // Cambiado getIdHuesped() por idHuesped y getIdHabitacion() por idHabitacion
-//            borrarFilaTabla();      
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Usted debe seleccionar una fila de la tabla");
-//        }
-//    } catch (ClassCastException ex) {
-//        JOptionPane.showMessageDialog(this, "No deberías editar las filas");
-//    }
-//Intento 2
-//        int idHuesped;
-//        int idHabitacion;
-//        try {
-//            int filaSeleccionada = jtBuscarReservas.getSelectedRow();
-//            if (filaSeleccionada != -1) {
-//                String idHuespedStr = modelo.getValueAt(filaSeleccionada, 0).toString();
-//                String idHabitacionStr = modelo.getValueAt(filaSeleccionada, 8).toString();
-//
-//                idHuesped = Integer.parseInt(idHuespedStr);
-//                idHabitacion = Integer.parseInt(idHabitacionStr);
-//
-//                reservaData.cancelarReserva(idHuesped, idHabitacion, false);
-//                borrarFilaTabla();
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Usted debe seleccionar una fila de la tabla");
-//            }
-//        } catch (NumberFormatException ex) {
-//            JOptionPane.showMessageDialog(this, "Los valores en la tabla no son números válidos");
-//        }
-
-//Intento 3
+ 
         
         try {
             int filaSeleccionada = jtBuscarReservas.getSelectedRow();
@@ -461,24 +422,6 @@ public class BusquedaXReservasView extends javax.swing.JInternalFrame {
                 reservaData.cancelarReserva(idReserva);
             }
             
-//            int filaSeleccionada = jtBuscarReservas.getSelectedRow();
-//            if (filaSeleccionada != -1) {
-//                String dniStr = modelo.getValueAt(filaSeleccionada, 0).toString();
-//                String nHabitacionStr = modelo.getValueAt(filaSeleccionada, 8).toString();
-//
-//                if (esNumeroValido(dniStr) && esNumeroValido(nHabitacionStr)) {
-//                    dni = Integer.parseInt(dniStr);
-//                    numeroHabitacion = Integer.parseInt(nHabitacionStr);
-//
-//                   reservaData.cancelarReserva(dni, numeroHabitacion, false);
-//                    borrarFilaTabla();
-//                } else {
-//                    JOptionPane.showMessageDialog(this, "Los valores en la tabla no son números válidos "
-//                            + " Dni: " + dniStr + " Numero Habitacion: " + nHabitacionStr);
-//                }
-//                System.out.println("Dni: " + dniStr);
-//                System.out.println("Numero Habitacion: " + nHabitacionStr);
-//
              else {
                 JOptionPane.showMessageDialog(this, "Usted debe seleccionar una fila de la tabla");
             }
